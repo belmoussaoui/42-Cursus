@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_isdigit_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:28:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 13:31:27 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/03 14:52:05 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/03 16:53:08 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_test.h"
 
-void	check_assert(int boolean)
+void    ft_isdigit_test()
 {
-	if (boolean)
-	{
-		printf("\033[0;32m");
-		printf("OK");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("NOK");
-	}
-	printf("\033[0m");
+    char    test1;
+    char    test2;
+
+	test1 = '7';
+	test2 = 'a';
+	printf("ft_digit :");
+	printf(" ");
+	check_assert(ft_isdigit(test1) == isdigit(test1));
+	printf(" | ");
+	check_assert(ft_isdigit(test2) == isdigit(test2));
+	printf("\n");
 }

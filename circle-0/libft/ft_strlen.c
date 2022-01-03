@@ -5,12 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:25:46 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/02 05:09:32 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/03 13:30:28 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/03 21:26:23 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(char *str)
 {
 	int	size;
 

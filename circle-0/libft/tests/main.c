@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 03:17:07 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/02 05:11:18 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:13:23 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int	main(void)
 {
+	ft_isalpha_test();
+	ft_isdigit_test();
+	ft_isalnum_test();
+	ft_isascii_test();
+	ft_isprint_test();
 	ft_strlen_test();
+	ft_memset_test();
 }

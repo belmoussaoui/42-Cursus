@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_memset_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:28:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 13:31:27 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/03 17:10:54 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/03 17:59:50 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_test.h"
 
-void	check_assert(int boolean)
+void    ft_memset_test()
 {
-	if (boolean)
-	{
-		printf("\033[0;32m");
-		printf("OK");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("NOK");
-	}
-	printf("\033[0m");
+    char    test1[6] = "hello";
+	printf("ft_memset :");
+	printf(" ");
+    check_assert(ft_memset(test1, 's', 3) == memset(test1, 's', 3));
+	
+	printf("\n");
 }

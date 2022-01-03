@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:28:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 13:31:27 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/03 21:44:54 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/03 21:49:51 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
+#include "libft.h"
 
-void	check_assert(int boolean)
+void	ft_bzero(void *s, size_t n)
 {
-	if (boolean)
-	{
-		printf("\033[0;32m");
-		printf("OK");
-	}
-	else
-	{
-		printf("\033[0;31m");
-		printf("NOK");
-	}
-	printf("\033[0m");
+    memset(s, '\0', n);
 }
