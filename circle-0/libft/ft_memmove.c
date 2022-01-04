@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha_test.c                                  :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:25:02 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 14:49:22 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/04 14:40:16 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/04 22:13:03 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
+#include "libft.h"
 
-void	ft_isalpha_test(void)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char    test1;
-    char    test2;
+	char		*d;
+	const char	*s;
+	int			i;
 
-	test1 = 's';
-	test2 = '-';
-	printf("ft_isalpha :");
-	printf(" ");
-	check_assert(ft_isalpha(test1) == isalpha(test1));
-	printf(" | ");
-	check_assert(ft_isalpha(test2) == isalpha(test2));
-	printf("\n");
+	d = dst;
+	s = src;
+	if (dst == NULL && src == NULL)
+		return (dst);
+	i = len - 1;
+	if (dst > src)
+	{
+		while (i >= 0)
+		{
+			d[i] = s[i];
+			i--;
+		}
+	}
+	else
+		ft_memcpy(dst, src, len);
+	return (dst);
 }

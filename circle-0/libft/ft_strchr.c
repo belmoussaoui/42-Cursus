@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit_test.c                                  :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 14:52:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 16:53:08 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/04 17:51:07 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/04 22:20:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
+#include "libft.h"
 
-void    ft_isdigit_test()
+char	*ft_strchr(const char *s, int c)
 {
-    char    test1;
-    char    test2;
-
-	test1 = '7';
-	test2 = 'a';
-	printf("ft_digit :");
-	printf(" ");
-	check_assert(ft_isdigit(test1) == isdigit(test1));
-	printf(" | ");
-	check_assert(ft_isdigit(test2) == isdigit(test2));
-	printf("\n");
+	while (*s != '\0')
+	{
+		if (*s == c)
+			return ((char *) s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *) s);
+	return (NULL);
 }

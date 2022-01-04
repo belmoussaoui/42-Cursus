@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset_test.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 17:10:54 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 17:59:50 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/04 18:10:04 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/04 22:13:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
-
-void    ft_memset_test()
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-    char    test1[6] = "hello";
-	printf("ft_memset :");
-	printf(" ");
-    check_assert(ft_memset(test1, 's', 3) == memset(test1, 's', 3));
-	
-	printf("\n");
+	unsigned int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && i < n - 1)
+	{
+		if (s1[i] != s2[i])
+			break ;
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

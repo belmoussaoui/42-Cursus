@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint_test.c                                  :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/03 15:59:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/03 16:53:11 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/04 13:35:57 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/04 22:16:28 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
+#include "libft.h"
 
-void    ft_isprint_test()
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-    int    test1;
-    char    test2;
+	unsigned char		*d;
+	const unsigned char	*s;
+	unsigned long		i;
 
-	test1 = 343;
-	test2 = 'a';
-	printf("ft_isprint_test :");
-	printf(" ");
-	check_assert(ft_isprint(test1) == isprint(test1));
-	printf(" | ");
-	check_assert(ft_isprint(test2) == isprint(test2));
-	printf("\n");
+	d = dst;
+	s = src;
+	if (dst == NULL && src == NULL)
+		return (dst);
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
 }

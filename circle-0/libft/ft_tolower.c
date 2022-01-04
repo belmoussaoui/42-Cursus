@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_test.c                                   :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/02 03:25:02 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/02 05:11:05 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/04 17:49:20 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/04 22:10:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_test.h"
-
-void	ft_strlen_test(void)
+int	ft_tolower(int c)
 {
-	char	*test1;
-
-	test1 = "hello world!";
-	printf("ft_strlen :");
-	printf(" ");
-	check_assert(ft_strlen(test1) == strlen(test1));
-	printf(" | ");
-	check_assert(ft_strlen("") == strlen(""));
-	printf("\n");
+	if (c >= 'A' && c <= 'Z')
+		c -= ('A' - 'a');
+	return (c);
 }
