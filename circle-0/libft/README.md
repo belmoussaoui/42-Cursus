@@ -11,4 +11,9 @@ ensuite utiliser une librairie avec l'argument `-l` avec l'emplacement `-L` et l
 `-L../ -lft`
 lft = libft
 
+## cast
+https://stackoverflow.com/questions/43564226/operand-of-type-void-where-arithmetic-or-pointer-type-is-required-c
+
+## overflow
+
 https://stackoverflow.com/questions/5178125/how-to-place-object-files-in-separate-subdirectory
