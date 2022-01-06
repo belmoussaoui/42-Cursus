@@ -6,14 +6,13 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:30:42 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/05 18:12:14 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/06 16:04:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
-# include <limits.h>
 # include <stdlib.h>
 
 int		ft_isalpha(int c);
@@ -39,5 +38,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 void 	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(char *s1);
+char    *ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
+char	**ft_split(char const *s, char c);
 
 #endif

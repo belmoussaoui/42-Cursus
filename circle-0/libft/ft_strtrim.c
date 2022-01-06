@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 14:24:48 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/06 14:01:41 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/06 13:38:16 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/06 15:07:49 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	needlelen;
+	size_t	start;
+	size_t	end;
+	char	*res;
 
 	i = 0;
-	needlelen = ft_strlen(needle);
-	if (*needle == '\0')
-		return ((char *) haystack);
-	while (haystack[i] != '\0' && i + needlelen <= len)
-	{
-		if (ft_strncmp(&(haystack[i]), needle, needlelen) == 0)
-			return ((char *) haystack + i);
+	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;
-	}
-	return (0);
+	start = i;
+	if (start == ft_strlen(s1))
+		return (ft_strdup(""));
+	i = ft_strlen(s1) - 1;
+	while (s1[i] && ft_strchr(set, s1[i]))
+		i--;
+	end = i + 1;
+	res = malloc(sizeof(char) * (end - start + 1));
+	if (res == NULL)
+		return (NULL);
+	ft_strlcpy(res, s1 + start, end - start + 1);
+	return (res);
 }

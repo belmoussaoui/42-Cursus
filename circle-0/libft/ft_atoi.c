@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:36:17 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/05 16:10:34 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/06 15:45:30 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ static	int	ft_isspace(char c)
 		|| c == '\f' || c == '\r' || c == ' ');
 }
 
-static int handle_overflow(int value, int sign)
+static int handle_overflow(int sign)
 {
-	if (value == INT_MIN)
-		return INT_MIN;
 	if (sign == -1)
 		return 0;
 	else
@@ -31,7 +29,7 @@ static int handle_overflow(int value, int sign)
 int	ft_atoi(const char *str)
 {
 	int	sign;
-	int	res;
+	long long	res;
 	int	i;
 
 	sign = 1;
@@ -50,7 +48,7 @@ int	ft_atoi(const char *str)
 		res = res * 10 + str[i] - '0';
 		i++;
 		if (res < 0)
-			return (handle_overflow(res, sign));
+			return (handle_overflow(sign));
 	}
 	return (res * sign);
 }
