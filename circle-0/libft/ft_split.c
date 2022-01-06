@@ -6,55 +6,80 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:31:20 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/06 18:03:05 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:53:49 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char **ft_split(char const *s, char c)
+int	count_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	int		count;
-	int		start;
-	char	**res;
-	int		pos;
-	
-	if (s == NULL)
-		return (NULL);
-	i = 0;
-	pos = 0;
+	int	count;
+	int	i;
+
 	count = 0;
+	i = 0;
+	if (s[0] == '\0')
+		return (0);
 	while (s[i] && s[i] == c)
 		i++;
-	if (i != 0)
-		count++;
-	start = i;
 	while (s[i] && s[i + 1])
 	{
 		if (s[i] == c && s[i + 1] != c)
 			count++;
-		i++;	
+		i++;
 	}
-	res = malloc(sizeof(char *) * (count));
+	count++;
+	return (count);
+}
+
+int	count_char(char const *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+void	*free_strings(char **strings, int current)
+{
+	int	i;
+
+	i = 0;
+	while (i < current)
+	{
+		free(strings[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	char	**res;
+	int		current;
+
+	if (s == NULL)
+		return (NULL);
+	res = malloc(sizeof(char *) * (count_split(s, c) + 1));
 	if (res == NULL)
 		return (NULL);
-	i = start;
-
-	while (pos < count)
+	i = 0;
+	current = 0;
+	while (current < count_split(s, c))
 	{
-		j = i;
-		while (s[i] && s[i] != c)
-			i++;
-		res[pos] = malloc(sizeof(char) * (i - j + 1));
-		if (res[pos] == NULL)
-			return (NULL);
-		ft_strlcpy(res[pos], s + j, i - j + 1);
 		while (s[i] && s[i] == c)
 			i++;
-		pos++;
+		res[current] = malloc(sizeof(char) * (count_char(s + i, c) + 1));
+		if (res[current] == NULL)
+			return (free_strings(res, current));
+		ft_strlcpy(res[current], s + i, count_char(s + i, c) + 1);
+		i += count_char(s + i, c);
+		current++;
 	}
-	return res;
+	res[current] = NULL;
+	return (res);
 }

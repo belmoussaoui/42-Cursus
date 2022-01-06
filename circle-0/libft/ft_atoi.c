@@ -6,31 +6,31 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:36:17 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/06 15:45:30 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:42:54 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	return (c == '\t' || c == '\n' || c == '\v'
 		|| c == '\f' || c == '\r' || c == ' ');
 }
 
-static int handle_overflow(int sign)
+static int	handle_overflow(int sign)
 {
 	if (sign == -1)
-		return 0;
+		return (0);
 	else
-		return -1;
+		return (-1);
 }
 
 int	ft_atoi(const char *str)
 {
-	int	sign;
+	int			sign;
 	long long	res;
-	int	i;
+	int			i;
 
 	sign = 1;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:11:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/05 18:16:56 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:41:25 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(char *s1)
 	len = ft_strlen(s1);
 	dest = malloc(sizeof(char) * (len + 1));
 	if (dest == NULL)
-		return dest;
+		return (dest);
 	ft_strlcpy(dest, s1, len + 1);
 	return (dest);
 }

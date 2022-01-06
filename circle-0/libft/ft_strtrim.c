@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 13:38:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/06 15:07:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:37:44 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*res;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	i = 0;
 	while (s1[i] && ft_strchr(set, s1[i]))
 		i++;

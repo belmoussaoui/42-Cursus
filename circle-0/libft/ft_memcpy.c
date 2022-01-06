@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:35:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/06 16:26:03 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 00:42:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
-	size_t		i;
+	size_t				i;
 
 	d = (unsigned char *) dst;
 	s = (const unsigned char *) src;
