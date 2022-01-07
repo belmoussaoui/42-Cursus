@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:31:20 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 00:53:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 11:42:25 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	*free_strings(char **strings, int current)
 		free(strings[i]);
 		i++;
 	}
+	free(strings);
 	return (NULL);
 }
 
