@@ -6,34 +6,36 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:31:20 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 11:42:25 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/08 14:32:16 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_split(char const *s, char c)
+static	int	count_split(char const *s, char c)
 {
 	int	count;
 	int	i;
+	int	trigger;
 
 	count = 0;
+	trigger = 1;
 	i = 0;
-	if (s[0] == '\0')
-		return (0);
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i] && s[i + 1])
+	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] != c && trigger)
+		{
 			count++;
+			trigger = 0;
+		}
+		if (s[i] == c && !trigger)
+			trigger = 1;
 		i++;
 	}
-	count++;
 	return (count);
 }
 
-int	count_char(char const *s, char c)
+static	int	count_char(char const *s, char c)
 {
 	int	i;
 
@@ -43,7 +45,7 @@ int	count_char(char const *s, char c)
 	return (i);
 }
 
-void	*free_strings(char **strings, int current)
+static	void	*free_strings(char **strings, int current)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/07 16:18:31 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/07 20:54:49 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,28 +19,27 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putendl_fd.c ft_putnbr_fd.c
 
 OBJS_DIR = objs/
-OBJS_NAMES = ${SRCS:.c=.o}
-OBJS = $(addprefix ${OBJS_DIR}, ${OBJS_NAMES})
+OBJS_NAMES = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES))
 NAME = libft.a
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJS_DIR} ${OBJS}
+$(NAME): $(OBJS_DIR) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-${OBJS_DIR}:
+$(OBJS_DIR):
 	mkdir $@
 
 $(OBJS_DIR)%.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f ${OBJS}
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f $(NAME)
 
 re: fclean all
 

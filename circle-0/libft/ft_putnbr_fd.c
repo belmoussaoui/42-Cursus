@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 15:41:31 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 16:21:38 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:58:46 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,22 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int	pow;
-	int	res;
+	int			pow;
+	long int	ln;
 
-	if (n == INT_MIN)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < 0)
+	ln = n;
+	if (ln < 0)
 	{
 		ft_putchar_fd('-', fd);
-		n *= -1;
+		ln *= -1;
 	}
 	pow = 1;
-	while ((n / pow) >= 10)
+	while ((ln / pow) >= 10)
 		pow *= 10;
 	while (pow > 0)
 	{
-		res = (n / pow);
-		ft_putchar_fd((n / pow) + '0', fd);
-		n -= (n / pow) * pow;
+		ft_putchar_fd((ln / pow) + '0', fd);
+		ln -= (ln / pow) * pow;
 		pow /= 10;
 	}
 }
