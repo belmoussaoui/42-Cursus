@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 16:16:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/10 16:28:28 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 17:12:35 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (f == NULL)
+		return ;
 	while (lst)
 	{
 		f(lst->content);
