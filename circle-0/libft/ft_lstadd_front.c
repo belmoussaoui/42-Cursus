@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:48:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/10 15:15:30 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 08:28:54 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
 	*lst = new;
 }

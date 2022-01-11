@@ -6,13 +6,13 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 18:11:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 00:41:25 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:40:10 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *s1)
 {
 	int		len;
 	char	*dest;

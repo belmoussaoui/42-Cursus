@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 18:03:53 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/04 22:19:50 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 09:01:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	ch;
 
 	i = ft_strlen(s);
-	while (i >= 0 && s[i] != c)
+	ch = (char) c;
+	while (i >= 0 && s[i] != ch)
 		i--;
-	if (s[i] == c)
+	if (s[i] == ch)
 		return ((char *) s + i);
 	return (NULL);
 }

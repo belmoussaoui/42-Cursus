@@ -6,30 +6,34 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 15:41:31 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 17:58:46 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 14:19:28 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_abs(int i)
+{
+	if (i < 0)
+		i *= -1;
+	return (i);
+}
+
 void	ft_putnbr_fd(int n, int fd)
 {
-	int			pow;
-	long int	ln;
+	int	pow;
+	int	res;
 
-	ln = n;
-	if (ln < 0)
-	{
+	if (n < 0)
 		ft_putchar_fd('-', fd);
-		ln *= -1;
-	}
 	pow = 1;
-	while ((ln / pow) >= 10)
+	while (n / pow >= 10 || n / pow <= -10)
 		pow *= 10;
 	while (pow > 0)
 	{
-		ft_putchar_fd((ln / pow) + '0', fd);
-		ln -= (ln / pow) * pow;
+		res = ft_abs(n / pow);
+		ft_putchar_fd(res + '0', fd);
+		n -= res * pow;
 		pow /= 10;
 	}
 }

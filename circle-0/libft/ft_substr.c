@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 12:07:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 00:40:01 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/11 09:09:03 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
 	res = malloc(sizeof(char) * (len + 1));
-	if (start >= ft_strlen(s))
-		return (res);
 	if (res == NULL)
 		return (NULL);
 	ft_strlcpy(res, s + start, len + 1);
