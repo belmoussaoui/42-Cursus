@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 12:52:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/15 13:41:44 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/15 13:51:03 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/15 13:52:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include "./libft/libft.h"
+# include <stdarg.h>
 
-int	main()
-{
-	void *ptr;
-	int t = 100;
-	
-	ptr = &t;
-	ft_printf("%d\n", ft_printf("%cok", '0'));
-	
-	printf("%d\n", printf("%cok", '0'));
-}
+int	conversion_integer(va_list ap);
+int	conversion_char(va_list ap);
+int	conversion_hexadecimal(va_list ap, int (*f)(int));
+int	conversion_string(va_list ap);
+int	conversion_unsigned(va_list ap);
+int	eval_format(const char *format, va_list ap);
+int ft_printf(const char * format, ...);
+
+#endif

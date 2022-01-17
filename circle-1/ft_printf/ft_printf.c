@@ -6,95 +6,64 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:25:12 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/14 18:16:45 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/15 13:21:06 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "./libft/libft.h"
+#include "ft_printf.h"
 
-
-static int	ft_abs(int i)
+int	eval_format(const char *format, va_list ap)
 {
-	if (i < 0)
-		i *= -1;
-	return (i);
-}
+	int	res;
 
-void	ft_putnbr_fd_2(unsigned int n, int fd)
-{
-	unsigned int	pow;
-	unsigned int	res;
-
-	pow = 1;
-	while ((n / pow) >= 10)
-		pow *= 10;
-	while (pow > 0)
+	res = 0;
+	if (*format == 'i' || *format == 'd')
+		res += conversion_integer(ap);
+	else if (*format == 'c')
+		res += conversion_char(ap);
+	else if (*format == 's')
+		res += conversion_string(ap);
+	else if (*format == 'x')
+		res += conversion_hexadecimal(ap, ft_tolower);
+	else if (*format == 'X')
+		res += conversion_hexadecimal(ap, ft_toupper);
+	else if (*format == 'p')
 	{
-		res = n / pow;
-		ft_putchar_fd(res + '0', fd);
-		n -= (n / pow) * pow;
-		pow /= 10;
+		ft_putstr_fd("0x", 1);
+		res += 2;
+		res += conversion_hexadecimal(ap, ft_tolower);
 	}
-}
-
-void	ft_puthex_fd(unsigned long n, int fd, int toupper)
-{
-	unsigned long	pow;
-	unsigned long	res;
-
-	pow = 1;
-	while ((n / pow) >= 16)
-		pow *= 16;
-	while (pow > 0)
+	else if (*format == 'u')
+		res += conversion_unsigned(ap);
+	else
 	{
-		res = n / pow;
-		if (res >= 10)
-			if (toupper)
-				ft_putchar_fd(res + 'A' - 10, fd);
-			else
-				ft_putchar_fd(res + 'a' - 10, fd);
-		else
-			ft_putchar_fd(res + '0', fd);
-		n -= (n / pow) * pow;
-		pow /= 16;
+		res += 1;
+		ft_putchar_fd('%', 1);
 	}
+	return (res);
 }
 
 int ft_printf(const char * format, ...)
 {
 	va_list	ap;
 	int		i;
+	int		res;
 
 	i = 0;
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{
-		if(format[i] != '%')
+		if(format[i] != '%') {
             ft_putchar_fd(format[i], 1);
-		else {
+			res++;
+		}
+		else
+		{
 			i++;
-			if (format[i] == 'd' || format[i] == 'i')
-				ft_putnbr_fd(va_arg(ap, int), 1);
-			else if (format[i] == 's')
-				ft_putstr_fd(va_arg(ap, char *), 1);
-			else if (format[i] == 'c')
-				ft_putchar_fd((char) va_arg(ap, int), 1);
-			else if (format[i] == 'u')
-				ft_putnbr_fd_2(va_arg(ap, unsigned int), 1);
-			else if (format[i] == 'x')
-				ft_puthex_fd(va_arg(ap, int), 1, 0);
-			else if (format[i] == 'X')
-				ft_puthex_fd(va_arg(ap, int), 1, 1);
-			else if (format[i] == 'X')
-				ft_puthex_fd(va_arg(ap, int), 1, 1);
-			else if (format[i] == 'p')
-				ft_puthex_fd((intptr_t) va_arg(ap, void*), 1, 1);
-			else
-				ft_putchar_fd(format[i], 1);
+			res += eval_format(format + i, ap);
 		}
 		i++;
 	}
 	va_end(ap);
-	return (i);
+	return (res);
 }

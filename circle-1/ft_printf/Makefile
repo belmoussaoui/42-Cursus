@@ -6,13 +6,13 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 12:35:35 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/14 13:55:40 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/15 13:28:39 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c ft_printf.c
+SRCS = ft_printf.c conversion.c
 OBJS = $(SRCS:.c=.o)
-NAME = main.out
+NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -25,7 +25,7 @@ libft:
 	make -C ./libft/
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft/ -lft
+	ar -rcs $(NAME) $(OBJS) libft/objs/*.o
 
 clean:
 	make clean -C ./libft/
