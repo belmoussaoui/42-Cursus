@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:25:12 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/15 13:21:06 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/18 11:12:24 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int	eval_format(const char *format, va_list ap)
 	else if (*format == 's')
 		res += conversion_string(ap);
 	else if (*format == 'x')
-		res += conversion_hexadecimal(ap, ft_tolower);
+		res += conversion_hexadecimal(ap, ft_tolower, va_arg(ap, unsigned int));
 	else if (*format == 'X')
-		res += conversion_hexadecimal(ap, ft_toupper);
+		res += conversion_hexadecimal(ap, ft_toupper, va_arg(ap, unsigned int));
 	else if (*format == 'p')
 	{
 		ft_putstr_fd("0x", 1);
 		res += 2;
-		res += conversion_hexadecimal(ap, ft_tolower);
+		res += conversion_hexadecimal(ap, ft_tolower, va_arg(ap, unsigned long));
 	}
 	else if (*format == 'u')
 		res += conversion_unsigned(ap);
@@ -50,6 +50,7 @@ int ft_printf(const char * format, ...)
 	int		res;
 
 	i = 0;
+	res = 0;
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{

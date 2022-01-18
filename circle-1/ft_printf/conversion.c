@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:26:24 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/15 14:01:35 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/18 11:11:25 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,13 @@ int	conversion_char(va_list ap)
 	return (1);
 }
 
-int	conversion_hexadecimal(va_list ap, int (*f)(int))
+int	conversion_hexadecimal(va_list ap, int (*f)(int), unsigned long value)
 {
-	unsigned long	value;
 	unsigned long	pow;
 	unsigned long	res;
 	int				len;
 	
 	len = 0;
-	value = va_arg(ap, unsigned long);
 	pow = 1;
 	while ((value / pow) >= 16)
 		pow *= 16;
