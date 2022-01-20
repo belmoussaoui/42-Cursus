@@ -6,11 +6,11 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 12:35:35 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/15 13:28:39 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/20 00:32:19 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c conversion.c
+SRCS = ft_printf.c specifier.c format.c state.c ft_utils.c optional_bonus.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 CC = gcc
@@ -25,6 +25,9 @@ libft:
 	make -C ./libft/
 
 $(NAME): $(OBJS)
+	ar -rcs $(NAME) $(OBJS) libft/objs/*.o
+
+bonus: libft $(OBJS)
 	ar -rcs $(NAME) $(OBJS) libft/objs/*.o
 
 clean:

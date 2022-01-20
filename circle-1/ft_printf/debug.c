@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 12:52:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 06:54:49 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/19 23:33:46 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/19 23:38:16 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "ft_printf.h"
 #include <stdio.h>
-#include <limits.h>
 
-int	main()
+void	debug(t_state *state)
 {
-	void *ptr;
-	int t = 100;
-	char *test;
-	
-	ptr = &t;
-	printf("%d\n", ft_printf(" %#x \n", LONG_MIN));
-	printf("%d\n", printf(" %#x \n", LONG_MIN));
-	
-	//printf("%10d.\n", t);
+	printf("sharp = %d\n", state->is_prefix);
+	printf("plus = %d\n", state->is_sign);
+	printf("space = %d\n", state->is_blank);
+	printf("minus = %d\n", state->is_left_justify);
+	printf("zero = %d\n", state->is_padded_zero);
+	printf("precision = %d\n", state->precision);
+	printf("width = %d\n", state->width);
+	printf("length = %d\n", state->length);
 }
