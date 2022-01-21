@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 22:24:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/21 16:26:19 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 21:16:17 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,4 @@ void	handle_precision(const char *format, t_state *state)
 			c = format[state->pos];
 		}
 	}
-	if (state->precision >= 0)
-		state->is_padded_zero = 0;
 }

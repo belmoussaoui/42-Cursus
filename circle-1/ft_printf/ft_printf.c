@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:25:12 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/21 16:43:12 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 19:57:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,8 @@ t_state	initialize_state(void)
 	t_state	state;
 
 	state.pos = 0;
-	state.width = 0;
 	state.length = 0;
-	state.is_left_justify = 0;
-	state.is_padded_zero = 0;
-	state.is_sign = 0;
-	state.is_blank = 0;
-	state.is_prefix = 0;
-	state.precision = -1;
+	clear_state(&state);
 	return (state);
 }
 

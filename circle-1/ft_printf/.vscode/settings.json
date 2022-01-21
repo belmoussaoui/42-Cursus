@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "ft_printf.h": "c",
-        "algorithm": "c",
-        "chrono": "c",
-        "limits": "c",
-        "ratio": "c"
-    }
-}

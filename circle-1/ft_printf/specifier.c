@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 12:26:24 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/21 16:43:38 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 21:51:16 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	specifier_int(va_list ap, t_state *state)
 	value = va_arg(ap, int);
 	if (value < 0 && state->precision >= 0)
 		state->precision++;
+	if (state->precision >= 0)
+	 	state->is_padded_zero = 0;
 	state->length += printnbr(value, state);
 }
 
@@ -38,6 +40,8 @@ void	specifier_unsigned(va_list ap, t_state *state)
 	unsigned int	value;
 
 	value = va_arg(ap, unsigned int);
+	if (state->precision >= 0)
+	 	state->is_padded_zero = 0;
 	state->length += printnbr(value, state);
 }
 
@@ -46,6 +50,10 @@ void	specifier_hex(va_list ap, t_state *state, int (*f)(int))
 	unsigned int	value;
 
 	value = va_arg(ap, unsigned int);
+	if (value == 0)
+		state->is_prefix = 0;
+	if (state->precision >= 0)
+	 	state->is_padded_zero = 0;
 	state->length += printhex(value, state, f);
 }
 
@@ -53,7 +61,9 @@ void	specifier_ptr(va_list ap, t_state *state)
 {
 	unsigned long	value;
 
-	state->is_prefix = 2;
+	state->is_prefix = 1;
+	if (state->precision >= 0)
+	 	state->is_padded_zero = 0;
 	value = va_arg(ap, unsigned long);
 	state->length += printhex(value, state, ft_tolower);
 }

@@ -6,73 +6,22 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 12:30:49 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/21 18:08:15 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 21:44:01 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	calcul_nbrlen(long long int nbr, t_state *state)
-{
-	int	len;
-
-	len = ft_nbrlen(nbr);
-	if (state->precision == 0 && nbr == 0)
-		len = 0;
-	return (len);
-}
-
-int	padding_zero(t_state *state, int nbrlen)
-{
-	int	len;
-
-	len = 0;
-	while (state->precision - nbrlen > 0
-		|| (state->is_padded_zero && state->width - nbrlen > 0))
-	{
-		len++;
-		state->precision--;
-		state->width--;
-		ft_putchar_fd('0', 1);
-	}
-	return (len);
-}
-
-int	padding_blank(t_state *state, int nbrlen)
-{
-	int	res;
-
-	res = 0;
-	while (!state->is_left_justify && state->width - nbrlen > 0
-		&& !state->is_padded_zero)
-	{
-		if (state->precision >= state->width)
-			break ;
-		res++;
-		state->width--;
-		ft_putchar_fd(' ', 1);
-	}
-	return (res);
-}
-
-long long int	set_sign(long long int nbr, t_state *state)
+void	set_symbol(long long int nbr, t_state *state)
 {
 	if (nbr >= 0 && state->is_sign)
-	{
 		ft_putchar_fd('+', 1);
-		state->length++;
-	}
 	if (nbr >= 0 && !state->is_sign && state->is_blank)
-	{
 		ft_putchar_fd(' ', 1);
-		state->length++;
-	}
 	if (nbr < 0)
-	{
 		ft_putchar_fd('-', 1);
-		nbr *= -1;
-	}
-	return (nbr);
+	if (nbr >= 0 && (state->is_sign || state->is_blank))
+		state->length++;
 }
 
 int	printnbr(long long int nbr, t_state *state)
@@ -80,18 +29,50 @@ int	printnbr(long long int nbr, t_state *state)
 	int	nbrlen;
 	int	res;
 
-	nbrlen = calcul_nbrlen(nbr, state);
 	res = 0;
-	res += padding_blank(state, nbrlen);
-	nbr = set_sign(nbr, state);
+	nbrlen = ft_nbrlen(nbr);
+	if (state->precision == 0 && nbr == 0)
+		nbrlen = 0;
+	if (!state->is_left_justify && !state->is_padded_zero)
+		res += padding_blank(state, nbrlen);
+	set_symbol(nbr, state);
+	if (nbr < 0)
+		nbr *= -1;
 	res += padding_zero(state, nbrlen);
 	if (state->precision != 0 || nbr != 0)
 		ft_putlli_fd(nbr, 1);
-	while (state->is_left_justify && state->width - nbrlen > 0)
+	if (state->is_left_justify)
+		res += padding_blank(state, nbrlen);
+	return (res + nbrlen);
+}
+
+void	set_prefix(t_state *state, int (*f) (int))
+{
+	if (state->is_prefix)
 	{
-		res++;
-		state->width--;
-		ft_putchar_fd(' ', 1);
+		ft_putchar_fd('0', 1);
+		ft_putchar_fd(f('x'), 1);
 	}
+}
+
+int	printhex(unsigned long long int nbr, t_state *state, int (*f) (int))
+{
+	int	nbrlen;
+	int	res;
+
+	nbrlen = ft_hexlen(nbr);
+	res = 0;
+	if (state->precision == 0 && nbr == 0)
+		nbrlen = 0;
+	if (state->is_prefix)
+		nbrlen += 2;
+	if (!state->is_left_justify && !state->is_padded_zero)
+		res += padding_blank(state, nbrlen);
+	set_prefix(state, f);
+	res += padding_zero(state, nbrlen);
+	if (state->precision != 0 || nbr != 0)
+		ft_puthex_fd(nbr, f, 1);
+	if (state->is_left_justify)
+		res += padding_blank(state, nbrlen);
 	return (res + nbrlen);
 }
