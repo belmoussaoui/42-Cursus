@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 12:52:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 06:54:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:52:35 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main()
 	char *test;
 	
 	ptr = &t;
-	printf("%d\n", ft_printf(" %#x \n", LONG_MIN));
-	printf("%d\n", printf(" %#x \n", LONG_MIN));
+	ft_printf("%12d, %d, %2d, %42d", -2147483648, 3, 30, -1);
 	
 	//printf("%10d.\n", t);
 }

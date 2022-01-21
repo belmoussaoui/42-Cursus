@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:25:12 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 07:00:51 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 05:50:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,92 +79,115 @@ int printstr(char *str, t_state *state)
 
 int printnbr(long long int nbr, t_state *state)
 {
-	int	len;
-	char pad;
+	int max;
+	int min;
+	int nbrlen;
+	int res;
 
-	len = 0;
-	pad = ' ';
-	if (state->is_padded_zero || state->precision > 0)
-		pad = '0';
-	if (state->width > 0)
-		len = state->width - ft_nbrlen(nbr);
-	if (state->precision > 0)
-		len = state->precision - ft_nbrlen(nbr);
-	if (nbr >= 0 && state->is_sign)
-	{
-		ft_putchar_fd('+', 1);
-		state->length++;
-	}
-	if (nbr >= 0 && !state->is_sign && state->is_blank)
-	{
-		ft_putchar_fd(' ', 1);
-		state->length++;
-	}
+	nbrlen = ft_nbrlen(nbr);
+	res = 0;
+	max = state->width;
+	min = state->precision;
 	
-	if (nbr < 0 && pad == '0')
+	// check si on affiche quelque chose pour le 0
+	if (state->precision == 0 && nbr == 0)
+		nbrlen = 0;
+	// la precision ne prends pas en compte le -
+	if (nbr < 0)
+		min++;
+	// width of ' '
+	while (!state->is_left_justify && max - nbrlen > 0)
+	{
+		// on affiche des 0 si la précision le permet!
+		if ((state->is_padded_zero && state->precision == -1) || min >= max)
+			break;
+		res++;
+		max--;
+		ft_putchar_fd(' ', 1);
+	}
+	// precision
+	// negative donc print en premier -
+	if (nbr < 0)
 	{
 		ft_putchar_fd('-', 1);
-		if (state->precision >= 0)
-			len++;
-		state->length++;
 		nbr *= -1;
 	}
-	if (!state->is_left_justify)
+	// padding 0
+	while (min - nbrlen > 0 || (state->is_padded_zero && max - nbrlen > 0))
 	{
-		while (len > 0)
-		{
-			ft_putchar_fd(pad, 1);
-			state->length++;
-			len--;
-		}
+		res++;
+		min--;
+		max--;
+		ft_putchar_fd('0', 1);
 	}
-	ft_putlli_fd(nbr, 1);
-	while (len > 0)
+	// le cas ou precision = 0 pas afficher 0
+	if (state->precision == 0 && nbr == 0)
+		;
+	else
+		ft_putlli_fd(nbr, 1);
+	// width avec left_justify
+	while (state->is_left_justify && max - nbrlen > 0)
 	{
-		ft_putchar_fd(pad, 1);
-		state->length++;
-		len--;
+		res++;
+		max--;
+		ft_putchar_fd(' ', 1);
 	}
-	return (ft_nbrlen(nbr));
+	return (res + nbrlen);
 }
 
 int printhex(unsigned long long int nbr, t_state *state, int (*f) (int))
 {
-	int	len;
-	char pad;
+	int max;
+	int min;
+	int nbrlen;
+	int res;
 
-	len = 0;
-	pad = ' ';
-	if (state->is_padded_zero || state->precision > 0)
-		pad = '0';
-	if (state->width > 0)
-		len = state->width - ft_hexlen(nbr);
-	if (state->precision > 0)
-		len = state->precision - ft_hexlen(nbr);
-	if ((state->is_prefix == 1 && nbr > 0) || state->is_prefix == 2)
+	nbrlen = ft_hexlen(nbr);
+	res = 0;
+	max = state->width;
+	min = state->precision;
+
+	// check si on affiche quelque chose pour le 0
+	if (state->precision == 0 && nbr == 0)
+		nbrlen = 0;
+	// si 0x le nombre est plus grand de 2
+	if ((state->is_prefix == 1 && nbrlen > 0) || state->is_prefix == 2)
+		nbrlen += 2;
+	// width
+	while (!state->is_left_justify && max - nbrlen > 0)
+	{
+		// on affiche des 0 si la précision le permet!
+		if ((state->is_padded_zero && state->precision == -1) || min >= max)
+			break;
+		res++;
+		max--;
+		ft_putchar_fd(' ', 1);
+	}
+	if ((state->is_prefix == 1 && nbrlen > 0) || state->is_prefix == 2)
 	{
 		ft_putchar_fd('0', 1);
 		ft_putchar_fd(f('x'), 1);
-		state->length += 2;
-		len -= 2; 
 	}
-	if (!state->is_left_justify)
+	while (min - nbrlen > 0 || (state->is_padded_zero && max - nbrlen > 0))
 	{
-		while (len > 0)
-		{
-			ft_putchar_fd(pad, 1);
-			state->length++;
-			len--;
-		}
+		res++;
+		min--;
+		max--;
+		ft_putchar_fd('0', 1);
 	}
-	ft_puthex_fd(nbr, f, 1);
-	while (len > 0)
+	// le cas ou precision = 0 pas afficher 0
+	if (state->precision == 0 && nbr == 0)
+		;
+	else
+		ft_puthex_fd(nbr, f, 1);
+	// width avec left_justify
+	while (max - nbrlen > 0 && state->is_left_justify)
 	{
-		ft_putchar_fd(pad, 1);
-		state->length++;
-		len--;
+		res++;
+		max--;
+		ft_putchar_fd(' ', 1);
 	}
-	return (ft_hexlen(nbr));
+	return (res + nbrlen);
 }
 
 int ft_printf(const char * format, ...)
