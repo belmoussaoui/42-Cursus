@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optional_bonus.c                                   :+:      :+:    :+:   */
+/*   handle_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 22:24:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 05:40:04 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:26:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int is_flag(char c)
+int	is_flag(char c)
 {
 	return (c == '#' || c == '+' || c == ' ' || c == '-' || c == '0');
 }
@@ -44,10 +44,10 @@ void	handle_flags(const char *format, t_state *state)
 	}
 }
 
-void handle_width(const char *format, t_state *state)
+void	handle_width(const char *format, t_state *state)
 {
 	char	c;
-	
+
 	c = format[state->pos];
 	while (ft_isdigit(c))
 	{
@@ -57,12 +57,13 @@ void handle_width(const char *format, t_state *state)
 	}
 }
 
-void handle_precision(const char *format, t_state *state)
+void	handle_precision(const char *format, t_state *state)
 {
 	char	c;
-	
+
 	c = format[state->pos];
-	if (c == '.') {
+	if (c == '.')
+	{
 		state->pos++;
 		c = format[state->pos];
 		state->precision = 0;
@@ -73,4 +74,6 @@ void handle_precision(const char *format, t_state *state)
 			c = format[state->pos];
 		}
 	}
+	if (state->precision >= 0)
+		state->is_padded_zero = 0;
 }

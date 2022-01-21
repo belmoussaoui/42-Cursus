@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 13:51:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 06:14:31 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:50:44 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ void	ft_putlli_fd(long long int n, int fd);
 void	ft_puthex_fd(unsigned long long int h, int (*f)(int), int fd);
 
 void	specifier_int(va_list ap, t_state *state);
-void	specifier_char(va_list ap, t_state *state);
 void	specifier_str(va_list ap, t_state *state);
 void	specifier_unsigned(va_list ap, t_state *state);
-void	specifier_percentage(t_state *state);
 void	specifier_hex(va_list ap, t_state *state, int (*f)(int));
 void	specifier_ptr(va_list ap, t_state *state);
 
@@ -58,6 +56,8 @@ void	handle_flags(const char *format, t_state *state);
 void 	handle_width(const char *format, t_state *state);
 void 	handle_precision(const char *format, t_state *state);
 
-void	debug(t_state *state);
+int		calcul_nbrlen(long long int nbr, t_state *state);
+int		padding_blank(t_state *state, int nbrlen);
+int		padding_zero(t_state *state, int nbrlen);
 
 #endif

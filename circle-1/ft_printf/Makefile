@@ -6,11 +6,12 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 12:35:35 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/20 00:32:19 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/21 13:19:44 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ft_printf.c specifier.c format.c state.c ft_utils.c optional_bonus.c
+SRCS = ft_printf.c specifier.c handle_bonus.c ft_utils.c \
+	ft_printnbr.c ft_printhex.c ft_printstr.c ft_printchar.c
 OBJS = $(SRCS:.c=.o)
 NAME = libftprintf.a
 CC = gcc

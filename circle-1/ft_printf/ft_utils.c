@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 22:10:55 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 06:20:48 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:29:04 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 int	ft_nbrlen(long long int n)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (n <= 0)
 		count++;
-    while (n != 0)
-    {
-        n = n / 10;
-        count++;
-    }
+	while (n != 0)
+	{
+		n = n / 10;
+		count++;
+	}
 	return (count);
 }
 
 int	ft_hexlen(unsigned long long int n)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (n == 0)
 		count++;
-    while (n != 0)
-    {
-        n = n / 16;
-        count++;
-    }
+	while (n != 0)
+	{
+		n = n / 16;
+		count++;
+	}
 	return (count);
 }
 
@@ -70,7 +72,7 @@ void	ft_puthex_fd(unsigned long long h, int (*f)(int), int fd)
 {
 	unsigned long	pow;
 	unsigned long	res;
-	
+
 	pow = 1;
 	while ((h / pow) >= 16)
 		pow *= 16;
@@ -78,7 +80,7 @@ void	ft_puthex_fd(unsigned long long h, int (*f)(int), int fd)
 	{
 		res = h / pow;
 		if (res >= 10)
-				ft_putchar_fd(f(res + 'a' - 10), fd);
+			ft_putchar_fd(f(res + 'a' - 10), fd);
 		else
 			ft_putchar_fd(res + '0', fd);
 		h -= res * pow;

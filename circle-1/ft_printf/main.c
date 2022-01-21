@@ -5,23 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 12:52:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/20 20:52:35 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/21 17:48:39 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/21 17:51:53 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-#include <limits.h>
 
-int	main()
+int main ()
 {
-	void *ptr;
-	int t = 100;
-	char *test;
-	
-	ptr = &t;
-	ft_printf("%12d, %d, %2d, %42d", -2147483648, 3, 30, -1);
-	
-	//printf("%10d.\n", t);
+	ft_printf("%d\n", ft_printf(" %u \n", -1));
+	printf("%d\n", printf(" %u \n", -1));
+	return (0);
 }
+
