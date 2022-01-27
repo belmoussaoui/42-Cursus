@@ -1,4 +1,6 @@
 .DS_Store
-libft.a
+*.a
+*.out
+test
 *.swp
 *.o

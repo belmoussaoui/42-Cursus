@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/14 12:35:35 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/21 22:18:42 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/21 23:51:32 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,7 @@ $(NAME): $(OBJS)
 	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
-bonus: libft $(OBJS)
-	cp libft/libft.a $(NAME)
-	ar -rcs $(NAME) $(OBJS)
+bonus: libft $(NAME)
 
 clean:
 	make clean -C ./libft/

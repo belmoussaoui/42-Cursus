@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 12:41:28 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/21 22:20:09 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/22 00:24:12 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,22 @@ int	printchar(char c, t_state *state)
 
 int	printstr(char *str, t_state *state)
 {
-	int		len;
-	int		i;
-	int		res;
+	int	len;
+	int	i;
+	int	res;
+	int	min;
 
+	min = state->precision;
 	len = ft_strlen(str);
 	res = 0;
 	if (state->precision >= 0 && state->precision < len)
 		len = state->precision;
-	if (!state->is_left_justify)
+	state->precision = 0;
+	if (!state->is_left_justify && !state->is_padded_zero)
 		res += padding_blank(state, len);
+	if (state->is_padded_zero && !state->is_left_justify)
+		res += padding_zero(state, len);
+	state->precision = min;
 	i = 0;
 	while (str[i] && (i < state->precision || state->precision == -1))
 		ft_putchar_fd(str[i++], 1);
