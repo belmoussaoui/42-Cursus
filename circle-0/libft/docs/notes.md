@@ -66,3 +66,8 @@ $(OBJDIR)/%.o: %.c
     $(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 ```
 https://stackoverflow.com/a/5188496/17355718
+
+### Tests
+* [Tripouille/libfTester](https://github.com/Tripouille/libftTester)
+* [ska42/libft-war-machine](https://github.com/ska42/libft-war-machine)
+* [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
