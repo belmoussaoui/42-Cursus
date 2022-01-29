@@ -23,7 +23,7 @@ libft:
 gcc -Wall -Wextra -Werror main.c -L../ -lft
 ```
 
-### Cast
+## Cast
 le cast consiste à convertir un type de donnée en une autre
 
 **comment cast un élément d'un array de type `void *` ?**
@@ -38,7 +38,7 @@ il faut donc d'abord convertir l'adresse en premier pour définir la taille de l
 ```
 https://stackoverflow.com/a/43564315/17355718
 
-### Makefile
+## Makefile
 que fait la ligne de commande suivante ?
 
 ```makefile
@@ -67,7 +67,7 @@ $(OBJDIR)/%.o: %.c
 ```
 https://stackoverflow.com/a/5188496/17355718
 
-### Tests
+## Tests
 * [Tripouille/libfTester](https://github.com/Tripouille/libftTester)
 * [ska42/libft-war-machine](https://github.com/ska42/libft-war-machine)
 * [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
