@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:28:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/26 23:40:30 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/29 11:09:37 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,10 @@ int	main(void)
 	char *line = get_next_line(fd);
 	while (line)
 	{
-		printf("%s\n", line);
-		free(line);
+		printf("%s", line);
+		//free(line);
 		line = get_next_line(fd);
-	//	printf("%s\n", line);
 	}
-	// close(fd);
-	// get_next_line(fd);
-	//system("leaks grademe.out");
+	close(fd);
 	return (0);
 }

@@ -18,7 +18,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I./libft/
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all: libft $(NAME)
 

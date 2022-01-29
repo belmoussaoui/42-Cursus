@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:19:04 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/26 18:08:51 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/29 11:05:21 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*get_next_line(int fd)
 	reader = ft_strjoin("", buffer);
 	if (reader == NULL)
 		return (NULL);
+	nbytes = 0;
 	while (!ft_strchr(buffer, '\n'))
 	{
 		nbytes = read(fd, buffer, BUFFER_SIZE);

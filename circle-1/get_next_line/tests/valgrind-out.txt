@@ -1,80 +1,66 @@
-==97758== Memcheck, a memory error detector
-==97758== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==97758== Using Valgrind-3.19.0.GIT-lbmacos-da51a738a7-20211224 and LibVEX; rerun with -h for copyright info
-==97758== Command: ./grademe.out
-==97758== Parent PID: 77587
-==97758== 
---97758-- 
---97758-- Valgrind options:
---97758--    --leak-check=full
---97758--    --show-leak-kinds=all
---97758--    --track-origins=yes
---97758--    --verbose
---97758--    --log-file=valgrind-out.txt
---97758-- Output from sysctl({CTL_KERN,KERN_VERSION}):
---97758--   Darwin Kernel Version 20.6.0: Wed Jun 23 00:26:31 PDT 2021; root:xnu-7195.141.2~5/RELEASE_X86_64
---97758-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
---97758-- Page sizes: currently 4096, max supported 4096
---97758-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind
---97758-- ./grademe.out (rx at 0x100000000, rw at 0x100004000)
---97758--    reading syms   from primary file (10 2)
---97758--    dSYM= ./grademe.out.dSYM/Contents/Resources/DWARF/grademe.out
---97758-- /usr/lib/dyld (rx at 0x10becc000, rw at 0x10bf68000)
---97758--    reading syms   from primary file (5 2905)
---97758-- Scheduler: using generic scheduler lock implementation.
---97758-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/default.supp
-==97758== embedded gdbserver: reading from /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-from-vgdb-to-97758-by-belmouss-on-???
-==97758== embedded gdbserver: writing to   /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-to-vgdb-from-97758-by-belmouss-on-???
-==97758== embedded gdbserver: shared mem   /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-shared-mem-vgdb-97758-by-belmouss-on-???
-==97758== 
-==97758== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==97758== don't want to do, unless you know exactly what you're doing,
-==97758== or are doing some strange experiment):
-==97758==   /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/../../bin/vgdb --pid=97758 ...command...
-==97758== 
-==97758== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==97758==   /path/to/gdb ./grademe.out
-==97758== and then give GDB the following command
-==97758==   target remote | /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/../../bin/vgdb --pid=97758
-==97758== --pid is optional if only one valgrind process is running
-==97758== 
---97758-- REDIR: 0x10bf24c00 (dyld:strcmp) redirected to 0x258058e42 (???)
---97758-- REDIR: 0x10bf1eb74 (dyld:arc4random) redirected to 0x258058ee0 (???)
---97758-- REDIR: 0x10bf23fe0 (dyld:strlen) redirected to 0x258058e11 (???)
---97758-- REDIR: 0x10bf24f00 (dyld:strcpy) redirected to 0x258058e5e (???)
---97758-- REDIR: 0x10bf22017 (dyld:strcat) redirected to 0x258058e22 (???)
---97758-- REDIR: 0x10bf23dc7 (dyld:strlcat) redirected to 0x258058e7b (???)
-==97758== Warning: set address range perms: large range [0x7fff201d8000, 0x80001ffd8000) (defined)
-==97758== Warning: set address range perms: large range [0x7fff201d8000, 0x7fff7ffb0000) (defined)
-==97758== Warning: set address range perms: large range [0x7fff8e450000, 0x7fffc01d8000) (noaccess)
-==97758== Warning: set address range perms: large range [0x7fffc01d8000, 0x7fffe309c000) (defined)
-==97758== Warning: set address range perms: large range [0x7fffe309c000, 0x7fffffe00000) (noaccess)
---97758-- /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x10bfe4000, rw at 0x10bfe8000)
---97758--    reading syms   from primary file (3 53)
---97758--    dSYM= /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
---97758-- /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x10bff0000, rw at 0x10bff8000)
---97758--    reading syms   from primary file (75 62)
---97758--    dSYM= /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
-==97758== Conditional jump or move depends on uninitialised value(s)
-==97758==    at 0x100003B0F: get_next_line (in ./grademe.out)
-==97758==    by 0x1000036F9: main (in ./grademe.out)
-==97758==  Uninitialised value was created by a stack allocation
-==97758==    at 0x100003930: get_next_line (in ./grademe.out)
-==97758== 
-==97758== 
-==97758== HEAP SUMMARY:
-==97758==     in use at exit: 0 bytes in 0 blocks
-==97758==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==97758== 
-==97758== All heap blocks were freed -- no leaks are possible
-==97758== 
-==97758== ERROR SUMMARY: 25 errors from 1 contexts (suppressed: 0 from 0)
-==97758== 
-==97758== 25 errors in context 1 of 1:
-==97758== Conditional jump or move depends on uninitialised value(s)
-==97758==    at 0x100003B0F: get_next_line (in ./grademe.out)
-==97758==    by 0x1000036F9: main (in ./grademe.out)
-==97758==  Uninitialised value was created by a stack allocation
-==97758==    at 0x100003930: get_next_line (in ./grademe.out)
-==97758== 
-==97758== ERROR SUMMARY: 25 errors from 1 contexts (suppressed: 0 from 0)
+==3214== Memcheck, a memory error detector
+==3214== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3214== Using Valgrind-3.19.0.GIT-lbmacos-da51a738a7-20211224 and LibVEX; rerun with -h for copyright info
+==3214== Command: ./grademe.out
+==3214== Parent PID: 3028
+==3214== 
+--3214-- 
+--3214-- Valgrind options:
+--3214--    --leak-check=full
+--3214--    --show-leak-kinds=all
+--3214--    --track-origins=yes
+--3214--    --verbose
+--3214--    --log-file=valgrind-out.txt
+--3214-- Output from sysctl({CTL_KERN,KERN_VERSION}):
+--3214--   Darwin Kernel Version 20.6.0: Wed Jun 23 00:26:31 PDT 2021; root:xnu-7195.141.2~5/RELEASE_X86_64
+--3214-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand-rdseed
+--3214-- Page sizes: currently 4096, max supported 4096
+--3214-- Valgrind library directory: /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind
+--3214-- ./grademe.out (rx at 0x100000000, rw at 0x100004000)
+--3214--    reading syms   from primary file (10 51)
+--3214--    dSYM= ./grademe.out.dSYM/Contents/Resources/DWARF/grademe.out
+--3214--    reading dwarf3 from dsyms file
+--3214-- /usr/lib/dyld (rx at 0x100010000, rw at 0x1000ac000)
+--3214--    reading syms   from primary file (5 2905)
+--3214-- Scheduler: using generic scheduler lock implementation.
+--3214-- Reading suppressions file: /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/default.supp
+==3214== embedded gdbserver: reading from /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-from-vgdb-to-3214-by-belmouss-on-???
+==3214== embedded gdbserver: writing to   /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-to-vgdb-from-3214-by-belmouss-on-???
+==3214== embedded gdbserver: shared mem   /var/folders/0p/0ls1sjs94kn2yvg1dft891xc0000gn/T//vgdb-pipe-shared-mem-vgdb-3214-by-belmouss-on-???
+==3214== 
+==3214== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3214== don't want to do, unless you know exactly what you're doing,
+==3214== or are doing some strange experiment):
+==3214==   /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/../../bin/vgdb --pid=3214 ...command...
+==3214== 
+==3214== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3214==   /path/to/gdb ./grademe.out
+==3214== and then give GDB the following command
+==3214==   target remote | /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/../../bin/vgdb --pid=3214
+==3214== --pid is optional if only one valgrind process is running
+==3214== 
+--3214-- REDIR: 0x100068c00 (dyld:strcmp) redirected to 0x258058e42 (???)
+--3214-- REDIR: 0x100062b74 (dyld:arc4random) redirected to 0x258058ee0 (???)
+--3214-- REDIR: 0x100067fe0 (dyld:strlen) redirected to 0x258058e11 (???)
+--3214-- REDIR: 0x100068f00 (dyld:strcpy) redirected to 0x258058e5e (???)
+--3214-- REDIR: 0x100066017 (dyld:strcat) redirected to 0x258058e22 (???)
+--3214-- REDIR: 0x100067dc7 (dyld:strlcat) redirected to 0x258058e7b (???)
+==3214== Warning: set address range perms: large range [0x7fff201d8000, 0x80001ffd8000) (defined)
+==3214== Warning: set address range perms: large range [0x7fff201d8000, 0x7fff7ffb0000) (defined)
+==3214== Warning: set address range perms: large range [0x7fff8e450000, 0x7fffc01d8000) (noaccess)
+==3214== Warning: set address range perms: large range [0x7fffc01d8000, 0x7fffe309c000) (defined)
+==3214== Warning: set address range perms: large range [0x7fffe309c000, 0x7fffffe00000) (noaccess)
+--3214-- /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_core-amd64-darwin.so (rx at 0x100128000, rw at 0x10012c000)
+--3214--    reading syms   from primary file (3 53)
+--3214--    dSYM= /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--3214-- /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so (rx at 0x100134000, rw at 0x10013c000)
+--3214--    reading syms   from primary file (75 62)
+--3214--    dSYM= /usr/local/Cellar/valgrind/HEAD-da51a73/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+==3214== 
+==3214== HEAP SUMMARY:
+==3214==     in use at exit: 0 bytes in 0 blocks
+==3214==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==3214== 
+==3214== All heap blocks were freed -- no leaks are possible
+==3214== 
+==3214== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/14 12:47:29 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/01/29 12:49:55 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,17 +30,17 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS_DIR) $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-
 $(OBJS_DIR):
 	mkdir $@
 
+$(NAME): $(OBJS_DIR) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
 $(OBJS_DIR)%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(OBJS_DIR) $(OBJS_BONUS)
-	ar q $(NAME) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 
 clean:
 	rm -rf $(OBJS_DIR)
