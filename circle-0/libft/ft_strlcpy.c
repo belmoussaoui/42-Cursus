@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:57:27 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/04 22:20:48 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:12:52 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned long	i;
+	size_t			i;
 	size_t			res;
 
 	res = ft_strlen(src);

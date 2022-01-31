@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 13:28:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/29 11:09:37 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:15:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../get_next_line.h"
-#include "../get_next_line_bonus.h"
+#include "../get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
 
@@ -22,9 +21,11 @@ int	main(void)
 	while (line)
 	{
 		printf("%s", line);
-		//free(line);
+		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
+	// system("leaks test.out");
 	return (0);
 }

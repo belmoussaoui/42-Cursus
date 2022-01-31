@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 13:35:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/07 00:42:41 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:14:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	d = (unsigned char *) dst;
 	s = (const unsigned char *) src;
 	if (dst == NULL && src == NULL)
-		return (dst);
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{

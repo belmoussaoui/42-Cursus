@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:55:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/26 20:18:12 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:08:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	size;
+	size_t	size;
 
-	if (s == NULL)
-		return (0);
 	size = 0;
 	while (s[size])
 		size++;
@@ -29,8 +27,6 @@ char	*ft_strchr(const char *s, int c)
 	char	ch;
 
 	ch = (char) c;
-	if (s == NULL)
-		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == ch)
@@ -44,7 +40,7 @@ char	*ft_strchr(const char *s, int c)
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	unsigned long	i;
+	size_t			i;
 	size_t			res;
 
 	res = ft_strlen(src);

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:30:28 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/11 13:38:17 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/01/31 05:22:51 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	size;
+	size_t	size;
 
 	size = 0;
 	while (s[size])

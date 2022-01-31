@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 13:19:04 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/29 11:05:21 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/01/30 12:24:01 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/01/30 22:06:46 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_line(char *reader)
+static char	*get_line_from(char *reader)
 {
 	char	*line;
 	int		i;
@@ -20,7 +20,11 @@ char *get_line(char *reader)
 	i = 0;
 	while (reader[i] && reader[i] != '\n')
 		i++;
+	if (reader[i] == '\n')
+		i++;
 	line = malloc(sizeof(char) * (i + 1));
+	if (line == NULL)
+		return (NULL);
 	i = 0;
 	while (reader[i] && reader[i] != '\n')
 	{
@@ -36,10 +40,10 @@ char *get_line(char *reader)
 	return (line);
 }
 
-void	set_buffer(char *reader, char *buffer)
+static void	get_buffer_from(char *reader, char *buffer)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (reader[i] && reader[i] != '\n')
@@ -56,23 +60,15 @@ void	set_buffer(char *reader, char *buffer)
 	buffer[j] = '\0';
 }
 
-char	*get_next_line(int fd)
+static char	*read_line(int fd, char *reader)
 {
-	static char	buffer[BUFFER_SIZE + 1];
-	char		*temp;
-	char		*reader;
-	char		*line;
-	int			nbytes;
+	int		nbytes;
+	char	*temp;
+	char	buf[BUFFER_SIZE + 1];
 
-	if (fd < 0)
-		return (NULL);
-	reader = ft_strjoin("", buffer);
-	if (reader == NULL)
-		return (NULL);
-	nbytes = 0;
-	while (!ft_strchr(buffer, '\n'))
+	while (!ft_strchr(reader, '\n'))
 	{
-		nbytes = read(fd, buffer, BUFFER_SIZE);
+		nbytes = read(fd, buf, BUFFER_SIZE);
 		if (nbytes < 0)
 		{
 			free(reader);
@@ -80,26 +76,40 @@ char	*get_next_line(int fd)
 		}
 		if (nbytes == 0)
 			break ;
-		buffer[nbytes] = '\0';
-		temp = ft_strjoin(reader, buffer);
-		if (temp == NULL)
-		{
-			free(reader);
-			return (NULL);
-		}
+		buf[nbytes] = '\0';
+		temp = ft_strjoin(reader, buf);
 		free(reader);
+		if (temp == NULL)
+			return (NULL);
 		reader = ft_strjoin("", temp);
 		free(temp);
 		if (reader == NULL)
 			return (NULL);
 	}
-	if (nbytes == 0 && reader[0] == '\0')
+	return (reader);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	buffer[BUFFER_SIZE] = {'\0'};
+	char		*line;
+	char		*reader;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	reader = ft_strjoin("", buffer);
+	if (reader == NULL)
+		return (NULL);
+	reader = read_line(fd, reader);
+	if (reader == NULL)
+		return (NULL);
+	if (reader[0] == '\0')
 	{
 		free(reader);
-		return NULL;
+		return (NULL);
 	}
-	line = get_line(reader);
-	set_buffer(reader, buffer);
+	line = get_line_from(reader);
+	get_buffer_from(reader, buffer);
 	free(reader);
 	return (line);
 }
