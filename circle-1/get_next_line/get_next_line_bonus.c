@@ -86,10 +86,8 @@ static char	*read_line(int fd, char *reader)
 		free(reader);
 		if (temp == NULL)
 			return (NULL);
-		reader = ft_strjoin("", temp);
+		reader = temp;
 		free(temp);
-		if (reader == NULL)
-			return (NULL);
 	}
 	return (reader);
 }
