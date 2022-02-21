@@ -1,4 +1,5 @@
 # get_next_line
+https://42born2code.slack.com/archives/CMX2R5JSW/p1643812138810249
 ## variable statique
 https://www.delftstack.com/fr/howto/c/static-variable-in-c/
 une variable non initialisée peut indiquer n'importe quelle valeur ce qui est différent de `null`

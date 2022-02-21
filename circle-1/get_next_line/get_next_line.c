@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 12:24:01 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/30 22:06:46 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:51:04 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,17 @@ static char	*read_line(int fd, char *reader)
 {
 	int		nbytes;
 	char	*temp;
-	char	buf[BUFFER_SIZE + 1];
+	char	*buf;
 
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buf == NULL)
+		return (NULL)
 	while (!ft_strchr(reader, '\n'))
 	{
 		nbytes = read(fd, buf, BUFFER_SIZE);
 		if (nbytes < 0)
 		{
+			free(buf);
 			free(reader);
 			return (NULL);
 		}
@@ -80,16 +84,19 @@ static char	*read_line(int fd, char *reader)
 		temp = ft_strjoin(reader, buf);
 		free(reader);
 		if (temp == NULL)
+		{
+			free(buf);
 			return (NULL);
+		}
 		reader = temp;
-		free(temp);
 	}
+	free(buf);
 	return (reader);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE] = {'\0'};
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	char		*reader;
 

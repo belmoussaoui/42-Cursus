@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/29 20:46:12 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/20 14:18:25 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,24 +22,21 @@ SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c 	ft_lstsize.c ft_lstlast.c \
 
 OBJS_DIR = objs/
 OBJS_NAMES = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES))
+OBJS = $(OBJS_NAMES)
 OBJS_NAMES_BONUS = $(SRCS_BONUS:.c=.o)
-OBJS_BONUS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES_BONUS))
+OBJS_BONUS = $(OBJS_NAMES_BONUS)
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(OBJS_DIR):
-	mkdir $@
-
-$(NAME): $(OBJS_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-$(OBJS_DIR)%.o: %.c
+%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS_DIR) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS_BONUS)
 
 clean:

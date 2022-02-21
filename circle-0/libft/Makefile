@@ -39,7 +39,8 @@ $(NAME): $(OBJS_DIR) $(OBJS)
 $(OBJS_DIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS_DIR) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS)
+	mkdir $(OBJS_DIR)
 	ar rcs $(NAME) $(OBJS_BONUS)
 
 clean:
