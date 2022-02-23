@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:00:31 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/20 15:37:08 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/22 10:27:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 typedef struct s_game {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list 	*head;
+	int 	head_index;
 	int		n;
 }	t_game;
 
