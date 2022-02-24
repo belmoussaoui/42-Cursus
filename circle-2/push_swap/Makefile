@@ -6,11 +6,11 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 14:12:01 by bel-mous          #+#    #+#              #
-#    Updated: 2022/02/20 15:31:42 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/24 18:35:35 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c setup.c debug.c instructions.c
+SRCS = main.c setup.c debug.c operations.c lock_sort.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 CC = gcc

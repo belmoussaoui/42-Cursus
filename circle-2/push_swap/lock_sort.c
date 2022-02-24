@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   lock_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 16:16:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/24 12:24:07 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/02/24 18:30:43 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/02/24 19:10:51 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	lock_sort(t_game *game)
 {
-	if (f == NULL)
-		return ;
-	while (lst)
+	int i;
+	t_action action;
+	
+	i = 0;
+	while (i < game->n)
 	{
-		f(lst->content);
-		lst = lst->next;
+		action = best_action(game);
+		smart_rotate(action);
+		command_pb();
 	}
+}
+
+t_action	best_action(t_game *game)
+{
+	t_action	action;
+	return (action);
+}
+
+void	smart_rotate(t_action action)
+{
+		
 }

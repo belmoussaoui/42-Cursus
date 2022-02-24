@@ -1,44 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   operations.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:38:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/20 15:31:29 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/24 18:27:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstbefore(t_list *lst)
-{
-	t_list* before;
-
-	if (lst == NULL)
-		return (NULL);
-	before = NULL;
-	while (lst->next)
-	{
-		before = lst;
-		lst = lst->next;
-	}
-	return (before);
-}
-
-
 void	push(t_list **out, t_list **in)
 {
-	t_list *elem = *out;
+	t_list *elem;
+
+	elem = *out;
 	*out = elem->next;
 	ft_lstadd_front(in, elem);
 }
 
 void	swap(t_list **lst)
 {
-	t_list *first = *lst;
-	t_list *second = first->next;
+	t_list *first;
+	t_list *second;
+
+	first = *lst;
+	second = first->next;
 	first->next = second->next;
 	second->next = first;
 	*lst = second;
@@ -46,8 +35,11 @@ void	swap(t_list **lst)
 
 void	rotate(t_list **lst)
 {
-	t_list *first = *lst;
-	t_list *last = ft_lstlast(first);
+	t_list *first;
+	t_list *last;
+
+	first = *lst;
+	last = ft_lstlast(first);
 	last->next = *lst;
 	*lst = first->next;
 	first->next = NULL;
@@ -55,8 +47,13 @@ void	rotate(t_list **lst)
 
 void	reverse_rotate(t_list **lst)
 {
-	t_list *before = ft_lstbefore(*lst);
-	t_list *last = before->next;
+	int		len;
+	t_list	*before;
+	t_list	*last;
+
+	len = ft_lstlen(*lst);
+	before = ft_lstget(len - 1);
+	last = before->next;
 	before->next = NULL;
 	last->next = *lst;
 	*lst = last;
