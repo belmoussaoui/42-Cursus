@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 16:16:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/24 12:24:07 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/02/24 12:22:05 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/02/24 12:25:33 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_lstlen(t_list *lst)
 {
-	if (f == NULL)
-		return ;
+	int	i;
+
+	i = 0;
 	while (lst)
 	{
-		f(lst->content);
 		lst = lst->next;
+		i++;
 	}
+	return (i);
 }

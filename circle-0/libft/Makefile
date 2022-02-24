@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/02/24 12:19:16 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/24 12:38:55 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,11 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putnbr_fd.c
 SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c 	ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+SRCS_EXTRA = ft_lstlen.c ft_lstget.c
 
-OBJS_DIR = objs/
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJS_EXTRA = $(SRCS_EXTRA:.c=.o)
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
@@ -34,11 +35,11 @@ $(NAME): $(OBJS)
 $(OBJS_DIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS_BONUS)
+bonus: $(NAME) $(OBJS_BONUS) $(OBJS_EXTRA)
+	ar rs $(NAME) $(OBJS_BONUS) $(OBJS_EXTRA)
 
 clean:
-	rm -rf $(OBJS) $(OBJS_BONUS)
+	rm -rf $(OBJS) $(OBJS_BONUS) $(OBJS_EXTRA)
 
 fclean: clean
 	rm -f $(NAME)

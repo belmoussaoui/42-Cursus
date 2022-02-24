@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 16:16:57 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/24 12:24:07 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/02/24 12:35:00 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/02/24 12:38:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstget(t_list *lst, int index)
 {
-	if (f == NULL)
-		return ;
-	while (lst)
+	int	i;
+
+	i = 0;
+	while (lst && i < index)
 	{
-		f(lst->content);
+		i++;
 		lst = lst->next;
 	}
+	return (lst);
 }
