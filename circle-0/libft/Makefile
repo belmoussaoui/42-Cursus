@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/01/29 20:46:12 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/24 12:19:16 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,30 +21,24 @@ SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c 	ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJS_DIR = objs/
-OBJS_NAMES = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES))
-OBJS_NAMES_BONUS = $(SRCS_BONUS:.c=.o)
-OBJS_BONUS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES_BONUS))
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(OBJS_DIR):
-	mkdir $@
-
-$(NAME): $(OBJS_DIR) $(OBJS)
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 $(OBJS_DIR)%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS_BONUS)
-	mkdir $(OBJS_DIR)
+bonus: $(OBJS) $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS_BONUS)
 
 clean:
-	rm -rf $(OBJS_DIR)
+	rm -rf $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
