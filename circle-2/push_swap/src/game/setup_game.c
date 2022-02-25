@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   setup_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:04:29 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/24 18:05:46 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/25 21:59:17 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	exit_error()
 {
@@ -99,7 +99,7 @@ void	initialize_stacks(t_game *game)
 		ft_lstadd_back(&game->stack_a, new);
 		i++;
 	}
-	game->head = 0;
+	game->head = -1;
 }
 
 t_game	setup_game(int argc, char **argv)

@@ -6,12 +6,15 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 14:12:01 by bel-mous          #+#    #+#              #
-#    Updated: 2022/02/24 18:35:35 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/25 20:24:10 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c setup.c debug.c operations.c lock_sort.c
-OBJS = $(SRCS:.c=.o)
+SRC_FILES = main.c debug.c game/setup_game.c game/lock_sort.c \
+	commands/command_push.c commands/command_reverse.c commands/command_rotate.c \
+	commands/command_swap.c
+SRC = $(addprefix src/, $(SRC_FILES)) 
+OBJS = $(SRC:.c=.o)
 NAME = push_swap
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

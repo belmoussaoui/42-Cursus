@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:24:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/24 18:07:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/25 18:40:35 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	print_game(t_game game)
 		printf("%d ", *((int *) stack_b->content));
 		stack_b = stack_b->next;
 	}
+	printf("\n");
+	printf("head : %d\n", game.head);
 	printf("\n");
 }
 

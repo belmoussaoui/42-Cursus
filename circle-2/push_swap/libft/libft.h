@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/03 13:30:42 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/29 20:59:02 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/25 09:57:24 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int		ft_lstlen(t_list *lst);
+t_list	*ft_lstget(t_list *lst, int index);
 
 #endif
