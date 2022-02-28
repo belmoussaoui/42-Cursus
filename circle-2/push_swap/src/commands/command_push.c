@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:40:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/25 18:43:53 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/26 12:01:56 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_list **out, t_list **in)
 {
-	t_list *elem;
+	t_list	*elem;
 
 	elem = *out;
 	*out = elem->next;

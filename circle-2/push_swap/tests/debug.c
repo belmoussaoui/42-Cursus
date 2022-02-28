@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:24:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/25 18:40:35 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/26 11:55:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	print_game(t_game game)
 {
-	t_list *stack_a;
-	t_list *stack_b;
-	
+	t_list	*stack_a;
+	t_list	*stack_b;
+
 	stack_a = game.stack_a;
 	stack_b = game.stack_b;
 	printf("stack a : ");
