@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:40:28 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/27 11:59:56 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:06:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	twin_merge(t_game *game)
 {
 	int	i;
 	int	j;
-	int a;
+	int	a;
 
 	i = ft_lstlen(game->stack_b);
 	if (game->n <= 3)

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:04:29 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/26 21:56:02 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/28 20:02:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	initialize_numbers(t_game *game, int argc, char **argv)
 
 	i = 0;
 	if (argc == 2)
-		argv = handle_one_arg(argv[0]);
+	{
+		argv = handle_one_arg(argv[0], game);
+	}
 	else
 		argv = handle_many_args(argc - 1, argv);
 	while (argv[game->n])
@@ -81,6 +83,7 @@ t_game	setup_game(int argc, char **argv)
 
 	game.stack_a = NULL;
 	game.stack_b = NULL;
+	game.numbers = NULL;
 	game.n = 0;
 	initialize_numbers(&game, argc, argv + 1);
 	initialize_stacks(&game);

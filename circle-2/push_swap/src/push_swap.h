@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:00:31 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/27 11:24:22 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/28 20:00:43 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_action {
 	int	index_b;
 }	t_action;
 
-void	print_game(t_game game);
-
 void		twin_sort(t_game *game);
 
 void		lock_sort(t_game *game);
@@ -42,7 +40,7 @@ void		free_game(t_game *game);
 t_game		setup_game(int argc, char **argv);
 void		exit_error(t_game *game);
 
-char		**handle_one_arg(char *arg);
+char		**handle_one_arg(char *arg, t_game *game);
 char		**handle_many_args(int argc, char **argv);
 void		free_argv(t_game *game, char **argv, int exit);
 int			check_number(char *nbr, t_game *game, char **argv);

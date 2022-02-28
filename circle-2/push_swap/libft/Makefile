@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 03:47:54 by bel-mous          #+#    #+#              #
-#    Updated: 2022/02/24 12:38:55 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/28 21:17:27 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_putnbr_fd.c
 SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c 	ft_lstsize.c ft_lstlast.c \
 	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-SRCS_EXTRA = ft_lstlen.c ft_lstget.c
+SRCS_EXTRA = ft_lstlen.c ft_lstget.c get_next_line.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)

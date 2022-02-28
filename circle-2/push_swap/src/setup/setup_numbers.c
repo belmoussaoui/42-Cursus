@@ -6,19 +6,24 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 10:59:10 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/26 21:55:36 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/02/28 20:03:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	**handle_one_arg(char *arg)
+char	**handle_one_arg(char *arg, t_game *game)
 {
 	char	**args;
 
 	args = ft_split(arg, ' ');
 	if (!args)
 		exit(1);
+	if (!args[0])
+	{
+		free(args);
+		exit_error(game);
+	}
 	return (args);
 }
 
@@ -80,6 +85,8 @@ int	check_number(char *nbr, t_game *game, char **argv)
 			sign = -1;
 		i++;
 	}
+	if (!nbr[i])
+		free_argv(game, argv, 1);
 	while (nbr[i])
 	{
 		if (!ft_isdigit(nbr[i]))

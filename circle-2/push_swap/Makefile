@@ -6,30 +6,42 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 14:12:01 by bel-mous          #+#    #+#              #
-#    Updated: 2022/02/27 11:24:33 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/02/28 21:07:14 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_FILES = main.c game/setup_game.c game/setup_numbers.c game/lock_sort.c \
+SRC_FILES = main.c setup/setup_game.c setup/setup_numbers.c game/lock_sort.c \
 	game/lock_rotate.c game/lock_action.c game/twin_sort.c \
 	commands/command_push.c commands/command_reverse.c commands/command_rotate.c \
-	commands/command_swap.c game/debug.c
-SRC = $(addprefix src/, $(SRC_FILES)) 
+	commands/command_swap.c
+BONUS_FILES = checker/checker.c setup/setup_game.c setup/setup_numbers.c
+
+SRC = $(addprefix src/, $(SRC_FILES))
+BONUS = $(addprefix src/, $(BONUS_FILES)) 
+
 OBJS = $(SRC:.c=.o)
+BONUS_OBJS = $(BONUS:.c=.o)
+
 NAME = push_swap
+BONUS_NAME = checker
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
 
 all: libft $(NAME)
 
 libft:
 	make bonus -C ./libft
 
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft
+
+bonus: $(BONUS_OBJS)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) -L./libft -lft
 
 clean:
 	make clean -C ./libft

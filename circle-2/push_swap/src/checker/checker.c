@@ -1,49 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/20 14:03:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/28 18:01:11 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/02/28 19:43:16 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/02/28 21:23:02 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdio.h>
 
-int	is_sorted(t_list *stack)
+#include "../push_swap.h"
+
+// void	run()
+// {
+	
+// }
+
+char*	read_instructions(char *c)
 {
-	int	value_a;
-	int	value_b;
-
-	while (stack->next)
-	{
-		value_a = *((int *) stack->content);
-		stack = stack->next;
-		value_b = *((int *) stack->content);
-		if (value_b < value_a)
-			return (0);
-	}
-	return (1);
-}
-
-void	play(t_game *game)
-{
-	if (game->n == 0 || is_sorted(game->stack_a))
-		return ;
-	if (game->n <= 5)
-		twin_sort(game);
-	else
-		lock_sort(game);
+	
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
-
+	t_list	*commands;
+	//char	*commands;
 	game = setup_game(argc, argv);
-	play(&game);
+	while (get_next_line(0))
+		;
+	//commands = read_commands();
+	//run(&game);
+	printf("ok\n");
 	free_game(&game);
 	return (0);
 }
