@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:40:28 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/28 17:06:58 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 19:56:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	twin_merge(t_game *game)
 		i--;
 	}
 }
-#include <stdio.h>
+
 void	twin_end(t_game *game)
 {
 	int		min;
 	t_list	*stack;
-	int 	i;
+	int		i;
 	int		len;
 
 	min = 0;

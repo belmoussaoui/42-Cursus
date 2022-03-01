@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 12:24:01 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/28 21:16:38 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 20:02:07 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,13 @@ static void	get_buffer_from(char *reader, char *buffer)
 	buffer[j] = '\0';
 }
 
+static void	*free_read_line(char *buf, char *reader)
+{
+	free(buf);
+	free(reader);
+	return (NULL);
+}
+
 static char	*read_line(int fd, char *reader)
 {
 	int		nbytes;
@@ -73,21 +80,14 @@ static char	*read_line(int fd, char *reader)
 	{
 		nbytes = read(fd, buf, BUFFER_SIZE);
 		if (nbytes < 0)
-		{
-			free(buf);
-			free(reader);
-			return (NULL);
-		}
+			return (free_read_line(buf, reader));
 		if (nbytes == 0)
 			break ;
 		buf[nbytes] = '\0';
 		temp = ft_strjoin(reader, buf);
-		free(reader);
 		if (temp == NULL)
-		{
-			free(buf);
-			return (NULL);
-		}
+			return (free_read_line(buf, reader));
+		free(reader);
 		reader = temp;
 	}
 	free(buf);
