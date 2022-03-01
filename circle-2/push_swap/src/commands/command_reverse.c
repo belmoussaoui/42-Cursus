@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:52:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/26 11:46:37 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:12:52 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	reverse_rotate(t_list **lst)
 	t_list	*before;
 	t_list	*last;
 
+	if (lst == NULL)
+		return ;
 	len = ft_lstlen(*lst);
 	before = ft_lstget(*lst, len - 2);
 	last = before->next;

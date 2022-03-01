@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:40:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/26 12:01:56 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 13:12:34 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	push(t_list **out, t_list **in)
 {
 	t_list	*elem;
 
+	if (out == NULL || in == NULL)
+		return ;
 	elem = *out;
 	*out = elem->next;
 	ft_lstadd_front(in, elem);
