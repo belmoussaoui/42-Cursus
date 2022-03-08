@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 14:00:31 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/01 19:14:51 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 23:59:35 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void		command_sa(t_game *game);
 void		command_sb(t_game *game);
 void		command_ss(t_game *game);
 
-int			interpreter_push(t_game *game, char *command);
-int			interpreter_swap(t_game *game, char *command);
-int			interpreter_rotate(t_game *game, char *command);
-int			interpreter_reverse(t_game *game, char *command);
+void		interpreter_push(t_game *game, char *command);
+void		interpreter_swap(t_game *game, char *command);
+void		interpreter_rotate(t_game *game, char *command);
+void		interpreter_reverse(t_game *game, char *command);
 
 #endif

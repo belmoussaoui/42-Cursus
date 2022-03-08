@@ -6,12 +6,12 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 14:14:07 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/03 14:19:03 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/07 21:50:49 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRC = main.c
+SRC = src/main.c
 
 OBJS = $(SRC:.c=.o)
 NAME = so_long

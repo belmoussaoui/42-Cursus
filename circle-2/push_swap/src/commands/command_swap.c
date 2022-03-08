@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 09:45:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/01 18:36:43 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/01 23:43:59 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	swap(t_list **lst)
 	t_list	*first;
 	t_list	*second;
 
-	if (*lst == NULL)
+	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
 	first = *lst;
 	second = first->next;

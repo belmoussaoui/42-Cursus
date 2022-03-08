@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 14:12:01 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/01 18:31:47 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/02 11:14:54 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,16 +42,17 @@ libft:
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L./libft -lft
 
-bonus: $(BONUS_OBJS)
+bonus: libft $(BONUS_OBJS)
 	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BONUS_OBJS) -L./libft -lft
 
 clean:
 	make clean -C ./libft
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f libft/libft.a
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 
 re: fclean all
 
