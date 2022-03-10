@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 14:14:07 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/07 21:50:49 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/08 14:49:48 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ libft:
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) -Lmlx -lmlx -framework OpenGL -framework AppKit $(OBJS) -lm -L./libft -lft
+	$(CC) $(CFLAGS) -o $(NAME) -lmlx -framework OpenGL -framework AppKit $(OBJS) -lm -L./libft -lft
 
 clean:
 	make clean -C ./libft
