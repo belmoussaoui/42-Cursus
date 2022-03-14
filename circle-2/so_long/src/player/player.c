@@ -6,18 +6,19 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:09:06 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/13 23:27:57 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:21:05 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
 #include <stdio.h>
 
-void	initialize_player(t_render *render, t_player *player)
+void	initialize_player(t_render *render, t_player *player, int x, int y)
 {
 	create_sprite(render, &player->sprite, 32, 32);
-	player->sprite.x = 1;
-	player->sprite.y = 1;
+	player->moves = 0;
+	player->sprite.x = x;
+	player->sprite.y = y;
 }
 
 void	draw_player(t_render *render, t_player *player)

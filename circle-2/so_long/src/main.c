@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 14:12:38 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/13 23:17:01 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/14 20:01:57 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	game_draw(t_game *game)
 			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->exit.image.texture, j * 32, i * 32 + 12);
 			if (game->map.data[i][j] == 'C')
 			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->collectible.image.texture, j * 32, i * 32);
-		//	mlx_put_image_to_window(game->render.mlx, game->render.window, game->empty.image.texture, j * 32, i * 32);
 			if (game->map.data[i][j] == '1')
 				mlx_put_image_to_window(game->render.mlx, game->render.window, game->wall.image.texture, j * 32, i * 32);
 			j++;
@@ -64,8 +63,9 @@ void	game_draw(t_game *game)
 
 void initialize(t_game *game)
 {
-	initialize_player(&game->render, &game->player);
 	initialize_map(&game->map);
+	printf("%d %d\n",  game->map.start_x, game->map.start_y);
+	initialize_player(&game->render, &game->player, game->map.start_x, game->map.start_y);
 	load_assets(game);
 }
 
