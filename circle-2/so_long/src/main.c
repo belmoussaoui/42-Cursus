@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 14:12:38 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/14 20:01:57 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/15 18:34:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	game_update(t_game *game)
 
 void	game_draw(t_game *game)
 {
+	game->map.display_x = WIDTH / 2 - (game->player.sprite.x * 32) - 16;
+	game->map.display_y = HEIGHT / 2 - (game->player.sprite.y * 32) - 16;
 	mlx_clear_window(game->render.mlx, game->render.window);
 	int i = 0;
 	while (i < game->map.height)
@@ -37,7 +39,7 @@ void	game_draw(t_game *game)
 		int j = 0;
 		while (j < game->map.width)
 		{
-			mlx_put_image_to_window(game->render.mlx, game->render.window, game->empty.image.texture, j * 32, i * 32);
+			mlx_put_image_to_window(game->render.mlx, game->render.window, game->empty.image.texture, j * 32 + game->map.display_x, i * 32 + game->map.display_y);
 			j++;
 		}
 		i++;
@@ -49,22 +51,21 @@ void	game_draw(t_game *game)
 		while (j < game->map.width)
 		{
 			if (game->map.data[i][j] == 'E')
-			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->exit.image.texture, j * 32, i * 32 + 12);
+			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->exit.image.texture, j * 32 + game->map.display_x, i * 32 + 12 + game->map.display_y);
 			if (game->map.data[i][j] == 'C')
-			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->collectible.image.texture, j * 32, i * 32);
+			 	mlx_put_image_to_window(game->render.mlx, game->render.window, game->collectible.image.texture, j * 32 + game->map.display_x, i * 32 + game->map.display_y);
 			if (game->map.data[i][j] == '1')
-				mlx_put_image_to_window(game->render.mlx, game->render.window, game->wall.image.texture, j * 32, i * 32);
+				mlx_put_image_to_window(game->render.mlx, game->render.window, game->wall.image.texture, j * 32 + game->map.display_x, i * 32 + game->map.display_y);
 			j++;
 		}
 		i++;
 	}
-	draw_player(&game->render, &game->player);
+	draw_player(&game->render, &game->player, &game->map);
 }
 
 void initialize(t_game *game)
 {
 	initialize_map(&game->map);
-	printf("%d %d\n",  game->map.start_x, game->map.start_y);
 	initialize_player(&game->render, &game->player, game->map.start_x, game->map.start_y);
 	load_assets(game);
 }

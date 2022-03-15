@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:18:26 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/13 23:15:44 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:22:10 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void play(t_game *game)
 	render = &game->render;
 	render->frames = 0;
 	render->mlx = mlx_init();
-	render->window = mlx_new_window(render->mlx, WIDTH, HEIGHT, "minivista");
+	render->window = mlx_new_window(render->mlx, WIDTH, HEIGHT, TITLE);
 	initialize(game);
 	mlx_xpm_file_to_image(render->mlx, "./assets/player.xpm", &w, &h);
 	create_hook(game);

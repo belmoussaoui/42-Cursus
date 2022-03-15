@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:27:52 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/14 21:39:09 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/15 16:51:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_map {
 	int 	collectibles;
 	int 	players;
 	int 	exits;
+	int		display_x;
+	int 	display_y;
 	int		start_x;
 	int		start_y;
 }	t_map;
@@ -86,7 +88,7 @@ void	initialize_map(t_map *player);
 void	load_assets(t_game *game);
 void	create_sprite(t_render *render, t_sprite *sprite, int w, int h);
 void	create_image(t_render *render, t_image *image, int w, int h);
-void	draw_player(t_render *render, t_player *player);
+void	draw_player(t_render *render, t_player *player, t_map *map);
 void	draw_sprite(t_render *render, t_image *src, t_image *dst, int sx, int sy);
 void 	initialize(t_game *game);
 
