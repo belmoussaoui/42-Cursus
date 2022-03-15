@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:27:52 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/14 20:32:18 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:39:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct	s_image {
 	int		endian;
 }	t_image;
 
-
 typedef struct	s_sprite {
 	int		x;
 	int		y;
@@ -55,6 +54,7 @@ typedef struct	s_player {
 	t_sprite	sprite;
 	t_sprite	spriteset;
 	int			moves;
+	int			direction;
 } t_player;
 
 typedef struct render {

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:03:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/14 19:54:46 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/14 21:59:02 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	handle_input(int keycode, t_game *game)
 	if (keycode == 124 && game->map.data[y][x + 1] != '1')
 	{
 		game->player.sprite.x++;
+		game->player.direction = 2;
 		game->player.moves++;
 		ft_putnbr_fd(game->player.moves, 1);
 		ft_putchar_fd('\n', 1);
@@ -30,6 +31,7 @@ int	handle_input(int keycode, t_game *game)
 	else if (keycode == 123 && game->map.data[y][x - 1] != '1')
 	{
 		game->player.sprite.x--;
+		game->player.direction = 1;
 		game->player.moves++;
 		ft_putnbr_fd(game->player.moves, 1);
 		ft_putchar_fd('\n', 1);
@@ -37,6 +39,7 @@ int	handle_input(int keycode, t_game *game)
 	else if (keycode == 125 && game->map.data[y + 1][x] != '1')
 	{
 		game->player.sprite.y++;
+		game->player.direction = 0;
 		game->player.moves++;
 		ft_putnbr_fd(game->player.moves, 1);
 		ft_putchar_fd('\n', 1);
@@ -44,6 +47,7 @@ int	handle_input(int keycode, t_game *game)
 	else if (keycode == 126 && game->map.data[y - 1][x] != '1')
 	{
 		game->player.moves++;
+		game->player.direction = 3;
 		game->player.sprite.y--;
 		ft_putnbr_fd(game->player.moves, 1);
 		ft_putchar_fd('\n', 1);
