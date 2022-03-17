@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:27:52 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/15 16:51:47 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:42:06 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_map {
 	int 	exits;
 	int		display_x;
 	int 	display_y;
+	int		x;
+	int		y;
 	int		start_x;
 	int		start_y;
 }	t_map;
@@ -55,6 +57,7 @@ typedef struct	s_sprite {
 typedef struct	s_player {
 	t_sprite	sprite;
 	t_sprite	spriteset;
+	t_sprite	move;
 	int			moves;
 	int			direction;
 } t_player;
