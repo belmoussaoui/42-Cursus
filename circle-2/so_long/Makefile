@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 14:14:07 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/13 22:16:23 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/17 18:25:41 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS = $(SRC:.c=.o)
 NAME = so_long
 
 CC = gcc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 
 all: libft $(NAME)

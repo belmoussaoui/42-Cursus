@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:03:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/17 17:37:06 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:34:43 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	handle_input(int keycode, t_game *game)
 	int	x;
 	int	y;
 
-	if (game->map.display_x != game->map.x || game->map.display_y != game->map.y)
+	if (game->map.display_x != game->map.x
+		|| game->map.display_y != game->map.y)
 		return (0);
 	x = game->player.sprite.x;
 	y = game->player.sprite.y;
@@ -70,6 +71,5 @@ int	handle_input(int keycode, t_game *game)
 		printf("ok\n");
 		exit(0);
 	}
-	
 	return (0);
 }

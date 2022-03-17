@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:18:26 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/15 16:22:10 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:44:43 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 int	close_game(t_game *game)
 {
-	t_render render;
-	
+	t_render	render;
+
 	render = game->render;
 	mlx_destroy_window(render.mlx, render.window);
 	exit(0);
 	return (0);
 }
 
-void create_hook(t_game *game)
+void	create_hook(t_game *game)
 {
-	t_render render;
-	
+	t_render	render;
+
 	render = game->render;
 	mlx_loop_hook(render.mlx, *game_loop, game);
 	mlx_key_hook(render.window, *handle_input, game);
 	mlx_hook(render.window, 17, 0, close_game, game);
 	mlx_loop(render.mlx);
 }
-#include <stdio.h>
-void play(t_game *game)
+
+void	play(t_game *game)
 {
-	t_render *render;
-	int w;
-	int h;
+	t_render	*render;
+	int			w;
+	int			h;
 
 	render = &game->render;
 	render->frames = 0;
