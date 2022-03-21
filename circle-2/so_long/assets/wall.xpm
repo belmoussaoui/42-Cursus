@@ -1,7 +1,7 @@
 /* XPM */
-static char *abcb1b98d52e4ffedbc36e615a1720321ZyNuhBcmLVFyCIu[] = {
+static char *_2cd7d2a80524e95d6676d2712a83705bJAXsqH30b9J02V1[] = {
 /* columns rows colors chars-per-pixel */
-"32 44 10 1 ",
+"32 64 10 1 ",
 "  c None",
 ". c #003D2D",
 "X c #292829",
@@ -56,5 +56,25 @@ static char *abcb1b98d52e4ffedbc36e615a1720321ZyNuhBcmLVFyCIu[] = {
 "   XXX      X@####@X      XXX   ",
 "            XO@##@OX            ",
 "             XO##OX             ",
-"              XXXX              "
+"              XXXX              ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                "
 };

@@ -6,22 +6,18 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 14:40:48 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/17 17:45:03 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/21 02:13:17 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../game.h"
-#include <fcntl.h>
 
-void initialize_collectibles(t_map *map)
+void	initialize_collectibles(t_map *map)
 {
 	int	x;
 	int	y;
 
 	y = 0;
-	map->collectibles = 0;
-	map->players = 0;
-	map->exits = 0;
 	while (y < map->height)
 	{
 		x = 0;
@@ -30,12 +26,8 @@ void initialize_collectibles(t_map *map)
 			if (map->data[y][x] == 'C')
 				map->collectibles++;
 			if (map->data[y][x] == 'P')
-			{
 				map->players++;
-				map->start_x = x;
-				map->start_y = y;
-			}
-			if (map->data[y][x] == 'C')
+			if (map->data[y][x] == 'E')
 				map->exits++;
 			x++;
 		}
@@ -43,72 +35,55 @@ void initialize_collectibles(t_map *map)
 	}
 }
 
-int	check_rectangle(t_map *map)
+void	initialize_size(t_map *map)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (map->data[y][x])
-			x++;
-		if (x != map->width)
-			return (0);
-		y++;
-	}
-	return (1);
+	while (map->data[map->height])
+		map->height++;
+	if (map->height == 0)
+		return ;
+	while (map->data[0][map->width])
+		map->width++;
 }
 
-int	check_wall(t_map *map)
+void	initialize_data(t_map *map)
 {
-	int	x;
-	int	y;
+	int		fd;
+	char	*data;
+	char	*data_copy;
+	char	*line;
 
-	x = 0;
-	while (x < map->width)
-	{
-		if (map->data[0][x] != '1')
-			return (0);
-		if (map->data[map->height - 1][x] != '1')
-			return (0);
-		x++;
-	}
-	y = 0;
-	while (y < map->height)
-	{
-		if (map->data[y][0] != '1')
-			return (0);
-		if (map->data[y][map->width - 1] != '1')
-			return (0);
-		y++;
-	}
-	return (1);
-}
-
-void initialize_map(t_map *map)
-{
-	int fd = open("maps/map01.ber", O_RDONLY);
-	char *line;
-	char *res = malloc(1);
-	res[0] = 0;
-	map->height = 0;
+	fd = open(map->name, O_RDONLY);
+	data = ft_calloc(1, sizeof(char));
+	if (!data)
+		exit(0);
 	while (42)
 	{
+		data_copy = data;
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		map->height++;
-		res = ft_strjoin(res, line);
+		data = ft_strjoin(data, line);
+		free(data_copy);
+		if (!data)
+			exit(1);
 		free(line);
 	}
 	close(fd);
- 	map->width = 0;
-	while (res[map->width] != '\n')
-		map->width++;
-	map->data = ft_split(res, '\n');
+	map->data = ft_split(data, '\n');
+	if (!map->data)
+		exit(1);
+}
+
+void	initialize_map(t_render *render, t_map *map)
+{
+	initialize_data(map);
+	initialize_size(map);
 	initialize_collectibles(map);
-	if (!check_rectangle(map) || !check_wall(map))
-		exit(0);
+	create_sprite(render, &map->tilemap, map->width * TILE_SIZE,
+		(map->height + 1) * TILE_SIZE);
+	if (!check_is_valid(map))
+	{
+		free_map(render, map);
+		exit(1);
+	}
 }

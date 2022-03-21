@@ -6,19 +6,22 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 14:14:07 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/13 22:16:23 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/21 01:18:00 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRC = src/main.c src/input.c src/player/player.c src/map/map.c src/minivista/sprite.c src/minivista/play.c \
-	src/minivista/game_loop.c
+SRC = mandatory/main.c mandatory/game.c \
+	mandatory/player/player.c mandatory/player/update.c \
+	mandatory/minivista/image.c mandatory/minivista/minivista.c \
+	mandatory/map/map.c mandatory/map/is_valid.c mandatory/map/draw.c \
+	mandatory/map/update.c mandatory/map/error.c
 
 OBJS = $(SRC:.c=.o)
 NAME = so_long
 
 CC = gcc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 
 all: libft $(NAME)
