@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 03:27:52 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/21 20:24:21 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/22 16:07:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,11 @@ void	blt_src(t_sprite *src, t_sprite *dst, int sx, int sy);
 void	initialize(t_game *game);
 void	update_map(t_map *map, t_player *player);
 void	update_player(t_player *player);
-void	update_move(t_player *player, int direction);
+void	update_move(t_game *game, t_player *player, int direction);
 void	clear_sprite(t_sprite *sprite);
 void	draw_tilemap(t_backstage *backstage, t_map *map);
+void	draw_enemy(t_render *render, t_backstage *backstage, t_enemy *enemy, t_map *map);
+void	set_starting_position_enemy(t_enemy *enemy, t_map *map);
+void	update_enemy(t_enemy *enemy, t_player *player, t_map *map);
 
 #endif

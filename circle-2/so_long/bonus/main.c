@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 14:12:38 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/21 20:28:47 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/03/22 15:31:58 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	initialize(t_game *game)
 	initialize_player(&game->render, &game->player);
 	initialize_enemy(&game->render, &game->enemy);
 	set_starting_position(&game->player, &game->map);
+	set_starting_position_enemy(&game->enemy, &game->map);
 	draw_tilemap(&game->backstage, &game->map);
 }
 

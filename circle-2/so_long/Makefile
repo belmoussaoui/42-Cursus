@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 14:14:07 by bel-mous          #+#    #+#              #
-#    Updated: 2022/03/21 19:02:16 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/03/22 15:04:32 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_BONUS = bonus/main.c bonus/game.c \
 	bonus/player/player.c bonus/player/update.c \
 	bonus/minivista/image.c bonus/minivista/minivista.c \
 	bonus/map/map.c bonus/map/is_valid.c bonus/map/draw.c \
-	bonus/map/update.c bonus/map/error.c
+	bonus/map/update.c bonus/map/error.c bonus/enemy/enemy.c
 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
