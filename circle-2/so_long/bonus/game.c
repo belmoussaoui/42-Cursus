@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 23:11:24 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/03/22 18:57:32 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:07:56 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	game_update(t_game *game)
 		exit_game(game);
 	update_map(&game->map, &game->player);
 	update_player(&game->player);
+	if (game->render.frames % 90 == 0)
+		update_enemy(&game->enemy, &game->player, &game->map);
 }
 
 void	game_draw(t_game *game)
