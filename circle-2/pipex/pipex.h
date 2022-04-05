@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 16:52:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/05 19:25:40 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/04/05 19:03:52 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <stdio.h>
+#ifndef PIPEX_H
+# define PIPEX_H
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-int	main(int argc, char** argv, char **envp)
+typedef struct s_pipex
 {
-	(void)	argc;
-	(void)	argv;
-	t_pipex	pipex;
+	int		infile;
+	int		outfile;
+	int		pipe[2];
+	char	**path;
+}	t_pipex;
 
-	setup_pipex(&pipex, argc, argv, envp);
-	run_pipex(&pipex);
-	return (0);
-}
+void	setup_pipex(t_pipex *pipex, int argc, char** argv, char**envp);
+void	run_pipex(t_pipex *pipex);
+
+
+#endif
