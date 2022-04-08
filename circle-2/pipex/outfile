@@ -1,4 +1,1 @@
-#include "pipex.h"
-	t_pipex	pipex;
-	setup_pipex(&pipex, argc, argv, envp);
 	run_pipex(&pipex);
