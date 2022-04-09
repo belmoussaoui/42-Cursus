@@ -6,14 +6,13 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/09 16:52:08 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/09 18:55:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
 
-char	*get_command(t_pipex *pipex, char* command)
+char	*get_command(t_pipex *pipex, char *command)
 {
 	int		i;
 	char	*path;
@@ -31,7 +30,7 @@ char	*get_command(t_pipex *pipex, char* command)
 	return (NULL);
 }
 
-void run_child1(t_pipex *pipex, int pid)
+void	run_child1(t_pipex *pipex, int pid)
 {
 	char	*file;
 
@@ -50,7 +49,7 @@ void run_child1(t_pipex *pipex, int pid)
 	}
 }
 
-void run_child2(t_pipex *pipex, int pid)
+void	run_child2(t_pipex *pipex, int pid)
 {
 	char	*file;
 
@@ -58,7 +57,7 @@ void run_child2(t_pipex *pipex, int pid)
 		exit(1);
 	if (pid == 0)
 	{
-		file = get_command(pipex,  pipex->command2[0]);
+		file = get_command(pipex, pipex->command2[0]);
 		dup2(pipex->pipe[0], 0);
 		dup2(pipex->outfile, 1);
 		close(pipex->pipe[0]);
@@ -71,7 +70,7 @@ int	run_pipex(t_pipex *pipex)
 {
 	int	pid1;
 	int	pid2;
-	int exit_code;
+	int	exit_code;
 
 	pid1 = fork();
 	run_child1(pipex, pid1);
@@ -81,5 +80,6 @@ int	run_pipex(t_pipex *pipex)
 	close(pipex->pipe[1]);
 	waitpid(pid1, NULL, 0);
 	waitpid(pid2, &exit_code, 0);
+	free_pipex(pipex);
 	return (exit_code);
 }
