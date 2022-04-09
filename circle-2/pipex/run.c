@@ -6,46 +6,72 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/08 18:54:43 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/09 16:52:08 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdio.h>
 
+char	*get_command(t_pipex *pipex, char* command)
+{
+	int		i;
+	char	*path;
+	char	*slash_command;
+
+	i = 0;
+	while (pipex->path[i])
+	{
+		slash_command = ft_strjoin("/", command);
+		path = ft_strjoin(pipex->path[i], slash_command);
+		if (access(path, 0) == 0)
+			return (path);
+		i++;
+	}
+	return (NULL);
+}
+
 void run_child1(t_pipex *pipex, int pid)
 {
+	char	*file;
+
 	if (pid < 0)
+	{
 		exit(1);
+	}
 	if (pid == 0)
 	{
+		file = get_command(pipex, pipex->command1[0]);
 		dup2(pipex->pipe[1], 1);
+		dup2(pipex->infile, 0);
 		close(pipex->pipe[0]);
 		close(pipex->pipe[1]);
-		execlp("cat", "cat", "main.c", NULL);
+		execve(file, pipex->command1, pipex->envp);
 	}
 }
 
 void run_child2(t_pipex *pipex, int pid)
 {
+	char	*file;
+
 	if (pid < 0)
 		exit(1);
 	if (pid == 0)
 	{
+		file = get_command(pipex,  pipex->command2[0]);
 		dup2(pipex->pipe[0], 0);
 		dup2(pipex->outfile, 1);
 		close(pipex->pipe[0]);
 		close(pipex->pipe[1]);
-		execlp("grepdjksfh", "grepdios", "run", NULL);
-		exit(1);
+		execve(file, pipex->command2, pipex->envp);
 	}
 }
 
-void	run_pipex(t_pipex *pipex)
+int	run_pipex(t_pipex *pipex)
 {
 	int	pid1;
 	int	pid2;
-	int test;
+	int exit_code;
 
 	pid1 = fork();
 	run_child1(pipex, pid1);
@@ -54,7 +80,6 @@ void	run_pipex(t_pipex *pipex)
 	close(pipex->pipe[0]);
 	close(pipex->pipe[1]);
 	waitpid(pid1, NULL, 0);
-	waitpid(pid2, &test, 0);
-	printf("%i\n", WEXITSTATUS(test));
-	
+	waitpid(pid2, &exit_code, 0);
+	return (exit_code);
 }
