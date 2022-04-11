@@ -6,11 +6,11 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:31:20 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/09 14:50:01 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:29:56 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 static	int	count_split(char const *s, char c)
 {

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/09 18:48:28 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/11 18:08:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_pipex(t_pipex *pipex)
 
 char	*find_path_value(char **envp)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (envp[i])
@@ -65,17 +65,17 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 		exit(1);
 	pipex->infile = open(argv[1], O_RDONLY);
 	if (pipex->infile < 0)
-		exit(EXIT_SUCCESS);
-	pipex->outfile = open(argv[4], O_WRONLY);
+		write_error("missing input file\n");
+	pipex->outfile = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
 	{
 		close(pipex->infile);
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	if (pipe(pipex->pipe) == -1)
 	{
 		free_pipex(pipex);
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	pipex->envp = envp;
 	pipex->command1 = ft_split(argv[2], ' ');

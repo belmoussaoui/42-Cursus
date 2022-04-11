@@ -6,11 +6,11 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 14:24:23 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/09 15:47:08 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:29:45 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../pipex.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -24,8 +24,8 @@ size_t	ft_strlen(const char *s)
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t			i;
-	size_t			res;
+	size_t	i;
+	size_t	res;
 
 	res = ft_strlen(src);
 	if (dstsize == 0)
