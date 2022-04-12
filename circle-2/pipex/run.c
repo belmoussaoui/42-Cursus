@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/11 19:45:44 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:51:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ char	*get_command(t_pipex *pipex, char *command)
 	i = 0;
 	while (pipex->path[i])
 	{
+		
 		slash_command = ft_strjoin("/", command);
 		if (slash_command == NULL)
-			
+			exit(EXIT_FAILURE);
 		path = ft_strjoin(pipex->path[i], slash_command);
+		if (path == NULL)
+			exit(EXIT_FAILURE);
 		if (access(path, 0) == 0)
 			return (path);
+		free(path);
+		free(slash_command);
 		i++;
 	}
 	if (access(command, 0) == 0)
@@ -40,14 +45,13 @@ void	run_child1(t_pipex *pipex, int pid)
 
 	if (pid < 0)
 		exit(1);
-
 	if (pid == 0)
 	{
 		file = get_command(pipex, pipex->command1[0]);
 		if (file == NULL)
 			write_error("command not found\n");
-		dup2(pipex->pipe[1], 1);
 		dup2(pipex->infile, 0);
+		dup2(pipex->pipe[1], 1);
 		close(pipex->pipe[0]);
 		close(pipex->pipe[1]);
 		if (execve(file, pipex->command1, pipex->envp) == -1)

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/11 18:08:19 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/12 19:53:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,6 @@ char	*find_path_value(char **envp)
 	return (NULL);
 }
 
-void	set_path(t_pipex *pipex, char **envp)
-{
-	char	*value;
-
-	value = find_path_value(envp);
-	pipex->path = ft_split(value, ':');
-}
-
 void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 {
 	if (argc != 5)
@@ -68,22 +60,13 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 		write_error("missing input file\n");
 	pipex->outfile = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
-	{
-		close(pipex->infile);
 		exit(EXIT_FAILURE);
-	}
 	if (pipe(pipex->pipe) == -1)
-	{
-		free_pipex(pipex);
 		exit(EXIT_FAILURE);
-	}
 	pipex->envp = envp;
 	pipex->command1 = ft_split(argv[2], ' ');
 	pipex->command2 = ft_split(argv[3], ' ');
-	set_path(pipex, envp);
+	pipex->path = ft_split(find_path_value(envp), ':');
 	if (!pipex->command1 || !pipex->command2 || !pipex->path)
-	{
-		free_pipex(pipex);
 		exit(EXIT_FAILURE);
-	}
 }
