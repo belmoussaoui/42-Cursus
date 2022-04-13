@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/12 19:58:59 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/13 23:04:27 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef struct s_pipex
 {
 	int		infile;
 	int		outfile;
-	int		pipe[2];
+	int		*pipe;
+	int		argc;
+	char	**argv;
 	char	**path;
-	char	**command1;
-	char	**command2;
 	char	**envp;
 }	t_pipex;
 

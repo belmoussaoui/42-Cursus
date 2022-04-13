@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/12 19:51:41 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/13 23:41:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_command(t_pipex *pipex, char *command)
 	char	*path;
 	char	*slash_command;
 
-	i = 0;
+	i = 5;
 	while (pipex->path[i])
 	{
 		
@@ -32,53 +32,58 @@ char	*get_command(t_pipex *pipex, char *command)
 			return (path);
 		free(path);
 		free(slash_command);
-		i++;
+		i--;
 	}
 	if (access(command, 0) == 0)
 		return (command);
 	return (NULL);
 }
 
-void	run_child1(t_pipex *pipex, int pid)
+void	run_child1(t_pipex *pipex, int pid, int index)
 {
-	char	*file;
+	char	*command;
+	char	**args;
+	int i = 0;
 
 	if (pid < 0)
 		exit(1);
 	if (pid == 0)
 	{
-		file = get_command(pipex, pipex->command1[0]);
-		if (file == NULL)
+		args = ft_split(pipex->argv[2 + index], ' ');
+		command = get_command(pipex, args[0]);
+		if (command == NULL)
 			write_error("command not found\n");
-		dup2(pipex->infile, 0);
-		dup2(pipex->pipe[1], 1);
-		close(pipex->pipe[0]);
-		close(pipex->pipe[1]);
-		if (execve(file, pipex->command1, pipex->envp) == -1)
+		if (index == 0)
 		{
-			perror("execve");
-			exit(EXIT_FAILURE);
+			dup2(pipex->infile, 0);
+			dup2(pipex->pipe[1], 1);
+			while (i < (pipex->argc - 4))
+			{
+				close(pipex->pipe[i * 2]);
+				close(pipex->pipe[i * 2 + 1]);
+				i++;
+			}
+		} else if (index == pipex->argc - 4) {
+			printf("end = %d\n", index * 2 - 2);
+			dup2(pipex->pipe[index * 2 - 2], 0);
+			dup2(pipex->outfile, 1);
+			while (i < (pipex->argc - 4))
+			{
+				close(pipex->pipe[i * 2]);
+				close(pipex->pipe[i * 2 + 1]);
+				i++;
+			}
+		} else {
+			dup2(pipex->pipe[index * 2 - 2], 0);
+			dup2(pipex->pipe[index * 2 + 1], 1);
+			while (i < (pipex->argc - 4))
+			{
+				close(pipex->pipe[i * 2]);
+				close(pipex->pipe[i * 2 + 1]);
+				i++;
+			}
 		}
-		exit(EXIT_SUCCESS);
-	}
-}
-
-void	run_child2(t_pipex *pipex, int pid)
-{
-	char	*file;
-
-	if (pid < 0)
-		exit(1);
-	if (pid == 0)
-	{
-		file = get_command(pipex, pipex->command2[0]);
-		if (file == NULL)
-			write_error("command not found\n");
-		dup2(pipex->pipe[0], 0);
-		dup2(pipex->outfile, 1);
-		close(pipex->pipe[0]);
-		close(pipex->pipe[1]);
-		if (execve(file, pipex->command2, pipex->envp) == -1)
+		if (execve(command, args, pipex->envp) == -1)
 		{
 			perror("execve");
 			exit(EXIT_FAILURE);
@@ -90,17 +95,21 @@ void	run_child2(t_pipex *pipex, int pid)
 int	run_pipex(t_pipex *pipex)
 {
 	int	pid1;
-	int	pid2;
 	int	exit_code;
+	int i = 0;
 
-	pid1 = fork();
-	run_child1(pipex, pid1);
-	pid2 = fork();
-	run_child2(pipex, pid2);
-	close(pipex->pipe[0]);
-	close(pipex->pipe[1]);
-	waitpid(pid1, NULL, 0);
-	waitpid(pid2, &exit_code, 0);
+	
+	while (i < pipex->argc - 3)
+	{
+		pid1 = fork();
+		run_child1(pipex, pid1, i);
+		i++;
+	}
+//	close(pipex->pipe[0]);
+//	close(pipex->pipe[1]);
+//	close(pipex->pipe[2]);
+	//close(pipex->pipe[3]);
+	waitpid(-1, NULL, 0);
 	free_pipex(pipex);
 	return (WEXITSTATUS(exit_code));
 }
