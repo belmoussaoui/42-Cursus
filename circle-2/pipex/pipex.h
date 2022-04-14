@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/13 23:04:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/14 15:25:04 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_pipex
 {
 	int		infile;
 	int		outfile;
-	int		*pipe;
-	int		argc;
+	int		*pipes;
+	int		cmdn;
 	char	**argv;
 	char	**path;
 	char	**envp;
@@ -36,7 +36,8 @@ char	*ft_strjoin(char const *s1, char const *s2);
 
 void	setup_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 int		run_pipex(t_pipex *pipex);
-void	free_pipex(t_pipex *pipex);
+void	free_char_array(char **array);
 void	write_error(char *message);
+char	*get_command(t_pipex *pipex, char *command);
 
 #endif

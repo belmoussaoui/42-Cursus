@@ -6,12 +6,11 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/13 23:24:51 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/14 19:22:00 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
 
 void	free_char_array(char **array)
 {
@@ -28,13 +27,6 @@ void	free_char_array(char **array)
 	free(array);
 }
 
-void	free_pipex(t_pipex *pipex)
-{
-	close(pipex->infile);
-	close(pipex->outfile);
-	free_char_array(pipex->path);
-}
-
 char	*find_path_value(char **envp)
 {
 	int	i;
@@ -49,35 +41,37 @@ char	*find_path_value(char **envp)
 	return (NULL);
 }
 
-void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
+void	create_pipes(t_pipex *pipex)
 {
 	int	i;
 
 	i = 0;
+	pipex->pipes = malloc(sizeof(int) * ((pipex->cmdn - 1) * 2));
+	if (!pipex->pipes)
+		exit(EXIT_FAILURE);
+	while (i < pipex->cmdn - 1)
+	{
+		if (pipe(pipex->pipes + (i * 2)) == -1)
+			exit(EXIT_FAILURE);
+		i++;
+	}
+}
 
-	if (argc <= 1)
-		exit(1);
+void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
+{
+	pipex->cmdn = argc - 3;
+	pipex->argv = argv;
+	pipex->envp = envp;
+	if (pipex->cmdn <= 1)
+		write_error("missing commands");
 	pipex->infile = open(argv[1], O_RDONLY);
 	if (pipex->infile < 0)
-		write_error("missing input file\n");
+		write_error("missing input file");
 	pipex->outfile = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
 		exit(EXIT_FAILURE);
-	pipex->pipe = malloc(sizeof(int) * ((argc - 4) * 2));
-
-	while (i < argc - 4)
-	{
-		if (pipe(pipex->pipe + (i * 2)) == -1)
-			exit(EXIT_FAILURE);
-		printf("oki\n");
-		i++;
-	}
-
-	pipex->argv = argv;
-	pipex->argc = argc;
-	pipex->envp = envp;
 	pipex->path = ft_split(find_path_value(envp), ':');
-	if ( !pipex->path)
+	if (!pipex->path)
 		exit(EXIT_FAILURE);
-
+	create_pipes(pipex);
 }

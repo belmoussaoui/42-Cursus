@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:52:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/11 16:59:06 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/14 16:30:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	write_error(char *message)
 
 	len = ft_strlen(message);
 	write(2, message, len);
+	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }
 
