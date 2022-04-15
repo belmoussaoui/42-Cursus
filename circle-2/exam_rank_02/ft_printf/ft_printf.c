@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:09:07 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/02/19 16:04:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:31:40 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int ft_printf(const char *format, ...)
 	va_list arg;
 	va_start(arg, format);
 	int i = 0;
-	
+
 	while (*format)
 	{
 		if (*format != '%')
@@ -72,13 +72,16 @@ int ft_printf(const char *format, ...)
 			}
 			if (*format == 'x')
 			{
-				long long d = va_arg(arg, long long);
+				unsigned int d = va_arg(arg, unsigned int);
 				i += ft_putnbr(d, 0, "0123456789abcdef", 16);
 			}
 			if (*format == 's')
 			{
 				char *d = va_arg(arg, char *);
-				i += ft_putstr(d);
+				if (d == NULL)
+					i += ft_putstr("(null)");
+				else
+					i += ft_putstr(d);
 			}
 		}
 		format++;
