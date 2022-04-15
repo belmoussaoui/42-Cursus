@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/14 19:41:36 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:39:22 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_command(t_pipex *pipex, char *command)
 
 	if (access(command, X_OK) == 0)
 		return (command);
-	i = 5;
+	i = 0;
 	while (pipex->path[i])
 	{
 		slash_command = ft_strjoin("/", command);
@@ -33,7 +33,7 @@ char	*get_command(t_pipex *pipex, char *command)
 			return (path);
 		free(path);
 		free(slash_command);
-		i--;
+		i++;
 	}
 	return (NULL);
 }
@@ -103,12 +103,7 @@ int	run_pipex(t_pipex *pipex)
 	i = 0;
 	close_pipes(pipex);
 	while (i++ < pipex->cmdn)
-	{
-		if (i == pipex->cmdn)
-			waitpid(-1, NULL, 0);
-		else
-			waitpid(-1, &exit_code, 0);
-	}
+		waitpid(-1, &exit_code, 0);
 	close(pipex->infile);
 	close(pipex->outfile);
 	free_char_array(pipex->path);

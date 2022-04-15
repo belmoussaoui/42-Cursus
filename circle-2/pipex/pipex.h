@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/14 15:25:04 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/15 16:26:28 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include "utils/ft_utils.h"
 
 typedef struct s_pipex
 {
@@ -27,12 +28,6 @@ typedef struct s_pipex
 	char	**path;
 	char	**envp;
 }	t_pipex;
-
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-char	**ft_split(char const *s, char c);
-char	*ft_strjoin(char const *s1, char const *s2);
 
 void	setup_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 int		run_pipex(t_pipex *pipex);
