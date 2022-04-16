@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/15 16:26:28 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/16 19:54:08 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ int		run_pipex(t_pipex *pipex);
 void	free_char_array(char **array);
 void	write_error(char *message);
 char	*get_command(t_pipex *pipex, char *command);
+
+
+int	is_heredoc(t_pipex *pipex);
+void handle_heredoc(t_pipex *pipex);
 
 #endif

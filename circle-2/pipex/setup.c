@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/14 19:22:00 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/16 19:41:42 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,14 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 	pipex->envp = envp;
 	if (pipex->cmdn <= 1)
 		write_error("missing commands");
-	pipex->infile = open(argv[1], O_RDONLY);
-	if (pipex->infile < 0)
-		write_error("missing input file");
+	if (is_heredoc(pipex))
+		handle_heredoc(pipex);
+	else
+	{
+		pipex->infile = open(argv[1], O_RDONLY);
+		if (pipex->infile < 0)
+			write_error("missing input file");
+	}
 	pipex->outfile = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
 		exit(EXIT_FAILURE);
