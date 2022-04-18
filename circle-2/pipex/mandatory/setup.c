@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 13:38:34 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:12:27 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ char	*get_command(t_pipex *pipex, char *command)
 		path = ft_strjoin(pipex->path[i], slash_command);
 		if (path == NULL)
 			exit(EXIT_FAILURE);
+		free(slash_command);
 		if (access(path, X_OK) == 0)
 			return (path);
 		free(path);
-		free(slash_command);
 		i++;
 	}
 	return (NULL);
@@ -89,7 +89,7 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 	pipex->argv = argv;
 	pipex->envp = envp;
 	if (pipex->cmdn != 2)
-		write_error("only two commands", EXIT_FAILURE);
+		write_error("the number of arguments is invalid", EXIT_FAILURE);
 	pipex->infile = open(argv[1], O_RDONLY);
 	if (pipex->infile < 0)
 		write_error("missing input file", EXIT_FAILURE);

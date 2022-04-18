@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 15:39:56 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 14:34:34 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:59:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	setup_heredoc(t_pipex *pipex)
 
 	pipex->cmdn = pipex->argc - 4;
 	if (pipex->cmdn < 2)
-		write_error("only two commands for heredoc", EXIT_FAILURE);
-	pipex->infile = open("heredoc", O_CREAT | O_TRUNC | O_WRONLY, 00644);
+		write_error("the number of arguments is invalid", EXIT_FAILURE);
+	pipex->infile = open(".heredoc", O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->infile < 0)
 		exit(EXIT_FAILURE);
 	while (42)
@@ -40,7 +40,7 @@ void	setup_heredoc(t_pipex *pipex)
 	}
 	free(line);
 	close(pipex->infile);
-	pipex->infile = open("heredoc", O_RDONLY, 00644);
+	pipex->infile = open(".heredoc", O_RDONLY, 00644);
 	if (pipex->infile < 0)
 		exit(EXIT_FAILURE);
 }

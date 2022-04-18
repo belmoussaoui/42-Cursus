@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 14:10:47 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:29:24 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	terminate_pipex(int *pids, t_pipex *pipex)
 	free_char_array(pipex->path);
 	free(pipex->pipes);
 	free(pids);
+	if (is_heredoc(pipex))
+		unlink(".heredoc");
 	return (WEXITSTATUS(exit_code));
 }
 
