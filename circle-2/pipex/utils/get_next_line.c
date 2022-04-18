@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 12:24:01 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/15 16:13:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/17 11:40:57 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,21 +89,14 @@ static char	*read_line(int fd, char *reader)
 	{
 		nbytes = read(fd, buf, BUFFER_SIZE);
 		if (nbytes < 0)
-		{
-			free(buf);
-			free(reader);
-			return (NULL);
-		}
+			exit(EXIT_FAILURE);
 		if (nbytes == 0)
 			break ;
 		buf[nbytes] = '\0';
 		temp = ft_strjoin(reader, buf);
 		free(reader);
 		if (temp == NULL)
-		{
-			free(buf);
-			return (NULL);
-		}
+			exit(EXIT_FAILURE);
 		reader = temp;
 	}
 	free(buf);

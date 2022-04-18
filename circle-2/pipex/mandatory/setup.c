@@ -6,11 +6,37 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/16 19:41:42 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:38:34 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+char	*get_command(t_pipex *pipex, char *command)
+{
+	int		i;
+	char	*path;
+	char	*slash_command;
+
+	if (access(command, X_OK) == 0)
+		return (command);
+	i = 0;
+	while (pipex->path[i])
+	{
+		slash_command = ft_strjoin("/", command);
+		if (slash_command == NULL)
+			exit(EXIT_FAILURE);
+		path = ft_strjoin(pipex->path[i], slash_command);
+		if (path == NULL)
+			exit(EXIT_FAILURE);
+		if (access(path, X_OK) == 0)
+			return (path);
+		free(path);
+		free(slash_command);
+		i++;
+	}
+	return (NULL);
+}
 
 void	free_char_array(char **array)
 {
@@ -62,16 +88,11 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 	pipex->cmdn = argc - 3;
 	pipex->argv = argv;
 	pipex->envp = envp;
-	if (pipex->cmdn <= 1)
-		write_error("missing commands");
-	if (is_heredoc(pipex))
-		handle_heredoc(pipex);
-	else
-	{
-		pipex->infile = open(argv[1], O_RDONLY);
-		if (pipex->infile < 0)
-			write_error("missing input file");
-	}
+	if (pipex->cmdn != 2)
+		write_error("only two commands", EXIT_FAILURE);
+	pipex->infile = open(argv[1], O_RDONLY);
+	if (pipex->infile < 0)
+		write_error("missing input file", EXIT_FAILURE);
 	pipex->outfile = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
 		exit(EXIT_FAILURE);

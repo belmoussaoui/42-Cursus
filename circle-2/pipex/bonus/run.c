@@ -6,37 +6,11 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/15 15:39:22 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/17 14:10:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-char	*get_command(t_pipex *pipex, char *command)
-{
-	int		i;
-	char	*path;
-	char	*slash_command;
-
-	if (access(command, X_OK) == 0)
-		return (command);
-	i = 0;
-	while (pipex->path[i])
-	{
-		slash_command = ft_strjoin("/", command);
-		if (slash_command == NULL)
-			exit(EXIT_FAILURE);
-		path = ft_strjoin(pipex->path[i], slash_command);
-		if (path == NULL)
-			exit(EXIT_FAILURE);
-		if (access(path, X_OK) == 0)
-			return (path);
-		free(path);
-		free(slash_command);
-		i++;
-	}
-	return (NULL);
-}
 
 void	close_pipes(t_pipex *pipex)
 {
@@ -65,12 +39,15 @@ void	run_child(t_pipex *pipex, int index)
 	int		*pipes;
 
 	pipes = pipex->pipes;
-	args = ft_split(pipex->argv[2 + index], ' ');
+	if (is_heredoc(pipex))
+		args = ft_split(pipex->argv[3 + index], ' ');
+	else
+		args = ft_split(pipex->argv[2 + index], ' ');
 	if (!args)
 		exit(EXIT_FAILURE);
 	command = get_command(pipex, args[0]);
 	if (command == NULL)
-		write_error("command not found\n");
+		write_error("command not found", 127);
 	if (index == 0)
 		handle_pipe(pipex->infile, pipes[1], pipex);
 	else if (index == pipex->cmdn - 1)
@@ -84,29 +61,45 @@ void	run_child(t_pipex *pipex, int index)
 	}
 }
 
-int	run_pipex(t_pipex *pipex)
+int	terminate_pipex(int *pids, t_pipex *pipex)
 {
-	int	pid;
-	int	exit_code;
 	int	i;
+	int	exit_code;
 
-	i = 0;
-	while (i < pipex->cmdn)
-	{
-		pid = fork();
-		if (pid < 0)
-			exit(EXIT_FAILURE);
-		if (pid == 0)
-			run_child(pipex, i);
-		i++;
-	}
 	i = 0;
 	close_pipes(pipex);
 	while (i++ < pipex->cmdn)
-		waitpid(-1, &exit_code, 0);
+	{
+		if (i == pipex->cmdn)
+			waitpid(pids[i - 1], &exit_code, 0);
+		else
+			waitpid(pids[i - 1], NULL, 0);
+	}
 	close(pipex->infile);
 	close(pipex->outfile);
 	free_char_array(pipex->path);
 	free(pipex->pipes);
+	free(pids);
 	return (WEXITSTATUS(exit_code));
+}
+
+int	run_pipex(t_pipex *pipex)
+{
+	int	*pids;
+	int	i;
+
+	i = 0;
+	pids = malloc(sizeof(int) * pipex->cmdn);
+	if (!pids)
+		exit(EXIT_FAILURE);
+	while (i < pipex->cmdn)
+	{
+		pids[i] = fork();
+		if (pids[i] < 0)
+			exit(EXIT_FAILURE);
+		if (pids[i] == 0)
+			run_child(pipex, i);
+		i++;
+	}
+	return (terminate_pipex(pids, pipex));
 }

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/16 19:54:08 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/17 13:25:01 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "utils/ft_utils.h"
+# include "../utils/ft_utils.h"
 
 typedef struct s_pipex
 {
@@ -32,11 +32,7 @@ typedef struct s_pipex
 void	setup_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
 int		run_pipex(t_pipex *pipex);
 void	free_char_array(char **array);
-void	write_error(char *message);
+void	write_error(char *message, int code);
 char	*get_command(t_pipex *pipex, char *command);
-
-
-int	is_heredoc(t_pipex *pipex);
-void handle_heredoc(t_pipex *pipex);
 
 #endif
