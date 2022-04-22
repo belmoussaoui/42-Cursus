@@ -6,11 +6,17 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 16:52:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/18 17:54:29 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:20:45 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	exit_perror(char *message)
+{
+	perror(message);
+	exit(EXIT_FAILURE);
+}
 
 void	write_error(char *message, int code)
 {

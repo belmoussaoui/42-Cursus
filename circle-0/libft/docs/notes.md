@@ -71,3 +71,8 @@ https://stackoverflow.com/a/5188496/17355718
 * [Tripouille/libfTester](https://github.com/Tripouille/libftTester)
 * [ska42/libft-war-machine](https://github.com/ska42/libft-war-machine)
 * [alelievr/libft-unit-test](https://github.com/alelievr/libft-unit-test)
+
+- ft_atoi (overflow)
+- ft_lstdelone (toujours free la liste)
+- ft_split static et free
+- ft_memmove explication

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/18 18:12:48 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:42:40 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_command(t_pipex *pipex, char *command)
 	char	*path;
 	char	*slash_command;
 
-	if (access(command, X_OK) == 0)
+	if (access(command, F_OK) == 0)
 		return (command);
 	i = 0;
 	while (pipex->path[i])
@@ -30,7 +30,7 @@ char	*get_command(t_pipex *pipex, char *command)
 		if (path == NULL)
 			exit(EXIT_FAILURE);
 		free(slash_command);
-		if (access(path, X_OK) == 0)
+		if (access(path, F_OK) == 0)
 			return (path);
 		free(path);
 		i++;
@@ -91,17 +91,7 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 	if (is_heredoc(pipex))
 		setup_heredoc(pipex);
 	else
-	{
-		pipex->cmdn = pipex->argc - 3;
-		if (pipex->cmdn <= 1)
-			write_error("the number of arguments is invalid", EXIT_FAILURE);
-		pipex->infile = open(pipex->argv[1], O_RDONLY);
-		if (pipex->infile < 0)
-			write_error("missing input file", EXIT_FAILURE);
-	}
-	pipex->outfile = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 00644);
-	if (pipex->outfile < 0)
-		exit(EXIT_FAILURE);
+		setup_files(pipex, argc, argv);
 	pipex->path = ft_split(find_path_value(envp), ':');
 	if (!pipex->path)
 		exit(EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 13:25:01 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:18:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		run_pipex(t_pipex *pipex);
 void	free_char_array(char **array);
 void	write_error(char *message, int code);
 char	*get_command(t_pipex *pipex, char *command);
+void	exit_perror(char *message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:26:15 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 14:02:50 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:18:52 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ void	write_error(char *message, int code);
 char	*get_command(t_pipex *pipex, char *command);
 int		is_heredoc(t_pipex *pipex);
 void	setup_heredoc(t_pipex *pipex);
+void	setup_files(t_pipex *pipex, int argc, char **argv);
+void	exit_perror(char *message);
 
 #endif

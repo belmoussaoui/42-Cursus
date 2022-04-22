@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 15:09:07 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/15 15:31:40 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:40:40 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_putnbr(long long d, int i, char* base, int len)
 	return (i);
 }
 
-int ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int i = 0;
 
@@ -49,7 +49,7 @@ int ft_putstr(char *str)
 	return (i);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list arg;
 	va_start(arg, format);
@@ -86,5 +86,6 @@ int ft_printf(const char *format, ...)
 		}
 		format++;
 	}
+	va_end(arg);
 	return (i);
 }

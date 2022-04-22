@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 17:57:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/18 18:12:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/21 15:46:22 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_command(t_pipex *pipex, char *command)
 	char	*path;
 	char	*slash_command;
 
-	if (access(command, X_OK) == 0)
+	if (access(command, F_OK) == 0)
 		return (command);
 	i = 0;
 	while (pipex->path[i])
@@ -30,7 +30,7 @@ char	*get_command(t_pipex *pipex, char *command)
 		if (path == NULL)
 			exit(EXIT_FAILURE);
 		free(slash_command);
-		if (access(path, X_OK) == 0)
+		if (access(path, F_OK) == 0)
 			return (path);
 		free(path);
 		i++;
@@ -95,7 +95,7 @@ void	setup_pipex(t_pipex *pipex, int argc, char **argv, char**envp)
 		write_error("missing input file", EXIT_FAILURE);
 	pipex->outfile = open(argv[argc - 1], O_CREAT | O_TRUNC | O_WRONLY, 00644);
 	if (pipex->outfile < 0)
-		exit(EXIT_FAILURE);
+		exit_perror("outfile");
 	pipex->path = ft_split(find_path_value(envp), ':');
 	if (!pipex->path)
 		exit(EXIT_FAILURE);

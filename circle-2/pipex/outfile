@@ -1,4 +1,0 @@
-#include "pipex.h"
-	t_pipex	pipex;
-	setup_pipex(&pipex, argc, argv, envp);
-	exit_code = run_pipex(&pipex);

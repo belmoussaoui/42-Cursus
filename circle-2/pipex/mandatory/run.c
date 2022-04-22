@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 19:02:34 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/17 14:13:00 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:34:37 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	run_pipex(t_pipex *pipex)
 	{
 		pids[i] = fork();
 		if (pids[i] < 0)
-			exit(EXIT_FAILURE);
+			exit_perror("fork");
 		if (pids[i] == 0)
 			run_child(pipex, i);
 		i++;
