@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 18:52:58 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/04/23 19:03:12 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/01 15:40:24 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	check_arg(char *arg)
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
-			exit_message("args is not a number", EXIT_FAILURE);
+			return (exit_with_message("an argument is not valid", -1));
 		res = res * 10 + arg[i] - '0';
 		i++;
 		if (res > INT_MAX)
-			exit_message("args is too large", EXIT_FAILURE);
+			return (exit_with_message("an argument is too large", -1));
 	}
 	return (res);
 }
