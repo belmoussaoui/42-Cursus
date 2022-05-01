@@ -6,14 +6,14 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:10:16 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/01 15:41:57 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/01 18:54:46 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	exit_with_message(char *message, int status)
+int	exit_with_message(char *message)
 {
 	printf("%s\n", message);
-	return (status);
+	return (0);
 }

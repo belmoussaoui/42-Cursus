@@ -6,11 +6,11 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 17:48:58 by bel-mous          #+#    #+#              #
-#    Updated: 2022/05/01 15:25:44 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/05/01 19:49:49 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c check_arg.c debug.c exit.c
+SRCS = main.c setup.c debug.c exit.c check_arg.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
