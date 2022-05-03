@@ -6,11 +6,11 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 17:48:58 by bel-mous          #+#    #+#              #
-#    Updated: 2022/05/01 19:49:49 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/05/03 18:13:43 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c setup.c debug.c exit.c check_arg.c
+SRCS = main.c setup.c debug.c exit.c check_arg.c philo.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@ -pthread
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)

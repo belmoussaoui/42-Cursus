@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/01 19:50:15 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:56:51 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	is_valid_args(int argc, t_game *game)
 {
-	if (game->number_of_philo < 2)
+	if (game->number_of_philo < 2 || game->number_of_philo > 200)
 		return (exit_with_message("number of philosophers is invalid"));
-	if (game->time_to_die <= 0 || game->time_to_eat <= 0
-		|| game->time_to_sleep <= 0)
+	if (game->time_to_die < 60 || game->time_to_eat < 60
+		|| game->time_to_sleep < 60)
 		return (exit_with_message("time argument is invalid"));
 	if (argc == 6 && game->number_of_eat <= 0)
 		return (exit_with_message("number of eat is invalid"));
@@ -51,6 +51,7 @@ int	setup_philo(t_game *game)
 		game->philo[i].left_fork = i % game->number_of_philo;
 		game->philo[i].right_fork = (i + 1) % game->number_of_philo;
 		game->philo[i].meal_count = 0;
+		game->philo[i].game = game;
 		i++;
 	}
 	return (1);

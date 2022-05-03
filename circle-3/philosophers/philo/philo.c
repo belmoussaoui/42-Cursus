@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg.c                                        :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/01 19:48:33 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/03 15:28:05 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/05/03 18:10:18 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/05/03 19:13:20 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_isdigit(int c)
+void	*philo_life(t_philo *philo)
 {
-	return (c >= '0' && c <= '9');
+	print_philo(philo);
+	return (NULL);
 }
 
-int	check_arg(char *arg)
+int	play_philo(t_game *game)
 {
-	int				i;
-	unsigned long	res;
+	int	i;
 
 	i = 0;
-	res = 0;
-	while (arg[i])
+	while (i < game->number_of_philo)
 	{
-		if (!ft_isdigit(arg[i]))
-			return (exit_with_message("an argument is not valid"));
-		res = res * 10 + arg[i] - '0';
+		if (pthread_create(&game->philo[i].thread, NULL, (void *)philo_life,
+				&game->philo[i]))
+			return (0);
 		i++;
-		if (res > INT_MAX)
-			return (exit_with_message("an argument is too large"));
 	}
-	return (res);
+	i = 0;
+	while (i < game->number_of_philo)
+	{
+		pthread_join(game->philo[i].thread, NULL);
+		i++;
+	}
+	return (1);
 }

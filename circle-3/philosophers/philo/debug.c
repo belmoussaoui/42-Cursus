@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:26:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/01 19:46:03 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:48:29 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,15 @@ void	print_args(t_game *game)
 	printf("number_of_eat = %d\n", game->number_of_eat);
 }
 
-void	print_philo(t_philo *philo, int number_of_philo)
+void	print_philo(t_philo *philo)
 {
 	int	i;
 
 	i = 0;
 	printf("\n");
-	while (i < number_of_philo)
-	{
-		printf("philo_id = %d\n", philo[i].id);
-		printf("left_fork = %d\n", philo[i].left_fork);
-		printf("right_fork = %d\n", philo[i].right_fork);
-		printf("\n");
-		i++;
-	}
+	printf("philo_id = %d\n", philo[i].id);
+	printf("left_fork = %d\n", philo[i].left_fork);
+	printf("right_fork = %d\n", philo[i].right_fork);
+	printf("\n");
+	i++;
 }

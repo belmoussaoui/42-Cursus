@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:49:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/01 19:46:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/03 18:10:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 
 	if (!setup(argc, argv, &game))
 		return (1);
-	print_args(&game);
-	print_philo(game.philo, game.number_of_philo);
+	play_philo(&game);
 	return (0);
 }
