@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 17:49:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/05 16:44:40 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/05/05 16:36:42 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/05/05 16:47:24 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+long	get_timestamp_in_ms(long start_time)
 {
-	t_dinner	dinner;
+	struct timeval	time;
+	long			timestamp_in_ms;
 
-	if (!setup(argc, argv, &dinner))
-		return (1);
-	play_philo(&dinner);
-	return (0);
+	gettimeofday(&time, NULL);
+	timestamp_in_ms = (time.tv_sec * 1000) + (time.tv_usec) / 1000 - start_time;
+	return (timestamp_in_ms);
 }

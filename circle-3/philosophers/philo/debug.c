@@ -6,19 +6,20 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:26:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/03 18:48:29 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:52:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_args(t_game *game)
+void	print_dinner(t_dinner *dinner)
 {
-	printf("number_of_philo = %d\n", game->number_of_philo);
-	printf("time_to_die = %d\n", game->time_to_die);
-	printf("time_to_eat = %d\n", game->time_to_eat);
-	printf("time_to_sleep = %d\n", game->time_to_sleep);
-	printf("number_of_eat = %d\n", game->number_of_eat);
+	printf("number_of_philo = %d\n", dinner->number_of_philo);
+	printf("time_to_die = %d\n", dinner->time_to_die);
+	printf("time_to_eat = %d\n", dinner->time_to_eat);
+	printf("time_to_sleep = %d\n", dinner->time_to_sleep);
+	printf("number_of_eat = %d\n", dinner->number_of_eat);
+	printf("start_time = %ld\n", dinner->start_time);
 }
 
 void	print_philo(t_philo *philo)
