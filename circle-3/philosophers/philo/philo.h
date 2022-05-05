@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/05 16:45:08 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/05 19:09:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	int				meal_count;
+	int				time_last_meal;
 	int				state;
 	struct s_dinner	*dinner;
 }	t_philo;
@@ -54,6 +55,8 @@ typedef struct s_dinner
 	int				number_of_eat;
 	long			start_time;
 	pthread_mutex_t	mutex_print;
+	pthread_mutex_t	*mutex_forks;
+	int				in_progress;
 }	t_dinner;
 
 int		check_arg(char *arg);

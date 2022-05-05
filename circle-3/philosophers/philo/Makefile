@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 17:48:58 by bel-mous          #+#    #+#              #
-#    Updated: 2022/05/05 16:43:58 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/05/05 19:24:54 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = main.c setup.c debug.c exit.c check_arg.c philo.c time.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=thread
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/05 16:47:14 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:58:33 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,37 @@ int	setup_philo(t_dinner *dinner)
 {
 	int	i;
 
-	dinner->philo = malloc(sizeof(dinner->philo) * dinner->number_of_philo);
+	dinner->philo = malloc(sizeof(t_philo) * dinner->number_of_philo);
 	if (!dinner->philo)
 		return (0);
 	i = 0;
 	while (i < dinner->number_of_philo)
 	{
 		dinner->philo[i].id = i + 1;
-		dinner->philo[i].left_fork = i % dinner->number_of_philo;
+		dinner->philo[i].left_fork = i;
 		dinner->philo[i].right_fork = (i + 1) % dinner->number_of_philo;
 		dinner->philo[i].meal_count = 0;
 		dinner->philo[i].dinner = dinner;
+		i++;
+	}
+	return (1);
+}
+
+int	setup_mutexes(t_dinner *dinner)
+{
+	int	i;
+
+	if (pthread_mutex_init(&dinner->mutex_print, NULL) != 0)
+		return (0);
+	dinner->mutex_forks = malloc(sizeof(pthread_mutex_t)
+			* dinner->number_of_philo);
+	if (!dinner->mutex_forks)
+		return (0);
+	i = 0;
+	while (i < dinner->number_of_philo)
+	{
+		if (pthread_mutex_init(dinner->mutex_forks + i, NULL) != 0)
+			return (0);
 		i++;
 	}
 	return (1);
@@ -63,7 +83,7 @@ int	setup(int argc, char **argv, t_dinner *dinner)
 		return (0);
 	if (!setup_philo(dinner))
 		return (0);
-	if (pthread_mutex_init(&dinner->mutex_print, NULL) != 0)
+	if (!setup_mutexes(dinner))
 		return (0);
 	return (1);
 }
