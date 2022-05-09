@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/05 18:58:33 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:43:31 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	setup_args(int argc, char **argv, t_dinner *dinner)
 	dinner->time_to_sleep = check_arg(argv[4]);
 	if (argc == 6)
 		dinner->number_of_eat = check_arg(argv[5]);
+	else
+		dinner->number_of_eat = 0;
 	return (is_valid_args(argc, dinner));
 }
 

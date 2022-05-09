@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/05 19:09:09 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:47:43 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_dinner
 	long			start_time;
 	pthread_mutex_t	mutex_print;
 	pthread_mutex_t	*mutex_forks;
+	pthread_mutex_t	mutex_dead;
 	int				in_progress;
 }	t_dinner;
 
@@ -69,6 +70,7 @@ int		setup(int argc, char **argv, t_dinner *dinner);
 
 int		play_philo(t_dinner *dinner);
 
-long	get_timestamp_in_ms(long start_time);
+int		get_timestamp_in_ms(long start_time);
+void	ft_sleep(unsigned long duration);
 
 #endif
