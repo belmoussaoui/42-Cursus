@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:10:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/11 19:37:29 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/11 21:17:13 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	philo_loop(t_philo *philo)
 void	*philo_life(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		ft_sleep(100);
+		ft_sleep(5git a0);
 	while (42)
 	{
 		pthread_mutex_lock(&philo->dinner->mutex_print);
