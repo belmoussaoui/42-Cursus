@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/09 18:47:43 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/11 17:58:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@
 
 struct	s_dinner;
 
-enum e_enum
-{
-	FORK,
-	EAT,
-	THINK,
-	SLEEP,
-	DEAD
-};
-
 typedef struct s_philo
 {
 	pthread_t		thread;
@@ -41,7 +32,6 @@ typedef struct s_philo
 	int				right_fork;
 	int				meal_count;
 	int				time_last_meal;
-	int				state;
 	struct s_dinner	*dinner;
 }	t_philo;
 
@@ -72,5 +62,8 @@ int		play_philo(t_dinner *dinner);
 
 int		get_timestamp_in_ms(long start_time);
 void	ft_sleep(unsigned long duration);
+
+void	print_log(t_philo *philo, char *message);
+void	check_dead(t_dinner *dinner);
 
 #endif

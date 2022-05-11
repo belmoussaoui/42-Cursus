@@ -6,15 +6,15 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 17:48:58 by bel-mous          #+#    #+#              #
-#    Updated: 2022/05/09 18:39:38 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/05/11 18:49:04 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c setup.c debug.c exit.c check_arg.c philo.c time.c
+SRCS = main.c setup.c debug.c exit.c check_arg.c philo.c time.c check_dead.c
 OBJS = $(SRCS:.c=.o)
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

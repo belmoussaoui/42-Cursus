@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/09 18:43:31 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:45:03 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	setup_mutexes(t_dinner *dinner)
 			return (0);
 		i++;
 	}
+	if (pthread_mutex_init(&dinner->mutex_dead, NULL) != 0)
+		return (0);
 	return (1);
 }
 
