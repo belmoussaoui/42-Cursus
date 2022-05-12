@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/11 17:58:41 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:18:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int		setup(int argc, char **argv, t_dinner *dinner);
 int		play_philo(t_dinner *dinner);
 
 int		get_timestamp_in_ms(long start_time);
-void	ft_sleep(unsigned long duration);
+void	ft_sleep(unsigned long duration, t_dinner *dinner);
 
 void	print_log(t_philo *philo, char *message);
 void	check_dead(t_dinner *dinner);
+
+void	clear_dinner(t_dinner *dinner);
 
 #endif

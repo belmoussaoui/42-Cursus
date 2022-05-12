@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/11 15:45:03 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:40:49 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_valid_args(int argc, t_dinner *dinner)
 {
-	if (dinner->number_of_philo < 2 || dinner->number_of_philo > 200)
+	if (dinner->number_of_philo < 1 || dinner->number_of_philo > 200)
 		return (exit_with_message("number of philosophers is invalid"));
 	if (dinner->time_to_die < 60 || dinner->time_to_eat < 60
 		|| dinner->time_to_sleep < 60)

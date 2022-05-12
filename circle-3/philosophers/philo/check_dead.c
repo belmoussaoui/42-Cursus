@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:49:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/11 21:13:21 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/12 13:16:29 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	check_is_starving(t_dinner *dinner, t_philo *philo)
 {
+	long	timestamp_in_ms;
+
 	if (dinner->time_to_die < get_timestamp_in_ms(dinner->start_time)
 		- philo->time_last_meal)
 	{
-		print_log(dinner->philo, "died");
 		pthread_mutex_lock(&dinner->mutex_print);
+		timestamp_in_ms = get_timestamp_in_ms(philo->dinner->start_time);
+		printf("%ld %d %s\n", timestamp_in_ms, philo->id, "died");
 		dinner->in_progress = 0;
 		pthread_mutex_unlock(&dinner->mutex_print);
 	}

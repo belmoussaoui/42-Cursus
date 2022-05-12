@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:10:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/11 21:17:13 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:19:21 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,26 @@ void	philo_loop(t_philo *philo)
 	philo->time_last_meal = get_timestamp_in_ms(philo->dinner->start_time);
 	philo->meal_count++;
 	pthread_mutex_unlock(&philo->dinner->mutex_dead);
-	ft_sleep(philo->dinner->time_to_eat);
+	ft_sleep(philo->dinner->time_to_eat, philo->dinner);
 	pthread_mutex_unlock(&philo->dinner->mutex_forks[philo->left_fork]);
 	pthread_mutex_unlock(&philo->dinner->mutex_forks[philo->right_fork]);
 	print_log(philo, "is sleeping");
-	ft_sleep(philo->dinner->time_to_sleep);
+	ft_sleep(philo->dinner->time_to_sleep, philo->dinner);
 	print_log(philo, "is thinking");
 }
 
 void	*philo_life(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
-		ft_sleep(5git a0);
+		ft_sleep(50, philo->dinner);
 	while (42)
 	{
 		pthread_mutex_lock(&philo->dinner->mutex_print);
 		if (!philo->dinner->in_progress)
 			break ;
 		pthread_mutex_unlock(&philo->dinner->mutex_print);
-		philo_loop(philo);
+		if (philo->dinner->number_of_philo > 1)
+			philo_loop(philo);
 	}
 	pthread_mutex_unlock(&philo->dinner->mutex_print);
 	return (NULL);

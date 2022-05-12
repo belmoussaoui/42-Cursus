@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 16:36:42 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/09 18:48:10 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:21:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,22 @@ int	get_timestamp_in_ms(long start_time)
 	return (timestamp_in_ms);
 }
 
-void	ft_sleep(unsigned long duration)
+void	ft_sleep(unsigned long duration, t_dinner *dinner)
 {
 	unsigned long	start;
 
 	start = get_timestamp_in_ms(0);
-	while (1)
+	while (42)
 	{
 		if (get_timestamp_in_ms(0) - start >= duration)
 			break ;
+		pthread_mutex_lock(&dinner->mutex_print);
+		if (!dinner->in_progress)
+		{
+			pthread_mutex_unlock(&dinner->mutex_print);
+			break ;
+		}
+		pthread_mutex_unlock(&dinner->mutex_print);
 		usleep(100);
 	}
 }
