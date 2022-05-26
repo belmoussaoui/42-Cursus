@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/18 17:33:12 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 18:16:14 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,26 @@
 # include <pthread.h>
 # include <unistd.h>
 # include <sys/time.h>
-
-struct	s_dinner;
-
-typedef struct s_philo
-{
-	pthread_t		thread;
-	int				id;
-	int				left_fork;
-	int				right_fork;
-	int				meal_count;
-	int				time_last_meal;
-	struct s_dinner	*dinner;
-}	t_philo;
+# include <semaphore.h>
+# include <signal.h>
+#include <stdatomic.h>
 
 typedef struct s_dinner
 {
-	t_philo			*philo;
+	pthread_t		thread;
+	int				philo_id;
+	atomic_int		meal_count;
+	atomic_int		time_last_meal;
 	int				number_of_philo;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				number_of_eat;
+	atomic_int		number_of_eat;
 	long			start_time;
-	pthread_mutex_t	mutex_print;
-	pthread_mutex_t	*mutex_forks;
-	pthread_mutex_t	mutex_dead;
-	int				in_progress;
+	sem_t			*sem_print;
+	sem_t			*sem_forks;
+	sem_t			*sem_dead;
+	atomic_int		in_progress;
 }	t_dinner;
 
 int		check_arg(char *arg);
@@ -57,10 +50,10 @@ int		setup(int argc, char **argv, t_dinner *dinner);
 
 int		play_philo(t_dinner *dinner);
 
-int		get_timestamp_in_ms(long start_time);
+long	get_timestamp_in_ms(long start_time);
 void	ft_sleep(unsigned long duration, t_dinner *dinner);
 
-void	print_log(t_philo *philo, char *message);
+void	print_log(t_dinner *dinner, char *message);
 void	check_dead(t_dinner *dinner);
 
 void	clear_dinner(t_dinner *dinner);

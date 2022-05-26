@@ -6,13 +6,13 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/23 17:48:58 by bel-mous          #+#    #+#              #
-#    Updated: 2022/05/26 18:37:48 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/05/26 17:59:49 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c setup.c exit.c check_arg.c philo.c time.c check_dead.c clear.c
+SRCS = main.c setup.c check_arg.c exit.c philo.c check_dead.c time.c clear.c
 OBJS = $(SRCS:.c=.o)
-NAME = philo
+NAME = philo_bonus
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 

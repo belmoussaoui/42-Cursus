@@ -6,17 +6,17 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:31:20 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/01/08 14:32:16 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:28:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	count_split(char const *s, char c)
+static int count_split(char const *s, char c)
 {
-	int	count;
-	int	i;
-	int	trigger;
+	int count;
+	int i;
+	int trigger;
 
 	count = 0;
 	trigger = 1;
@@ -35,9 +35,9 @@ static	int	count_split(char const *s, char c)
 	return (count);
 }
 
-static	int	count_char(char const *s, char c)
+static int count_char(char const *s, char c)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s[i] && s[i] != c)
@@ -45,9 +45,9 @@ static	int	count_char(char const *s, char c)
 	return (i);
 }
 
-static	void	*free_strings(char **strings, int current)
+static void *free_strings(char **strings, int current)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < current)
@@ -59,11 +59,11 @@ static	void	*free_strings(char **strings, int current)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char **ft_split(char const *s, char c)
 {
-	int		i;
-	char	**res;
-	int		current;
+	int i;
+	char **res;
+	int current;
 
 	if (s == NULL)
 		return (NULL);
