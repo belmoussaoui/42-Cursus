@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:10:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/26 18:01:57 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:58:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	play_philo(t_dinner *dinner)
 	if (!pid)
 		exit(1);
 	dinner->start_time = get_timestamp_in_ms(0);
+	dinner->time_last_meal = get_timestamp_in_ms(dinner->start_time);
 	while (i < dinner->number_of_philo)
 	{
 		dinner->philo_id = i + 1;
@@ -83,12 +84,9 @@ int	play_philo(t_dinner *dinner)
 		i++;
 	}
 	waitpid(-1, NULL, 0);
-	i = 0;
-	while (i < dinner->number_of_philo)
-	{
+	i = -1;
+	while (++i < dinner->number_of_philo)
 		kill(pid[i], SIGKILL);
-		i++;
-	}
 	free(pid);
 	return (1);
 }

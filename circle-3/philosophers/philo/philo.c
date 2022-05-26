@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 18:10:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/23 17:04:36 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:25:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	play_philo(t_dinner *dinner)
 	dinner->start_time = get_timestamp_in_ms(0);
 	while (i < dinner->number_of_philo)
 	{
+		dinner->philo[i].time_last_meal
+			= get_timestamp_in_ms(dinner->start_time);
 		if (pthread_create(&dinner->philo[i].thread, NULL, (void *)philo_life,
 				&dinner->philo[i]))
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 17:49:32 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/26 17:55:09 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:33:32 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@ void	check_is_starving(t_dinner *dinner)
 		sem_wait(dinner->sem_print);
 		timestamp_in_ms = get_timestamp_in_ms(dinner->start_time);
 		printf("%ld %d %s\n", timestamp_in_ms, dinner->philo_id, "died");
-		dinner->in_progress = 0;
 		exit(1);
 	}
 }
 
 void	check_is_dinner_end(t_dinner *dinner)
 {
-	sem_wait(dinner->sem_dead);
-	sem_wait(dinner->sem_print);
-	if (dinner->meal_count >= dinner->number_of_eat + 1)
+	if (dinner->meal_count > dinner->number_of_eat + 1)
 	{
-		dinner->in_progress = 0;
+		sem_wait(dinner->sem_print);
 		exit(1);
 	}
-	sem_post(dinner->sem_print);
-	sem_post(dinner->sem_dead);
 }
 
 void	check_dead(t_dinner *dinner)
@@ -57,7 +52,9 @@ void	check_dead(t_dinner *dinner)
 		}
 		if (dinner->number_of_eat > 0)
 		{
+			sem_wait(dinner->sem_dead);
 			check_is_dinner_end(dinner);
+			sem_post(dinner->sem_dead);
 		}
 	}
 }

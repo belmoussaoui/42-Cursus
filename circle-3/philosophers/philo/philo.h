@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/18 17:33:12 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:11:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 	int				left_fork;
 	int				right_fork;
 	int				meal_count;
-	int				time_last_meal;
+	long			time_last_meal;
 	struct s_dinner	*dinner;
 }	t_philo;
 
@@ -57,7 +57,7 @@ int		setup(int argc, char **argv, t_dinner *dinner);
 
 int		play_philo(t_dinner *dinner);
 
-int		get_timestamp_in_ms(long start_time);
+long	get_timestamp_in_ms(long start_time);
 void	ft_sleep(unsigned long duration, t_dinner *dinner);
 
 void	print_log(t_philo *philo, char *message);

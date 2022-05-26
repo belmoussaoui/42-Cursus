@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 17:55:25 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/26 18:16:14 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/26 19:58:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 # include <sys/time.h>
 # include <semaphore.h>
 # include <signal.h>
-#include <stdatomic.h>
+# include <stdatomic.h>
 
 typedef struct s_dinner
 {
 	pthread_t		thread;
 	int				philo_id;
 	atomic_int		meal_count;
-	atomic_int		time_last_meal;
+	atomic_long		time_last_meal;
 	int				number_of_philo;
 	int				time_to_die;
 	int				time_to_eat;
