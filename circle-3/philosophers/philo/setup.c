@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 15:43:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/05/12 13:40:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/05/27 18:48:13 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	setup_mutexes(t_dinner *dinner)
 	i = 0;
 	while (i < dinner->number_of_philo)
 	{
-		if (pthread_mutex_init(dinner->mutex_forks + i, NULL) != 0)
+		if (pthread_mutex_init(&dinner->mutex_forks[i], NULL) != 0)
 			return (0);
 		i++;
 	}
