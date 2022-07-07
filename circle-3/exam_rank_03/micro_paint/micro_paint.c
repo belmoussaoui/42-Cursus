@@ -1,148 +1,154 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   micro_paint.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/27 16:25:54 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/05/27 20:24:22 by bel-mous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct drawing drawing, *Pdrawing;
-
-struct drawing
+typedef struct	s_zone
 {
-	int width;
-	int height;
-	char *matrice;
-};
+	int		width;
+	int		height;
+	char	background_char;
+	char	*draw;
+} 	t_zone;
 
-typedef struct rectangle rectangle, *Prectangle;
-
-struct rectangle
+typedef struct s_operation
 {
-	char type;
-	float x;
-	float y;
-	float width;
-	float height;
-	char color;
-};
+	char	type;
+	float	x;
+	float	y;
+	float	width;
+	float	height;
+	char	character;
+} t_operation;
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-int get_info(FILE *file, drawing *drawing)
+int	write_error(char *message)
 {
-	char *tmp;
-	int i;
-	char background;
-
-	if (fscanf(file, "%d %d %c\n", &drawing->width, &drawing->height, &background) == 3)
-	{
-		if ((((drawing->width < 1) || (300 < drawing->width)) || (drawing->height < 1)) || (300 < drawing->height))
-			return (1);
-		tmp = (char *)malloc(drawing->width * drawing->height);
-		drawing->matrice = tmp;
-		if (!drawing->matrice)
-			return (1);
-		i = 0;
-		while (i < drawing->width * drawing->height)
-			drawing->matrice[i++] = background;
-		return (0);
-	}
+	write(1, message, ft_strlen(message));
 	return (1);
 }
 
-int is_in_rectangle(float x, float y, rectangle *rectangle)
+int	check_zone(t_zone *zone)
 {
-	if ((((x < rectangle->x) || (rectangle->x + rectangle->width < x)) || (y < rectangle->y)) || (rectangle->y + rectangle->height < y))
-		return (0);
-	if (((x - rectangle->x < 1.00000000) || ((rectangle->x + rectangle->width) - x < 1.00000000)) ||
-		((y - rectangle->y < 1.00000000 || ((rectangle->y + rectangle->height) - y < 1.00000000))))
-		return (2); // Border
-	return (1);		// Inside
+	return (zone->width > 0 && zone->width <= 300 && zone->height > 0 && zone->height <= 300);
 }
 
-void execute_one(rectangle *rect, drawing *drawing, int x, int y)
+int	get_zone(FILE *file, t_zone *zone)
 {
-	int is_in;
+	int	i;
 
-	is_in = is_in_rectangle((float)x, (float)y, rect);
-	if ((is_in == 2) || ((is_in == 1 && (rect->type == 'R'))))
-		drawing->matrice[x + y * drawing->width] = rect->color;
-	return;
-}
-
-int apply_op(rectangle *rect, drawing *drawing)
-{
-	int j;
-	int i;
-
-	if (((rect->width <= 0.00000000) || (rect->height <= 0.00000000)) || ((rect->type != 'R' && (rect->type != 'r'))))
-		return (1);
 	i = 0;
-	while (i < drawing->width)
+	if (fscanf(file, "%d %d %c\n", &zone->width, &zone->height, &zone->background_char) != 3)
+		return (0);
+	if (!check_zone(zone))
+		return (0);
+	zone->draw = malloc(sizeof(char) * zone->width * zone->height);
+	while (i < zone->width * zone->height)
 	{
-		j = 0;
-		while (j < drawing->height)
-			execute_one(rect, drawing, i, j++);
+		zone->draw[i] = zone->background_char;
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
-void print_info(drawing *zone)
+int check_operation(t_operation *op)
 {
-	int i;
+    return (op->height > 0.0 && op->width > 0.0 && (op->type == 'r' || op->type == 'R'));
+}
+
+void	run_operation(t_operation *op, t_zone *zone)
+{
+    int i;
+	int x;
+	int y;
+    int check = 1.0;
 
 	i = 0;
-	while (i < zone->height)
-		printf("%.*s\n", zone->width, zone->matrice + i++ * zone->width);
+    while (i < zone->height * zone->width)
+    {
+		x = i % zone->width;
+		y = i / zone->width;
+		if ((x < op->x) || (op->x + op->width < x) || (y < op->y) || (op->y + op->height < y))
+		{
+			i++;
+			continue;
+		}
+        if (op->character == 'r')
+		{
+			if (((x - op->x) < check) || ((op->x + op->width) - x < check) || ((y - op->y) < check) || ((op->y + op->height) - y < check))
+			{
+				zone->draw[i] = op->character;
+			}
+		}
+		else {
+			zone->draw[i] = op->character;
+		}
+		i++;
+    }
 }
 
-int execute(FILE *file)
+int	draw_operations(FILE *file, t_zone *zone)
 {
-	int scan_ret;
-	rectangle rect;
-	drawing drawing;
+	t_operation	op;
+	int			input;
 
-	if (!get_info(file, &drawing))
+	while ((input = fscanf(file, "%c %f %f %f %f %c\n", &op.type, &op.x, &op.y, &op.width, &op.height, &op.character)) == 6)
 	{
-		scan_ret = fscanf(file, "%c %f %f %f %f %c\n", &rect.type, &rect.x, &rect.y, &rect.width, &rect.height, &rect.color);
-		while (scan_ret == 6)
-		{
-			if (apply_op(&rect, &drawing))
-				return (1);
-			scan_ret = fscanf(file, "%c %f %f %f %f %c\n", &rect.type, &rect.x, &rect.y, &rect.width, &rect.height, &rect.color);
-		}
-		if (scan_ret == -1)
-		{
-			print_info(&drawing);
+		if (!(check_operation(&op)))
 			return (0);
-		}
+		run_operation(&op, zone);
 	}
+    if (input != EOF)
+        return (0);
 	return (1);
+}
+
+void print_draw(t_zone *zone)
+{
+	int i = 0;
+
+	while (i < zone->height)
+	{
+		write(1, zone->draw + (i * zone->width), zone->width);
+		write(1, "\n", 1);
+		i++;
+	}
 }
 
 int main(int argc, char **argv)
 {
-	int i;
 	FILE *file;
+	t_zone zone;
 
-	if (argc == 2)
-	{
-		file = fopen(argv[1], "r");
-		if (file && !execute(file))
-			return 0;
-		i = ft_strlen("Error: Operation file corrupted\n");
-		write(1, "Error: Operation file corrupted\n", i);
-	}
-	else
-	{
-		i = ft_strlen("Error: argument\n");
-		write(1, "Error: argument\n", i);
-	}
-	return (1);
+	if (argc != 2)
+		return (write_error("Error: argument\n"));
+	file = fopen(argv[1], "r");
+	if (!file)
+		return (write_error("Error: Operation file corrupted\n"));
+	if (!get_zone(file, &zone))
+		return (write_error("Error: Operation file corrupted\n"));
+	if (!(draw_operations(file, &zone)))
+		return (write_error("Error: Operation file corrupted\n"));
+	print_draw(&zone);
+	return (0);
 }
