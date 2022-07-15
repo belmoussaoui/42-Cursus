@@ -6,28 +6,37 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:49:33 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/11 19:15:04 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/15 16:59:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-
 void Contact::initialize() {
-	std::cout << "First name : ";
-	std::getline(std::cin, _firstName);
-	
-	std::cout << "Last name : ";
-	std::getline(std::cin, _lastName);
-	
-	std::cout << "Nickname : ";
-	std::getline(std::cin, _nickname);
-	
-	std::cout << "Phone number : ";
-	std::getline(std::cin, _phoneNumber);
-	
-	std::cout << "Darkest secret : ";
-	std::getline(std::cin, _darkestSecret);
+	getField("FirstName", _firstName);
+	getField("LastName", _lastName);
+	getField("Nickname", _nickname);
+	getField("Phone number", _phoneNumber);
+	getField("Darkest secret", _darkestSecret);
+}
+
+void Contact::getField(std::string message, std::string& field) {
+	do {
+		std::cout << message << " : ";
+		std::getline(std::cin, field);
+	} while (field.empty() || !isValidField(field));
+}
+
+bool Contact::isValidField(std::string field) {
+	for (size_t i = 0; i < field.size(); i++) {
+		if (field[i] == '\t')
+			return false;
+	}
+	for (size_t i = 0; i < field.size(); i++) {
+		if (isalnum(field[i]))
+			return true;
+	}
+	return false;
 }
 
 void Contact::displayField(std::string field) {
@@ -49,6 +58,6 @@ void Contact::displayTab(int index) {
 	std::cout << "|" << std::setw(10) << index;
 	displayField(_firstName);
 	displayField(_lastName);
-	displayField(_nickname.substr(0, 10));
+	displayField(_nickname);
 	std::cout << "|" << std::endl;
 }

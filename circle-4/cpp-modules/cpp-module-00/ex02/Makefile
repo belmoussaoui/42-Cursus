@@ -6,13 +6,13 @@
 #    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 20:43:37 by bel-mous          #+#    #+#              #
-#    Updated: 2022/07/15 16:25:47 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/07/13 18:13:45 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS = test.cpp Account.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = phonebook
+NAME = account
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

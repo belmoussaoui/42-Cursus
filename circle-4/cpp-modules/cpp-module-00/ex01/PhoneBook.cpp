@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:52:52 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/11 19:53:30 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/15 19:50:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void PhoneBook::searchContact() {
 }
 
 void PhoneBook::displayContacts() {
+	std::cout << "|" << std::setw(10) << "index";
+	std::cout << "|" << std::setw(10) << "first name";
+	std::cout << "|" << std::setw(10) << "last name";
+	std::cout << "|" << std::setw(10) << "nickname";
+	std::cout << "|" << std::endl;
 	for (int i = 0; i < 8; i++) {
 		if (i < _index)
 			_contacts[i].displayTab(i);

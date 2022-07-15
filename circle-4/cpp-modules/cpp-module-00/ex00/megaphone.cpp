@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 19:38:45 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/07 20:15:17 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/15 19:42:12 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(int argc, char **argv) {
 		for (size_t j = 0; j < strlen(argv[i]); j++) {
 			std::cout << (char) toupper(argv[i][j]);
 		}
-		std::cout << " ";
 	}
 	std::cout << std::endl;
 	return (0);

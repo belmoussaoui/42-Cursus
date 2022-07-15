@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:25:35 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/11 19:01:11 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/15 20:11:25 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,16 @@ private:
 
 public:
 	void initialize();
+	void getField(std::string, std::string&);
 	void displayLines();
 	void displayField(std::string);
 	void displayTab(int);
+	bool isValidField(std::string);
+	std::string getFirstName() { return _firstName; }
+	std::string getLastName() { return _lastName; }
+	std::string getNickName() { return _nickname; }
+	std::string getPhoneNumber() { return _phoneNumber; }
+	std::string getDarkestSecret() { return _darkestSecret; }
 };
 
 #endif
