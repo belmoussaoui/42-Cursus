@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/15 21:01:08 by bel-mous          #+#    #+#              #
-#    Updated: 2022/07/20 17:05:02 by bel-mous         ###   ########.fr        #
+#    Created: 2022/07/20 10:41:39 by bel-mous          #+#    #+#              #
+#    Updated: 2022/07/20 10:43:50 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = brain
+NAME = fixed
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 21:03:27 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/20 16:57:57 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/07/20 10:48:01 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/07/20 11:48:54 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <string>
 # include <iostream>
 
-class Zombie {
+class Fixed {
 private:
-	std::string _name;
+	int _raw;
+	static int const _nbits = 8;
 
 public:
-	Zombie();
-	Zombie(std::string name);
-	~Zombie();
-	void announce();
+	Fixed();
+	Fixed(const Fixed& fixed);
+	Fixed& operator=(const Fixed& fixed);
+	~Fixed();
+	int getRawBits() const;
+	void setRawBits(int const raw);
 };
-
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
 
 #endif
