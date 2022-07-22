@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/15 21:01:08 by bel-mous          #+#    #+#              #
-#    Updated: 2022/07/22 18:14:31 by bel-mous         ###   ########.fr        #
+#    Created: 2022/07/22 16:23:31 by bel-mous          #+#    #+#              #
+#    Updated: 2022/07/22 18:43:35 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS = main.cpp ClapTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = zombie
+NAME = clapTrap
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
