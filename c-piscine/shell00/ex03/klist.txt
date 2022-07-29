@@ -1,0 +1,8 @@
+Credentials cache: API:B5EEE09E-DACD-4806-8148-DC902F353909
+        Principal: bel-mous@S19.BE
+
+  Issued                Expires               Principal
+Nov  8 13:53:00 2021  Nov  8 23:53:00 2021  krbtgt/S19.BE@S19.BE
+    Name              Cache name                                 Expires
+* bel-mous@S19.BE   API:B5EEE09E-DACD-4806-8148-DC902F353909   Nov  8 23:53:00 2021
+  bel-mous@S19.BE   API:0C44D8F9-4C23-4EBF-A681-41ECA925C7C6   Nov  8 19:45:20 2021
