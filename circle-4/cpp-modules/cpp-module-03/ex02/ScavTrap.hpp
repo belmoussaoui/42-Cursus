@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:17:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/22 21:01:24 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:50:52 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@
 
 class ScavTrap: public ClapTrap
 {
-private:
-	std::string _name;
-	int _hp;
-	int _ep;
-	int _atk;
 public:
 	ScavTrap();
 	ScavTrap(std::string name);
 	ScavTrap(ScavTrap const &src);
-	ScavTrap(std::string name, int hp, int ep, int atk);
 	~ScavTrap();
 	ScavTrap& operator=(ScavTrap const &rhs);
 

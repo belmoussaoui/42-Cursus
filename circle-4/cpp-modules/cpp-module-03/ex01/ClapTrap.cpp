@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:16:01 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/22 21:02:38 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:01:10 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 ClapTrap::ClapTrap() {
 	std::cout << "ClapTrap ";
 	std::cout << "Default constructor called" << std::endl;
-	_name = "GLaDOS";
+	_name = "ClapTrap";
 	_hp = 10;
 	_ep = 10;
 	_atk = 0;
@@ -28,15 +28,6 @@ ClapTrap::ClapTrap(std::string name) {
 	_hp = 10;
 	_ep = 10;
 	_atk = 0;
-}
-
-ClapTrap::ClapTrap(std::string name, int hp, int ep, int atk) {
-	std::cout << "ClapTrap ";
-	std::cout << "Constructor called" << std::endl;
-	_name = name;
-	_hp = hp;
-	_ep = ep;
-	_atk = atk;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src) {
@@ -70,8 +61,8 @@ void ClapTrap::attack(const std::string& target) {
 		std::cout << "There was no effect on " << target << "!" << std::endl;
 		return ;
 	}
-	std::cout << _name << " attacks!" << std::endl;
-	std::cout << target << " took " << _atk << " damage! " << std::endl;
+	std::cout << _name << " attacks! ";
+	std::cout << target << " took " << _atk << " damage!" << std::endl;
 	_ep--;
 }
 
@@ -80,14 +71,16 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "There was no effect on " << _name << "!" << std::endl;
 		return ;
 	}
-	std::cout << _name << " took " << amount << " damage! " << std::endl;
+	std::cout << _name << " took " << amount << " damage!" << std::endl;
 	_hp -= amount;
-	if (_hp <= 0)
+	if (_hp <= 0) {
 		std::cout << _name << " has fallen!" << std::endl;
+		_hp = 0;
+	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	if (_ep <= 0) {
+	if (_hp <= 0 || _ep <= 0) {
 		std::cout << "There was no effect on " << _name << "!" << std::endl;
 		return ;
 	}

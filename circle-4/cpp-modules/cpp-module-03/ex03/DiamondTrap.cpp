@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 16:32:39 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/29 21:21:58 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/07/29 17:35:42 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/07/29 21:52:57 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-FragTrap::FragTrap() {
-	std::cout << "FragTrap ";
+DiamondTrap::DiamondTrap(): ClapTrap("GLaDOS_clap_name"), ScavTrap(), FragTrap() {
+	std::cout << "DiamondTrap ";
 	std::cout << "Default constructor called" << std::endl;
-	_name = "FragTrap";
+	_name = "GLaDOS";
 	_hp = 100;
-	_ep = 100;
+	_ep = 50;
 	_atk = 30;
 }
 
-FragTrap::FragTrap(std::string name): ScavTrap(name) {
-	std::cout << "FragTrap ";
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap() {
+	std::cout << "DiamondTrap ";
 	std::cout << "Constructor called" << std::endl;
-	_hp = 100;
-	_ep = 100;
-	_atk = 30;
+	_name = name;
+	ClapTrap::_name = name + "_clap_name";
+	_hp = FragTrap::HP;
+	_ep = ScavTrap::EP;
+	_atk = FragTrap::ATT;
 }
 
-FragTrap::FragTrap(const FragTrap &src) {
+DiamondTrap::DiamondTrap(const DiamondTrap &src) {
 	std::cout << "Copy constructor called" << std::endl;
 	_name = src._name;
 	_hp = src._hp;
@@ -37,12 +39,12 @@ FragTrap::FragTrap(const FragTrap &src) {
 	_atk = src._atk;
 }
 
-FragTrap::~FragTrap() {
+DiamondTrap::~DiamondTrap() {
 	std::cout << "FragTrap ";
 	std::cout << "Destructor called" << std::endl;
 }
 
-FragTrap& FragTrap::operator=(FragTrap const &rhs) {
+DiamondTrap& DiamondTrap::operator=(DiamondTrap const &rhs) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs) {
 		_name = rhs._name;
@@ -53,10 +55,10 @@ FragTrap& FragTrap::operator=(FragTrap const &rhs) {
 	return *this;
 }
 
-void FragTrap::highFivesGuys() {
+void DiamondTrap::whoAmI() {
 	if (_hp <= 0 || _ep <= 0) {
 		std::cout << "There was no effect on " << _name << "!" << std::endl;
 		return ;
 	}
-	std::cout << _name << " request a positive hight fives!" << std::endl;
+	std::cout << "My name is " << _name << " and " << ClapTrap::_name << std::endl;
 }

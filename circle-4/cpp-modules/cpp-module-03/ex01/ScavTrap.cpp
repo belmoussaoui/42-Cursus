@@ -6,24 +6,27 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:32:39 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/22 21:02:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:31:00 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap(): ClapTrap() {
 	std::cout << "ScavTrap ";
 	std::cout << "Default constructor called" << std::endl;
-	_name = "GLaDOS";
+	_name = "ScavTrap";
 	_hp = 100;
-	_ep = 20;
+	_ep = 50;
 	_atk = 20;
 }
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 20, 20) {
+ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 	std::cout << "ScavTrap ";
 	std::cout << "Constructor called" << std::endl;
+	_hp = 100;
+	_ep = 50;
+	_atk = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src) {
@@ -52,10 +55,15 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &rhs) {
 }
 
 void ScavTrap::attack(const std::string& target) {
-	std::cout << "ScavTrap ";
-	ClapTrap::attack(target);
+	std::cout << "ScavTrap " << _name << " attacks " << target;
+	std::cout << ", causing " << _atk << " points of damage!" << std::endl;
 }
 
 void ScavTrap::guardGate() {
+	if (_hp <= 0 || _ep <= 0) {
+		std::cout << "There was no effect on " << _name << "!" << std::endl;
+		return ;
+	}
 	std::cout << _name << " is now in Gate keeper mode!" << std::endl;
 }
+

@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:55:54 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/21 19:38:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/24 19:19:34 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ const Fixed Fixed::operator*(const Fixed& fixed) {
 
 const Fixed Fixed::operator/(const Fixed& fixed) {
 	Fixed res = *this;
-	res.setRawBits(_raw / fixed.getRawBits() * (1 << Fixed::_nbits));
+	res.setRawBits(_raw * (1 << Fixed::_nbits) / fixed.getRawBits());
 	return res;
 }
 

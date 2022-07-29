@@ -6,14 +6,14 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:15:29 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/29 21:23:02 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:34:00 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main() {
-	FragTrap actor("FragTrap");
+	DiamondTrap actor("DiamondTrap");
 	actor.attack("Jakobs");
 	actor.takeDamage(3);
 	actor.beRepaired(3);
@@ -28,5 +28,6 @@ int	main() {
 	actor.guardGate();
 	actor.beRepaired(3);
 	actor.highFivesGuys();
+	actor.whoAmI();
 	return 0;
 }

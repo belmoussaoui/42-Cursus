@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:17:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/22 20:44:20 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:07:36 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string _name;
 	int _hp;
 	int _ep;
@@ -26,7 +26,6 @@ private:
 public:
 	ClapTrap();
 	ClapTrap(std::string name);
-	ClapTrap(std::string name, int hp, int ep, int atk);
 	ClapTrap(ClapTrap const &src);
 	~ClapTrap();
 	ClapTrap& operator=(ClapTrap const &rhs);

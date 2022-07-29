@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:17:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/22 21:01:13 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:44:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 
 class FragTrap: public ScavTrap
 {
-private:
-	std::string _name;
-	int _hp;
-	int _ep;
-	int _atk;
 public:
 	FragTrap();
 	FragTrap(std::string name);

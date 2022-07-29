@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 16:15:29 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/29 21:23:02 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/07/29 17:17:48 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/07/29 18:09:11 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
 
-int	main() {
-	FragTrap actor("FragTrap");
-	actor.attack("Jakobs");
-	actor.takeDamage(3);
-	actor.beRepaired(3);
-	std::cout << std::endl;
-	
-	for (int i = 0; i < 10; i++) {
-		actor.attack("Jakobs");
-	}
-	std::cout << std::endl;
-	
-	actor.takeDamage(50);
-	actor.guardGate();
-	actor.beRepaired(3);
-	actor.highFivesGuys();
-	return 0;
-}
+# include "FragTrap.hpp"
+
+class DiamondTrap: public ScavTrap, public FragTrap
+{
+private:
+	std::string _name;
+public:
+	DiamondTrap();
+	DiamondTrap(std::string name);
+	DiamondTrap(DiamondTrap const &src);
+	~DiamondTrap();
+	DiamondTrap& operator=(DiamondTrap const &rhs);
+	void whoAmI();
+};
+
+#endif

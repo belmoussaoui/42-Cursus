@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:43:55 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/21 19:49:32 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/24 19:19:53 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ void personal_test() {
 	std::cout << "a <= b = " << (a <= b) << std::endl;
 	std::cout << "a != b = " << (a != b) << std::endl;
 	std::cout << "a == b = " << (a == b) << std::endl;
-	std::cout << "a <= b = " << (a <= b) << std::endl;
 	std::cout << "a * b = " << a * b << std::endl;
-	std::cout << "b / a = " << b / a<< std::endl;
+	std::cout << "a / b = " << a / b << std::endl;
 	std::cout << "a + b = " << a + b << std::endl;
 	std::cout << "a - b = " << a - b << std::endl;
 }

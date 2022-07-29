@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/20 10:41:39 by bel-mous          #+#    #+#              #
-#    Updated: 2022/07/24 21:32:48 by bel-mous         ###   ########.fr        #
+#    Created: 2022/07/22 16:23:31 by bel-mous          #+#    #+#              #
+#    Updated: 2022/07/29 19:30:09 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp 
 OBJS = $(SRCS:.cpp=.o)
-NAME = fixed
+NAME = diamondTrap
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow 
 
 all: $(NAME)
 

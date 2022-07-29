@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:32:39 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/29 21:21:58 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 21:25:48 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 FragTrap::FragTrap() {
 	std::cout << "FragTrap ";
 	std::cout << "Default constructor called" << std::endl;
-	_name = "FragTrap";
+	_name = "GLaDOS";
 	_hp = 100;
 	_ep = 100;
 	_atk = 30;
 }
 
-FragTrap::FragTrap(std::string name): ScavTrap(name) {
+FragTrap::FragTrap(std::string name): ClapTrap(name) {
 	std::cout << "FragTrap ";
 	std::cout << "Constructor called" << std::endl;
 	_hp = 100;
