@@ -1,0 +1,27 @@
+/* XPM */
+static char *STEPTOP[] = {
+/* columns rows colors chars-per-pixel */
+"128 16 5 1 ",
+"  c #332B13",
+". c #3F2F17",
+"X c #2B230F",
+"o c #4B371B",
+"O c #533F1F",
+/* pixels */
+"OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+"oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+"................................................................................................................................",
+"................................................................................................................................",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"                                                                                                                                ",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+};

@@ -1,0 +1,41 @@
+
+5 img/mobile/WALL027.xpm
+4 img/mobile/WALL002.xpm,2 img/mobile/WALL003.xpm,2 img/mobile/WALL004.xpm,2 img/mobile/WALL005.xpm
+3 img/mobile/WALL008.xpm,3 img/mobile/WALL009.xpm
+1 img/mobile/WALL041.xpm,4 img/mobile/WALL043.xpm,4 img/mobile/WALL045.xpm,4 img/mobile/WALL047.xpm
+6 img/mobile/WALL030.xpm,6 img/mobile/WALL031.xpm
+7 img/mobile/WALL042.xpm,7 img/mobile/WALL044.xpm,7 img/mobile/WALL046.xpm,7 img/mobile/WALL048.xpm
+: img/door.xpm
+8 img/mobile/WALL023.xpm
+a img/mobile/WALL010.xpm
+
+F img/floor/floor_grey.xpm
+C img/sky/sky.xpm 4
+
+         11111111
+       110000000011
+     1100000000000011
+   11000000000000000011
+   100000000000000000001
+   100000000000000000001
+   100000000000000000001
+   100000000000000000001
+   11111:1111111111:11111
+   1000000000000000000001
+   1000000000000000000001
+   11111:1111111:111111:111111
+   444440441100000010000000001
+   40000004110000001000000001
+   44404444110000001000000001
+444444:4444110000001000000001
+40000404000010000001000000001
+4000000400001000N001a00a00a01
+40000441000011111111166a66111
+4444444111111
+
+img/sprite/machinegun.xpm 1 2 2
+
+Enemy
+img/enemy/pacman.xpm 13 15
+img/enemy/pacman.xpm 13 15img/enemy/pacman.xpm 13 15
+Reflect ON

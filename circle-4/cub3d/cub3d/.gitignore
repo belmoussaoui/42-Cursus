@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+.vscode
+*.o
+cub3D
+.DS_Store
+mlx_linux
+*.json
+.clangd

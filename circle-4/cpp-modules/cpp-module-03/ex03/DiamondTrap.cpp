@@ -6,19 +6,20 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:35:42 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/07/29 21:52:57 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/07/29 22:22:39 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap("GLaDOS_clap_name"), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap(): ClapTrap(), ScavTrap(), FragTrap() {
 	std::cout << "DiamondTrap ";
 	std::cout << "Default constructor called" << std::endl;
-	_name = "GLaDOS";
-	_hp = 100;
-	_ep = 50;
-	_atk = 30;
+	_name = "DiamondTrap";
+	ClapTrap::_name = _name + "_clap_name";
+	_hp = FragTrap::HP;
+	_ep = ScavTrap::EP;
+	_atk = FragTrap::ATT;
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap() {
@@ -34,6 +35,7 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(), ScavTrap(), FragTrap() {
 DiamondTrap::DiamondTrap(const DiamondTrap &src) {
 	std::cout << "Copy constructor called" << std::endl;
 	_name = src._name;
+	ClapTrap::_name = src._name + "_clap_name";
 	_hp = src._hp;
 	_ep = src._ep;
 	_atk = src._atk;
@@ -48,6 +50,7 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const &rhs) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs) {
 		_name = rhs._name;
+		ClapTrap::_name = rhs._name + "_clap_name";
 		_hp = rhs._hp;
 		_ep = rhs._ep;
 		_atk = rhs._atk;
