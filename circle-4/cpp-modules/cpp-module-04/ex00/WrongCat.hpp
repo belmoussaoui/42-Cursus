@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 19:01:54 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/03 19:04:43 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/10/04 18:19:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ public:
 	WrongCat(WrongCat const &src);
 	~WrongCat();
 	WrongCat &operator=(WrongCat const &rhs);
+
+	void makeSound() const;
 };
 
 #endif

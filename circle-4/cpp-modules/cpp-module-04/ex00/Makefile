@@ -6,11 +6,11 @@
 #    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 15:32:50 by bel-mous          #+#    #+#              #
-#    Updated: 2022/10/03 16:16:02 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/10/04 18:24:12 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Animal.cpp #Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = animal
 CXX = c++

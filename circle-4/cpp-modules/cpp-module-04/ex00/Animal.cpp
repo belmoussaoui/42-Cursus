@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:00:07 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/03 16:15:26 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/10/04 20:39:34 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Animal::Animal()
 {
 	std::cout << "Animal default constructor called" << std::endl;
-	type = "undefined";
+	type = "Animal";
 }
 
 Animal::Animal(const Animal &src)
@@ -38,5 +38,10 @@ Animal &Animal::operator=(Animal const &rhs)
 
 void Animal::makeSound() const
 {
-	std::cout << "No specific sound for this object" << std::endl;
+	std::cout << "no sound" << std::endl;
+}
+
+std::string Animal::getType() const
+{
+	return type;
 }

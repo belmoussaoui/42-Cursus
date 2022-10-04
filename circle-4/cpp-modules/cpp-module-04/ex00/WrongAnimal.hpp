@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 19:00:00 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/03 19:01:26 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/10/04 18:18:42 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	WrongAnimal &operator=(WrongAnimal const &rhs);
 
 	void makeSound() const;
+	std::string getType() const;
 };
 
 #endif
