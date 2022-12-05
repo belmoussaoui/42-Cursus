@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:06:56 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/05 14:14:21 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/10/03 18:56:58 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/12/05 17:47:29 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-#define BRAIN_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include <string>
-#include <iostream>
+#include "AAnimal.hpp"
 
-class Brain
+class Cat: public AAnimal
 {
-protected:
-	std::string ideas[100];
-
 public:
-	Brain();
-	Brain(Brain const &src);
-	~Brain();
-	Brain &operator=(Brain const &rhs);
+	Cat();
+	Cat(Cat const &src);
+	~Cat();
+	Cat &operator=(Cat const &rhs);
 
-	void setIdea(int index, std::string idea);
-	std::string getIdea(int index) const;
+	void makeSound() const;
 };
 
 #endif
