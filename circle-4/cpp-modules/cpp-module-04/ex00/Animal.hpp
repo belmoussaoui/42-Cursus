@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 15:17:40 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/04 17:37:28 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/08 22:03:17 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ protected:
 public:
 	Animal();
 	Animal(Animal const &src);
-	~Animal();
+	virtual ~Animal();
 	Animal &operator=(Animal const &rhs);
 
 	virtual void makeSound() const;

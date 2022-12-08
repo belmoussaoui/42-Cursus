@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:56:58 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/04 15:36:33 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/09 00:16:46 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat: public Animal
 {
+private:
+	Brain* brain;
 public:
 	Cat();
 	Cat(Cat const &src);
@@ -24,6 +27,8 @@ public:
 	Cat &operator=(Cat const &rhs);
 
 	void makeSound() const;
+	void setIdea(int index, std::string idea);
+	std::string getIdea(int index) const;
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:56:44 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/04 16:55:40 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/08 21:32:32 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Cat::Cat()
 
 Cat::Cat(const Cat &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Cat copy constructor called" << std::endl;
 	type = src.type;
 }
 

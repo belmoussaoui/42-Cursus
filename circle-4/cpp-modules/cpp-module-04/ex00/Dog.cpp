@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 19:01:48 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/10/04 15:39:29 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/08 21:32:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog()
 
 Dog::Dog(const Dog &src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Dog copy constructor called" << std::endl;
 	type = src.type;
 }
 
