@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/07 16:13:55 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/09 14:50:45 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): name("Alice")
 {
-	name = "Alice";
 	grade = 150;
 }
 
@@ -40,9 +39,8 @@ Bureaucrat::Bureaucrat(std::string n, int g) : name(n)
 	}
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src)
+Bureaucrat::Bureaucrat(const Bureaucrat &src): name(src.name)
 {
-	name = src.name;
 	grade = src.grade;
 }
 
@@ -50,7 +48,6 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 {
-	name = rhs.name;
 	grade = rhs.grade;
 	return *this;
 }

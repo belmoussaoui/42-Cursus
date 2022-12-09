@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/07 16:12:46 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:06:56 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,15 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(std::string n, int g) : name(n)
 {
-	try
-	{
-		if (g < 1)
-			throw Bureaucrat::GradeTooHighException();
-		if (g > 150)
-			throw Bureaucrat::GradeTooLowException();
-		grade = g;
-	}
-	catch (Bureaucrat::GradeTooHighException e)
-	{
-		grade = 1;
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException e)
-	{
-		grade = 150;
-		std::cout << e.what() << std::endl;
-	}
+	if (g < 1)
+		throw Bureaucrat::GradeTooHighException();
+	if (g > 150)
+		throw Bureaucrat::GradeTooLowException();
+	grade = g;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src)
+Bureaucrat::Bureaucrat(const Bureaucrat &src): name(src.name)
 {
-	name = src.name;
 	grade = src.grade;
 }
 
@@ -50,7 +36,6 @@ Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
 {
-	name = rhs.name;
 	grade = rhs.grade;
 	return *this;
 }
