@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:42:37 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 17:18:59 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:30:17 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,36 @@ int main()
 {
 	std::srand(std::time(0));
 
-	ShrubberyCreationForm shrubbery;
-	Bureaucrat b("Bob", 120);
-	b.signForm(shrubbery);
-	shrubbery.execute(b);
+	try
+	{
+		ShrubberyCreationForm shrubbery;
+		Bureaucrat b("Bob", 120);
+		b.signForm(shrubbery);
+		shrubbery.execute(b);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
-	RobotomyRequestForm robotomy;
-	b.signForm(robotomy);
-	robotomy.execute(b);
+	try
+	{
+		RobotomyRequestForm robotomy;
+		Bureaucrat a("Alice", 44);
+		a.signForm(robotomy);
+		robotomy.execute(a);
+		robotomy.execute(a);
 
-	Bureaucrat a("Alice", 47);
-	a.signForm(robotomy);
-	robotomy.execute(a);
-	a.increment();
-	a.increment();
-	a.increment();
-	robotomy.execute(a);
-
-	PresidentialPardonForm presidential;
-	a.signForm(presidential);
-	presidential.execute(a);
-	Bureaucrat e("Eve", 1);
-	e.signForm(presidential);
-	presidential.execute(e);
+		PresidentialPardonForm presidential;
+		Bureaucrat e("Eve", 1);
+		e.signForm(presidential);
+		presidential.execute(e);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
 	
 	return 0;
 }

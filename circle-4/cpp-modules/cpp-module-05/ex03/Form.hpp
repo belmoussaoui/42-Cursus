@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 16:33:23 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:55:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 	Form();
 	Form(std::string n, int g, int rg);
 	Form(Form const &src);
-	~Form();
+	virtual ~Form();
 	Form &operator=(Form const &rhs);
 
 	std::string getName() const;
@@ -39,7 +39,8 @@ public:
 	int getGrade() const;
 	int getRequiredGrade() const;
 	void beSigned(Bureaucrat b);
-	bool checkForm(Bureaucrat const &executor) const;
+	void display(std::ostream &os) const;
+	void checkForm(Bureaucrat const &executor) const;
 	virtual void execute(Bureaucrat const &executor) const = 0;
 
 	friend std::ostream &operator<<(std::ostream &os, const Form &b);
@@ -64,5 +65,7 @@ public:
 		const char *what() const throw();
 	};
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& f);
 
 #endif

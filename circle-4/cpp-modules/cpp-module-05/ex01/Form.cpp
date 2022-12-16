@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/07 14:13:47 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:01:55 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int Form::getGrade() const
 	return grade;
 }
 
+int Form::getRequiredGrade() const
+{
+	return requiredGrade;
+}
+
 bool Form::getIsSigned() const
 {
 	return isSigned;
@@ -49,19 +54,22 @@ bool Form::getIsSigned() const
 
 void Form::beSigned(Bureaucrat b) {
 
-		if (grade < b.getGrade())
-        	throw Form::GradeTooLowException();
-		if (isSigned)
-		{
-			throw Form::IsAlreadySigned();
-		}
-		this->isSigned = true;
+	if (grade < b.getGrade())
+		throw Form::GradeTooLowException();
+	if (isSigned)
+		throw Form::IsAlreadySigned();
+	this->isSigned = true;
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& f)
+void Form::display(std::ostream &os) const
 {
-    os << f.name << ", form grade " << f.grade << std::endl;
-    return os;
+    os << name << ", form grade " << grade << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, const Form &f)
+{
+	f.display(os);
+	return os;
 }
 
 const char* Form::GradeTooHighException::what() const throw()

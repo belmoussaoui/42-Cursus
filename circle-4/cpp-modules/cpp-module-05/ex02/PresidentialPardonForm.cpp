@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:30:49 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 17:20:32 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:17:28 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const 
 {
-	if (checkForm(executor))
-	{
-		std::cout << target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
-	}
+	checkForm(executor);
+	std::cout << target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 };

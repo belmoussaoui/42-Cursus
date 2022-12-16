@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 16:54:13 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:13:09 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,22 @@ bool Form::getIsSigned() const
 
 void Form::beSigned(Bureaucrat b) {
 
-		if (grade < b.getGrade())
-        	throw Form::GradeTooLowException();
-		if (isSigned)
-		{
-			throw Form::IsAlreadySigned();
-		}
-		this->isSigned = true;
+	if (grade < b.getGrade())
+		throw Form::GradeTooLowException();
+	if (isSigned)
+		throw Form::IsAlreadySigned();
+	this->isSigned = true;
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& f)
+void Form::display(std::ostream &os) const
 {
-    os << f.name << ", form grade " << f.grade << std::endl;
-    return os;
+    os << name << ", form grade " << grade << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, const Form &f)
+{
+	f.display(os);
+	return os;
 }
 
 const char* Form::GradeTooHighException::what() const throw()
@@ -84,24 +87,9 @@ const char* Form::IsNotSigned::what() const throw()
 	return "The form isn't signed";
 }
 
-bool Form::checkForm(Bureaucrat const &executor) const {
-	try
-	{
-		if (requiredGrade < executor.getGrade())
-        	throw Form::GradeTooLowException();
-		if (!isSigned)
-			throw Form::IsNotSigned();
-		return true;
-	}
-	catch(const Form::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << '\n';
-		return false;
-	}
-	catch(const Form::IsNotSigned& e)
-	{
-		std::cerr << e.what() << '\n';
-		return false;
-	}
-	
+void Form::checkForm(Bureaucrat const &executor) const {
+	if (requiredGrade < executor.getGrade())
+		throw Form::GradeTooLowException();
+	if (!isSigned)
+		throw Form::IsNotSigned();
 }

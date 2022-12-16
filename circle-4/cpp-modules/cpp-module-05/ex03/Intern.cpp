@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:09 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 19:17:19 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:49:06 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ Form* Intern::makeForm(std::string name, std::string target)
 	};
 	for (size_t i = 0; i < 4; i++) {
 		if (name == formName[i])
-			// https://cplusplus.com/forum/beginner/239227/
 			return (this->*jobs[i])(target);
 	}
-	std::cout << "The form name doesn't exist" << std::endl;
-	return NULL;
+	throw Intern::FormNotFound();
 }
 
 Form* Intern::createPresidentialPardon(std::string name) {
@@ -56,4 +54,9 @@ Form* Intern::createRobotomyRequest(std::string name) {
 
 Form* Intern::createShrubberyCreation(std::string name) {
 	return new ShrubberyCreationForm(name);
+}
+
+const char *Intern::FormNotFound::what() const throw()
+{
+	return "The form name doesn't exist";
 }

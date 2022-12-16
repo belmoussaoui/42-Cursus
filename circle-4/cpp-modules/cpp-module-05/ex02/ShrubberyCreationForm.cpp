@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:30:49 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 16:17:01 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:31:21 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const 
 {
-	if (checkForm(executor))
+	checkForm(executor);
+	std::ofstream of(target + "_shrubbery");
+	if (of)
 	{
-		std::ofstream of(target + "_shrubbery");
-		if (of)
-		{
-    		of << ascii;
-    		of.close();
-		}
+		std::cout << target << "shrubbery creation form" << std::endl;
+		of << ascii;
+		of.close();
 	}
 };

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/07 13:47:50 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:01:26 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ public:
 	int getGrade() const;
 	int getRequiredGrade() const;
 	void beSigned(Bureaucrat b);
+	void display(std::ostream &os) const;
 	
-	
-	friend std::ostream& operator<<(std::ostream& os, const Form& b);
 	class GradeTooHighException : public std::exception
 	{
 	public:
@@ -59,5 +58,7 @@ public:
 		const char* what() const throw();
 	};
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& f);
 
 #endif

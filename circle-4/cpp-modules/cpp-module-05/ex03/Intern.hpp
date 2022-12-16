@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:39:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/08 19:09:03 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:47:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ public:
 	Form* createPresidentialPardon(std::string name);
 	Form* createRobotomyRequest(std::string name);
 	Form* createShrubberyCreation(std::string name);
+
+	class FormNotFound : public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 
 };
 
