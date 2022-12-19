@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:41:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/19 15:21:49 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:19:02 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 #include <sstream>
 #include <iostream>
 #include <limits>
+#include <iomanip>
+
+void display_char(char c){
+	std::cout << "char: ";
+	if (isprint(c))
+		std::cout << c << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+}
 
 bool is_char(std::string litteral)
 {
@@ -22,12 +31,8 @@ bool is_char(std::string litteral)
 
 void conversion_to_char(std::string litteral)
 {
-	std::cout << "char: ";
 	char value = static_cast<char>(litteral[0]);
-	if (isprint(value))
-		std::cout << value << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
+	display_char(value);
 	std::cout << "int: " << static_cast<int>(value) << std::endl;
 	std::cout << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
 	std::cout << std::fixed << "double: " << static_cast<double>(value) << std::endl;
@@ -47,12 +52,12 @@ void conversion_to_int(std::string litteral)
 	{
 		int value = stoi(litteral);
 		if (std::numeric_limits<char>::min() <= value && value <= std::numeric_limits<char>::max())
-			std::cout << "char: " << static_cast<char>(value) << std::endl;
+			display_char(static_cast<char>(value));
 		else
 			std::cout << "char: overflow" << std::endl;
 		std::cout << "int: " << value << std::endl;
-		std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(value) << std::endl;
+		std::cout << std::setprecision(1) << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
+		std::cout << std::setprecision(1) << std::fixed << "double: " << static_cast<double>(value) << ""<< std::endl;
 	}
 	catch (const std::exception &err)
 	{
@@ -79,7 +84,7 @@ void conversion_to_float(std::string litteral)
 	{
 		float value = stof(litteral);
 		if (std::numeric_limits<char>::min() <= value && value <= std::numeric_limits<char>::max())
-			std::cout << "char: " << static_cast<char>(value) << std::endl;
+			display_char(static_cast<char>(value));
 		else
 			std::cout << "char: overflow" << std::endl;
 		if (std::numeric_limits<int>::min() <= value && value <= std::numeric_limits<int>::max())
@@ -114,7 +119,7 @@ void conversion_to_double(std::string litteral)
 	{
 		double value = stod(litteral);
 		if (std::numeric_limits<char>::min() <= value && value <= std::numeric_limits<char>::max())
-			std::cout << "char: " << static_cast<char>(value) << std::endl;
+			display_char(static_cast<char>(value));
 		else
 			std::cout << "char: overflow" << std::endl;
 		if (std::numeric_limits<int>::min() <= value && value <= std::numeric_limits<int>::max())
