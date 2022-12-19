@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:41:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/16 20:04:37 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:21:49 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,38 @@ void conversion_to_double(std::string litteral)
 	}
 }
 
+bool is_double_pseudo(std::string litteral)
+{
+	return (litteral == "-inf" || litteral == "+inf" || litteral == "nan");
+}
+
+void conversion_to_double_pseudo(std::string litteral)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << litteral << "f" << std::endl;
+	std::cout << "double: " << litteral << std::endl;
+}
+
+bool is_float_pseudo(std::string litteral)
+{
+	return (litteral == "-inff" || litteral == "+inff" || litteral == "nanf");
+}
+
+void conversion_to_float_pseudo(std::string litteral)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: " << litteral << std::endl;
+	std::cout << "double: ";
+	if (litteral == "-inff")
+		std::cout << "-inf" << std::endl;
+	if (litteral == "+inff")
+		std::cout << "+inf" << std::endl;
+	if (litteral == "nanf")
+		std::cout << "nan" << std::endl;
+}
+
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -149,6 +181,10 @@ int main(int argc, char **argv)
 		conversion_to_float(litteral);
 	else if (is_double(litteral))
 		conversion_to_double(litteral);
+	else if (is_double_pseudo(litteral))
+		conversion_to_double_pseudo(litteral);
+	else if (is_float_pseudo(litteral))
+		conversion_to_float_pseudo(litteral);
 	else
 		std::cerr << "conversion impossible" << std::endl;
 	return (EXIT_SUCCESS);
