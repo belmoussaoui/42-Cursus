@@ -6,14 +6,14 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 13:36:47 by bel-mous          #+#    #+#              #
-#    Updated: 2022/12/20 17:11:30 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/12/20 14:55:39 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = convert
+NAME = serialize
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 

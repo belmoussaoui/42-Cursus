@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:41:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/19 17:19:02 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:12:07 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,19 @@ void conversion_to_char(std::string litteral)
 	char value = static_cast<char>(litteral[0]);
 	display_char(value);
 	std::cout << "int: " << static_cast<int>(value) << std::endl;
-	std::cout << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
-	std::cout << std::fixed << "double: " << static_cast<double>(value) << std::endl;
+	std::cout << std::setprecision(1) << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
+	std::cout << std::setprecision(1) << std::fixed << "double: " << static_cast<double>(value) << std::endl;
 }
 
 bool is_int(std::string litteral)
 {
 	for (size_t i = 0; i < litteral.length(); i++)
+	{
+		if (i == 0 && litteral[0] == '-')
+			continue;
 		if (!isdigit(litteral[i]))
 			return (false);
+	}
 	return (true);
 }
 
@@ -70,6 +74,8 @@ bool is_float(std::string litteral)
 	int dot = 0;
 	for (size_t i = 0; i < litteral.length() - 1; i++)
 	{
+		if (i == 0 && litteral[0] == '-')
+			continue;
 		if (!isdigit(litteral[i]) && litteral[i] != '.')
 			return (false);
 		if (litteral[i] == '.')
@@ -91,8 +97,8 @@ void conversion_to_float(std::string litteral)
 			std::cout << "int: " << static_cast<int>(value) << std::endl;
 		else
 			std::cout << "int: overflow" << std::endl;
-		std::cout << "float: " << value << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(value) << std::endl;
+		std::cout << std::setprecision(1) << std::fixed << "float: " << value << "f" << std::endl;
+		std::cout << std::setprecision(1) << std::fixed << "double: " << static_cast<double>(value) << std::endl;
 	}
 	catch (const std::exception &err)
 	{
@@ -105,6 +111,8 @@ bool is_double(std::string litteral)
 	int dot = 0;
 	for (size_t i = 0; i < litteral.length(); i++)
 	{
+		if (i == 0 && litteral[0] == '-')
+			continue;
 		if (!isdigit(litteral[i]) && litteral[i] != '.')
 			return (false);
 		if (litteral[i] == '.')
@@ -126,8 +134,8 @@ void conversion_to_double(std::string litteral)
 			std::cout << "int: " << static_cast<int>(value) << std::endl;
 		else
 			std::cout << "int: overflow" << std::endl;
-		if (std::numeric_limits<float>::min() <= value && value <= std::numeric_limits<float>::max())
-			std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+		if (std::numeric_limits<float>::lowest() <= value && value <= std::numeric_limits<float>::max())
+			std::cout << std::setprecision(1) << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
 		else
 			std::cout << "float: overflow" << std::endl;
 		std::cout << "double: " << static_cast<double>(value) << std::endl;
