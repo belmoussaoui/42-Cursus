@@ -6,10 +6,9 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 15:22:03 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 15:22:52 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:33:01 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "MutantStack.hpp"
 #include <iostream>
@@ -24,31 +23,8 @@ int main()
 	std::cout << mstack.size() << std::endl;
 	mstack.push(3);
 	mstack.push(5);
-	mstack.push(737); //[...] mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-	std::stack<int> s(mstack);
-
-
-
-	// Test the MutantStack class
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
 	mstack.push(737);
-	// [...]
+	//[...]
 	mstack.push(0);
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();

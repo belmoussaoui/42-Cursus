@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:46:58 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 15:25:05 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:29:57 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,28 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 public:
-	using iterator = typename std::vector<T>::iterator;
-	using const_iterator = typename std::vector<T>::const_iterator;
+
+	typedef typename MutantStack<T>::stack::container_type::iterator iterator;
+	typedef typename MutantStack<T>::stack::container_type::const_iterator const_iterator;
 
 	iterator begin()
 	{
-		return std::begin(this->c);
+		return this->c.begin();
 	}
 
 	iterator end()
 	{
-		return std::end(this->c);
+		return this->c.end();
 	}
 
 	const_iterator cbegin() const
 	{
-		return std::vector::cbegin(this->c);
+		return this->c.cbegin();
 	}
 
 	const_iterator cend() const
 	{
-		return std::vector::cend(this->c);
+		return this->c.cend();
 	}
 };
 
