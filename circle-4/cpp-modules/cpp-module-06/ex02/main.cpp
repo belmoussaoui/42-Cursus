@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 22:06:11 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/20 22:39:10 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/20 23:08:30 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,25 @@ void identify(Base &p)
 int main()
 {
 	std::srand(std::time(0));
-	
+
 	std::cout << "identify type A" << std::endl;
 	Base *a = new A();
 	identify(a);
 	identify(*a);
 	delete a;
-	
+
 	std::cout << "identify type B" << std::endl;
 	Base *b = new B();
 	identify(b);
 	identify(*b);
 	delete b;
-	
+
 	std::cout << "identify type C" << std::endl;
 	Base *c = new C();
 	identify(c);
 	identify(*c);
 	delete c;
-	
+
 	std::cout << "identify type Random" << std::endl;
 	Base *random = generate();
 	identify(random);

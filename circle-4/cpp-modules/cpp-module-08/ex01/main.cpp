@@ -5,37 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 14:55:10 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/20 23:06:43 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/12/27 14:30:10 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/12/28 12:45:55 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm>
+#include <exception>
 #include <iostream>
-#include "data.hpp"
+#include <vector>
 
-uintptr_t serialize(Data *ptr)
+int main()
 {
-	return reinterpret_cast<uintptr_t>(ptr);
-}
-
-Data *deserialize(uintptr_t raw)
-{
-	return reinterpret_cast<Data *>(raw);
-}
-
-int	main( void )
-{
-	Data		*data1 = new Data;
-	Data		*data2;
-	uintptr_t	raw;
-
-	data1->data = "Hello World!";
-	raw = serialize(data1);
-	std::cout << "reinterpratation: " << data1 << " => " << raw << std::endl;
-	data2 = deserialize(raw);
-	
-	std::cout << "deserialize: " << data1 << " == " << data2 << std::endl;
-	std::cout << data1->data << " == " << data2->data << std::endl;
-	
-	delete data1;
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
+	return 0;
 }

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 17:39:18 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/21 17:40:44 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:12:40 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char **)
@@ -61,5 +61,42 @@ int main(int, char **)
         numbers[i] = rand();
     }
     delete[] mirror; //
+
+    Array<int> a(10);
+    for (unsigned int i = 0; i < a.getSize(); i++)
+        a[i] = i;
+    std::cout << "a: ";
+    for (unsigned int i = 0; i < a.getSize(); i++)
+        std::cout << a[i] << " ";
+    std::cout << std::endl;
+
+    Array<int> b(a);
+    std::cout << "b: ";
+    for (unsigned int i = 0; i < b.getSize(); i++)
+        std::cout << b[i] << " ";
+    std::cout << std::endl;
+
+    Array<int> c;
+    c = b;
+    std::cout << "c: ";
+    for (unsigned int i = 0; i < c.getSize(); i++)
+        std::cout << c[i] << " ";
+    std::cout << std::endl;
+    c[7] = 2;
+
+    
+    std::cout << "c[7] = 2;" << std::endl;
+    
+    
+    std::cout << "b: ";
+    for (unsigned int i = 0; i < b.getSize(); i++)
+        std::cout << b[i] << " ";
+    std::cout << std::endl;
+
+    
+    std::cout << "c: ";
+    for (unsigned int i = 0; i < c.getSize(); i++)
+        std::cout << c[i] << " ";
+    std::cout << std::endl;
     return 0;
 }

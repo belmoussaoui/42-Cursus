@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 17:17:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/23 10:40:11 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/12/28 12:28:13 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/12/28 12:43:08 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
-#include <cstddef>
+#include <algorithm>
+#include <stdexcept>
 
-template <class T>
-void iter(T *array, std::size_t size, void (*f)(T &))
+template <typename T>
+typename T::iterator easyfind(T container, int value)
 {
-	for (size_t i = 0; i < size; i++)
+	typename T::iterator it = std::find(container.begin(), container.end(), value);
+	if (it == container.end())
 	{
-		f(array[i]);
+		throw std::out_of_range("Value not found");
 	}
+	return it;
 }
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 12:41:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/20 17:12:07 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/20 23:00:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void conversion_to_int(std::string litteral)
 			std::cout << "char: overflow" << std::endl;
 		std::cout << "int: " << value << std::endl;
 		std::cout << std::setprecision(1) << std::fixed << "float: " << static_cast<float>(value) << "f" << std::endl;
-		std::cout << std::setprecision(1) << std::fixed << "double: " << static_cast<double>(value) << ""<< std::endl;
+		std::cout << std::setprecision(1) << std::fixed << "double: " << static_cast<double>(value) << std::endl;
 	}
 	catch (const std::exception &err)
 	{
@@ -148,7 +148,7 @@ void conversion_to_double(std::string litteral)
 
 bool is_double_pseudo(std::string litteral)
 {
-	return (litteral == "-inf" || litteral == "+inf" || litteral == "nan");
+	return (litteral == "-inf" || litteral == "+inf" || litteral == "nan" || litteral == "inf");
 }
 
 void conversion_to_double_pseudo(std::string litteral)
@@ -161,7 +161,7 @@ void conversion_to_double_pseudo(std::string litteral)
 
 bool is_float_pseudo(std::string litteral)
 {
-	return (litteral == "-inff" || litteral == "+inff" || litteral == "nanf");
+	return (litteral == "-inff" || litteral == "+inff" || litteral == "nanf" || litteral == "inff");
 }
 
 void conversion_to_float_pseudo(std::string litteral)
@@ -176,6 +176,8 @@ void conversion_to_float_pseudo(std::string litteral)
 		std::cout << "+inf" << std::endl;
 	if (litteral == "nanf")
 		std::cout << "nan" << std::endl;
+	if (litteral == "inff")
+		std::cout << "inf" << std::endl;
 }
 
 int main(int argc, char **argv)

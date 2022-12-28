@@ -5,37 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 14:55:10 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/20 23:06:43 by bel-mous         ###   ########.fr       */
+/*   Created: 2022/12/28 12:32:26 by bel-mous          #+#    #+#             */
+/*   Updated: 2022/12/28 12:40:41 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "data.hpp"
+#include "easyfind.hpp"
+#include <vector>
 
-uintptr_t serialize(Data *ptr)
+int main()
 {
-	return reinterpret_cast<uintptr_t>(ptr);
-}
+	int v[] = {1, 2, 3, 4, 5};
+	try
+	{
+		std::cout << easyfind(v, 3) << std::endl;
+		std::cout << easyfind(v, 6) << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
-Data *deserialize(uintptr_t raw)
-{
-	return reinterpret_cast<Data *>(raw);
-}
-
-int	main( void )
-{
-	Data		*data1 = new Data;
-	Data		*data2;
-	uintptr_t	raw;
-
-	data1->data = "Hello World!";
-	raw = serialize(data1);
-	std::cout << "reinterpratation: " << data1 << " => " << raw << std::endl;
-	data2 = deserialize(raw);
-	
-	std::cout << "deserialize: " << data1 << " == " << data2 << std::endl;
-	std::cout << data1->data << " == " << data2->data << std::endl;
-	
-	delete data1;
+	return 0;
 }
