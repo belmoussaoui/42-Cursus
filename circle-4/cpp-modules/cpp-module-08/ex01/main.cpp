@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:30:10 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 12:45:55 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:16:53 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <algorithm>
-#include <exception>
+
 #include <iostream>
-#include <vector>
+#include "Span.hpp"
 
 int main()
 {

@@ -3,12 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:46:58 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 12:47:06 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:25:05 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef MUTANTSTACK_HPP
+#define MUTANTSTACK_HPP
+
+#include <stack>
+#include <vector>
 
 template <typename T>
 class MutantStack : public std::stack<T>
@@ -29,11 +35,13 @@ public:
 
 	const_iterator cbegin() const
 	{
-		return std::cbegin(this->c);
+		return std::vector::cbegin(this->c);
 	}
 
 	const_iterator cend() const
 	{
-		return std::cend(this->c);
+		return std::vector::cend(this->c);
 	}
 };
+
+#endif
