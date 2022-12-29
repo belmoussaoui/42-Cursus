@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:28:13 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 15:02:55 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:38:19 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ typename T::iterator easyfind(T container, int value)
 {
 	typename T::iterator it = std::find(container.begin(), container.end(), value);
 	if (it == container.end())
-	{
 		throw std::out_of_range("Value not found");
-	}
 	return it;
 }
 

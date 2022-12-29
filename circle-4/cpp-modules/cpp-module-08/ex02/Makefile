@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
+#    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 12:27:37 by bel-mous          #+#    #+#              #
-#    Updated: 2022/12/28 16:08:39 by bel-mous         ###   ########.fr        #
+#    Updated: 2022/12/29 19:04:37 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 NAME = ex02
 CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

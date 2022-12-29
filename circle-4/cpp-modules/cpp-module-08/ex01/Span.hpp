@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:44:05 by bel-mous          #+#    #+#             */
-/*   Updated: 2022/12/28 15:18:27 by bel-mous         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:46:44 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,17 @@ class Span
 {
 
 private:
-	unsigned int n;
+	unsigned int N;
 	std::vector<int> numbers;
+	Span();
 
 public:
 	Span(unsigned int n);
+	~Span();
+	Span(Span const &other);
+	Span &operator=(Span const &other);
 	void addNumber(int x);
-
-	template <typename InputIt>
-	void addNumbers(InputIt first, InputIt last)
-	{
-		if (numbers.size() + std::distance(first, last) > n)
-		{
-			throw std::length_error("Span is full");
-		}
-		numbers.insert(numbers.end(), first, last);
-	}
+	void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	int shortestSpan() const;
 	int longestSpan() const;
 };
