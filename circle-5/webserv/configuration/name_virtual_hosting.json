@@ -1,0 +1,22 @@
+[
+	{
+	  "listen": ["0.0.0.0", 8080],
+	  "routes": {
+		"/": {
+		  "root": "www",
+		  "methods": ["GET"],
+		  "index": "index.html"
+		}
+	  }
+	},
+	{
+	  "listen": ["0.0.0.0", 8080],
+	  "routes": {
+		"/": {
+		  "root": "www",
+		  "methods": ["GET"],
+		  "index": "index2.html"
+		}
+	  }
+	}
+  ]

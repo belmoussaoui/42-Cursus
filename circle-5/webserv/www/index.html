@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="style.css"/>
+	<title>webserv</title>
+</head>
+<body>
+	<div>
+		<h1>webserv</h1>
+		<button onclick="openNewTab()">!!! Vous avez gagn&eacute; un iphone 11 !!! cliquez ici !!!</button>
+
+		<script>
+		function openNewTab() {
+			window.open("http://localhost:8080/redir/", "_blank");
+		}
+		</script>
+	</div>
+	<div>
+		<h1>Cookies</h2>
+		<a href="cookies">Tu veux un cookie ?</a>
+	</div>
+	<div>
+		<h1>Upload File Form</h1>
+		<form action="form/upload" method="POST" enctype="multipart/form-data" target="_blank">
+			<input type="file" name="file">
+			<input type="submit" value="Upload">
+		</form>
+	</div>
+	<div>
+		<title>Addition Form</title>
+		<h1>Addition Form</h1>
+		<form action="/form/add/add.py" method="get" target="_blank">
+		  <label for="num1">Number 1:</label>
+		  <input type="text" name="num1" id="num1"><br>
+		  <label for="num2">Number 2:</label>
+		  <input type="text" name="num2" id="num2"><br>
+		  <input type="submit" value="Add">
+		</form>
+	</div>
+	<div>
+		<h1>Soustraction Form</h1>
+		<form action="/form/sub/sub.php" method="get" target="_blank">
+		  <label for="num1">Number 1:</label>
+		  <input type="text" name="num1"><br>
+		  <label for="num2">Number 2:</label>
+		  <input type="text" name="num2"><br>
+		  <input type="submit" value="Sub">
+		</form>
+	</div>
+	<div>
+		<h1>Delete file</h1>
+		<form id="delete-form">
+		  <label for="file-selector">Select file to delete:</label>
+		  <input type="file" id="file-selector" name="file">
+		  <button type="submit">Delete</button>
+		</form>
+	</div>
+
+	<script>
+	  const deleteForm = document.querySelector('#delete-form');
+	  deleteForm.addEventListener('submit', function(event) {
+		event.preventDefault();
+		const file = document.querySelector('#file-selector').files[0];
+		const fileUrl = 'http://localhost:8080/upload/' + file.name;
+		const requestOptions = {
+		  method: 'DELETE'
+		};
+		fetch(fileUrl, requestOptions)
+		  .then(response => {
+			if (response.ok) {
+			  console.log('File deleted successfully');
+			} else {
+			  console.error('Failed to delete file:', response.statusText);
+			}
+		  })
+		  .catch(error => console.error('Error:', error));
+	  });
+	</script>
+  </body>
+
+</html>

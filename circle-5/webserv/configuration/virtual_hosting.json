@@ -1,0 +1,23 @@
+[
+	{
+	  "listen": ["0.0.0.0", 8080],
+	  "routes": {
+		"/": {
+		  "root": "www",
+		  "methods": ["GET"],
+		  "index": "index.html"
+		}
+	  }
+	},
+	{
+	  "listen": ["127.0.0.1", 8080],
+	  "name": "localhost",
+	  "routes": {
+		"/": {
+		  "root": "www",
+		  "methods": ["GET"],
+		  "index": "index2.html"
+		}
+	  }
+	}
+  ]

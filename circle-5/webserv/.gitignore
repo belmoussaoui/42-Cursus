@@ -1,0 +1,12 @@
+.vscode/
+
+src/*.o
+
+webserv
+
+build/
+
+.DS_Store
+.pytest_cache/
+
+tests/venv/

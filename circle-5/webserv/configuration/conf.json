@@ -1,0 +1,59 @@
+[
+	{
+	  "listen": ["0.0.0.0", 8080],
+	  "max_body_size": 20000,
+	  "error_pages": {
+		"404": "www/404.html",
+		"405": "www/405.html"
+	  },
+	  "routes": {
+		"/": {
+		  "root": "www",
+		  "index": "index.html",
+		  "methods": ["GET"]
+		},
+		"/form/add": {
+		  "root": "www",
+		  "handler": "www/cgi/add.py",
+		  "methods": ["GET"],
+		  "cgi": {
+			".py": "/usr/bin/python3"
+		  }
+		},
+		"/form/sub": {
+			"root": "www",
+			"handler": "www/cgi/sub.php",
+			"methods": ["GET"],
+			"cgi": {
+			  ".php": "/usr/bin/php"
+			}
+		  },
+		"/cookies": {
+			"root": "www",
+			"handler": "www/cgi/cookies.php",
+			"methods": ["GET"],
+			"cgi": {
+				".php": "/usr/bin/php"
+			}
+		},
+		"/form/upload": {
+		  "root": "www/upload",
+		  "methods": ["POST"]
+		},
+		"/upload": {
+		  "root": "www/upload",
+		  "methods": ["GET", "DELETE"],
+		  "autoindex": true
+		},
+		"/sendback": {
+			"root": "www/sendback",
+			"methods": ["POST"]
+		},
+		"/redir": {
+			"root": "www/redir",
+			"methods": ["GET"],
+			"redir": "https://www.pechetruite.com/"
+		}
+	  }
+	}
+]
