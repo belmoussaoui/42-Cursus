@@ -6,13 +6,13 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 12:27:37 by bel-mous          #+#    #+#              #
-#    Updated: 2023/04/12 02:25:02 by bel-mous         ###   ########.fr        #
+#    Updated: 2023/04/12 02:55:19 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp BitcoinExchange.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = ex01
+NAME = btc
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
