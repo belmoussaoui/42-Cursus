@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:22:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/03 20:21:45 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:56:10 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,47 +23,52 @@ bool is_file(const char *path)
 	return S_ISREG(path_stat.st_mode);
 }
 
-bool check_file_argument(int argc, char *path)
+void check_file_argument(int argc, char *path)
 {
 	if (argc != 2)
 	{
-		std::cout << "Program must take a file as argument." << std::endl;
-		return false;
+		std::cerr << "Program must take a file as argument." << std::endl;
+		exit(EXIT_FAILURE);
 	}
 
 	std::ifstream inputFile(path);
 	if (!inputFile.is_open() || !is_file(path))
 	{
-		std::cout << "The argument " << path << " must be a file." << std::endl;
-		return true;
+		std::cerr << "The argument " << path << " must be a file." << std::endl;
+		exit(EXIT_FAILURE);
+	}
+}
+
+bool is_valid_date_value(std::stringstream &ss, std::string date)
+{
+	int value;
+
+	ss >> value;
+	if (ss.fail())
+	{
+		std::cerr << "Error: bad input => " << date << std::endl;
+		return false;
 	}
 	return true;
 }
 
 bool is_valid_date(const std::string &date)
 {
-	// Vérifie que la date est au format "Year-Month-Day"
-	int year, month, day;
+	struct tm tm;
 	std::stringstream ss(date);
 
-	ss >> year;
-	if (ss.fail())
-	{
-		std::cerr << "Failed to extract year from date string" << std::endl;
+	if (!is_valid_date_value(ss, date))
 		return false;
-	}
-	ss.ignore(1); // Ignore the first separator
-	ss >> month;
-	if (ss.fail())
-	{
-		std::cerr << "Failed to extract month from date string" << std::endl;
+	ss.ignore(1);
+	if (!is_valid_date_value(ss, date))
 		return false;
-	}
-	ss.ignore(1); // Ignore the second separator
-	ss >> day;
-	if (ss.fail())
+	ss.ignore(1);
+	if (!is_valid_date_value(ss, date))
+		return false;
+
+	if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
 	{
-		std::cerr << "Failed to extract day from date string" << std::endl;
+		std::cerr << "Error: date is invalid => " << date << std::endl;
 		return false;
 	}
 	return true;
@@ -71,17 +76,36 @@ bool is_valid_date(const std::string &date)
 
 bool is_valid_value(const std::string &value)
 {
-	// Vérifie que la valeur est comprise entre 0 et 1000
 	std::stringstream ss(value);
 	float val;
-	if (ss >> val && val >= 0 && val <= 1000 && ss.eof())
-	{
+	if (ss >> val && val >= 0 && val <= 1000 && ss.eof()) {
 		return true;
 	}
+	if (val > 1000)
+		std::cerr << "Error: too large a number." << std::endl;
+	else if (val < 0)
+		std::cerr << "Error: not a positive number." << std::endl;
+	else
+		std::cerr << "Error: value is invalid => " << value << std::endl;
 	return false;
 }
 
-bool check_input_file(char *path)
+void evaluate_line(std::string line)
+{
+	std::stringstream ss(line);
+	std::string date, value;
+	if (std::getline(ss, date, '|') && std::getline(ss, value))
+	{
+		if (!is_valid_date(date) || !is_valid_value(value))
+			;
+		else
+			std::cout << date << " => " << value << " = " << "?" << std::endl;
+	}
+	else
+		std::cerr << "Error: bad input => " << line << std::endl;
+}
+
+bool bitcoin_loop(char *path)
 {
 	std::ifstream file(path);
 
@@ -89,34 +113,14 @@ bool check_input_file(char *path)
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		std::stringstream ss(line);
-		std::string date, value;
-		if (std::getline(ss, date, '|') && std::getline(ss, value))
-		{
-			if (!is_valid_date(date) || !is_valid_value(value))
-			{
-				std::cerr << "valid_date = " << is_valid_date(date) << " valid_value = " << is_valid_value(value) << std::endl;
-				std::cerr << "Invalid format: " << line << "\n";
-			}
-			else
-			{
-				std::cerr << "Valid format: " << line << "\n";
-			}
-		}
-		else
-		{
-			std::cerr << "Invalid format: " << line << "\n";
-		}
-		std::cerr << "\n";
+		evaluate_line(line);
 	}
 	return true;
 }
 
 int main(int argc, char *argv[])
 {
-	if (check_file_argument(argc, argv[1]))
-	{
-		check_input_file(argv[1]);
-	}
+	check_file_argument(argc, argv[1]);
+	bitcoin_loop(argv[1]);
 	return EXIT_SUCCESS;
 }
