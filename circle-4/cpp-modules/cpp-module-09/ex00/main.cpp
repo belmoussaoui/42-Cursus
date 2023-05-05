@@ -6,15 +6,13 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:22:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/05 16:56:10 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:07:42 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <fstream>
+#include "BitcoinExchange.hpp"
 #include <sys/stat.h>
-#include <sstream>
+
 
 bool is_file(const char *path)
 {
@@ -90,7 +88,7 @@ bool is_valid_value(const std::string &value)
 	return false;
 }
 
-void evaluate_line(std::string line)
+void evaluate_line(std::string line, BitcoinExchange& bitcoin)
 {
 	std::stringstream ss(line);
 	std::string date, value;
@@ -99,7 +97,7 @@ void evaluate_line(std::string line)
 		if (!is_valid_date(date) || !is_valid_value(value))
 			;
 		else
-			std::cout << date << " => " << value << " = " << "?" << std::endl;
+			bitcoin.evaluate(date, value);
 	}
 	else
 		std::cerr << "Error: bad input => " << line << std::endl;
@@ -108,12 +106,13 @@ void evaluate_line(std::string line)
 bool bitcoin_loop(char *path)
 {
 	std::ifstream file(path);
+	BitcoinExchange bitcoin;
 
 	std::string line;
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		evaluate_line(line);
+		evaluate_line(line, bitcoin);
 	}
 	return true;
 }
