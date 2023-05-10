@@ -6,7 +6,7 @@
 /*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:22:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/05 18:07:42 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:02:43 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ void evaluate_line(std::string line, BitcoinExchange& bitcoin)
 	std::string date, value;
 	if (std::getline(ss, date, '|') && std::getline(ss, value))
 	{
-		if (!is_valid_date(date) || !is_valid_value(value))
-			;
-		else
+		if (is_valid_date(date) && is_valid_value(value))
 			bitcoin.evaluate(date, value);
 	}
 	else
