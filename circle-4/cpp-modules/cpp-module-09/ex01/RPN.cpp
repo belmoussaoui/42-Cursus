@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 17:26:36 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/10 19:46:51 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/15 14:26:55 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void RPN::handleOperators(char c)
 
 	if (data.size() < 2)
 	{
-		std::cerr << "Error: not enough operands" << std::endl;
+		std::cout << "Error: not enough operands" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	b = data.top();
@@ -75,7 +75,7 @@ void RPN::handleOperators(char c)
 		break;
 	case '/':
 		if(b == 0) {
-			std::cerr << "Error: division by zero" << std::endl;
+			std::cout << "Error: division by zero" << std::endl;
 			exit(EXIT_FAILURE);
 		}
 		data.push(a / b);
@@ -96,14 +96,14 @@ void RPN::evaluate(std::string expression)
 			handleOperators(c);
 		else
 		{
-			std::cerr << "Error: invalid character '" << c << "'" << std::endl;
+			std::cout << "Error: invalid character '" << c << "'" << std::endl;
 			exit(EXIT_SUCCESS);
 		}
 	}
 
 	if (data.size() != 1)
 	{
-		std::cerr << "Error: too many operands" << std::endl;
+		std::cout << "Error: too many operands" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 

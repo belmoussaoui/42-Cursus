@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:17:19 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/10 18:37:21 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/15 14:26:07 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void BitcoinExchange::read_database_csv()
 	std::ifstream input_file(database_name.c_str());
 	if (!input_file)
 	{
-		std::cerr << "The program failed to open the database." << std::endl;
+		std::cout << "The program failed to open the database." << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	std::string line;
@@ -71,7 +71,7 @@ void BitcoinExchange::evaluate(std::string date, std::string value)
 		}
 		else
 		{
-			std::cerr << "Error: no exchange rate" << std::endl;
+			std::cout << "Error: no exchange rate" << std::endl;
 			return ;
 		}
 	}
