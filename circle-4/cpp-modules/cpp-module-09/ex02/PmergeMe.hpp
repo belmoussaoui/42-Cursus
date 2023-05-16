@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:36:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/15 18:49:16 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:27:47 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <vector>
 #include <list>
 #include <ctime>
-
 
 class PmergeMe
 {
@@ -33,7 +32,9 @@ private:
 	template <typename Container>
 	void insertionSort(Container &container);
 	template <typename Container>
-	void mergeSort(Container &container);
+	void mergeSort(Container& container);
+	template <typename Container>
+	void merge(Container& container, const Container& left, const Container& right);
 	void displaySequence(std::vector<std::string> sequence, double time1, double time2);
 
 public:
