@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 13:36:47 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/16 18:27:47 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:31:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ private:
 	void checkSequence(std::vector<std::string> sequence);
 	void checkIsDigit(std::string number);
 	template <typename Container>
-	double mergeInsertSort(Container &container);
-	template <typename Container>
 	void insertionSort(Container &container);
 	template <typename Container>
-	void mergeSort(Container& container);
+	void mergeInsertSort(Container& container);
 	template <typename Container>
 	void merge(Container& container, const Container& left, const Container& right);
 	void displaySequence(std::vector<std::string> sequence, double time1, double time2);

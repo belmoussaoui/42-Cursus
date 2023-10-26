@@ -6,7 +6,7 @@
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/28 12:27:37 by bel-mous          #+#    #+#              #
-#    Updated: 2023/04/12 02:55:19 by bel-mous         ###   ########.fr        #
+#    Updated: 2023/05/18 18:47:58 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,4 +29,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

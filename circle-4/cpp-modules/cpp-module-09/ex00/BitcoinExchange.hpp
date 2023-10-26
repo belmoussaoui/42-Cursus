@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:17:22 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/05 18:08:11 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:43:29 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ private:
 	std::string database_name;
 public:
 	BitcoinExchange();
+	BitcoinExchange(std::string name);
 	~BitcoinExchange();
 	BitcoinExchange(BitcoinExchange const &other);
 	BitcoinExchange& operator=(BitcoinExchange const &other);

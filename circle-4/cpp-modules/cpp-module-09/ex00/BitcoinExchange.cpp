@@ -6,7 +6,7 @@
 /*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:17:19 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/15 14:26:07 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:27:38 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,17 @@ BitcoinExchange::BitcoinExchange() : database_name("data.csv")
 	read_database_csv();
 }
 
+BitcoinExchange::BitcoinExchange(std::string name) : database_name(name)
+{
+	read_database_csv();
+}
+
 BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &other)
 {
 	data = other.data;
+	database_name = other.database_name;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &other)
@@ -29,6 +35,7 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &other)
 	if (this != &other)
 	{
 		data = other.data;
+		database_name = other.database_name;
 	}
 	return *this;
 }
