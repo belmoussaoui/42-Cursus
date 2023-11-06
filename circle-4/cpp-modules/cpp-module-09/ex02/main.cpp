@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 02:22:08 by bel-mous          #+#    #+#             */
-/*   Updated: 2023/05/17 18:24:18 by bel-mous         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:17:34 by bel-mous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "PmergeMe.hpp"
 
@@ -21,11 +22,10 @@ int main(int argc, char *argv[])
 	}
 	PmergeMe pmerge;
 	std::vector<std::string> sequence;
-	for (int i = 1; i < argc; ++i)
-	{
-		sequence.push_back(argv[i]);
-	}
+    for (int i = 1; i < argc; ++i) {
+        sequence.push_back(argv[i]);
+    }
 	pmerge.run(sequence);
-
+	
 	return EXIT_SUCCESS;
 }

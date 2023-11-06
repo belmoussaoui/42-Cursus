@@ -5,28 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/28 12:27:37 by bel-mous          #+#    #+#              #
-#    Updated: 2023/05/18 18:47:58 by bel-mous         ###   ########.fr        #
+#    Created: 2023/11/02 18:34:56 by bel-mous          #+#    #+#              #
+#    Updated: 2023/11/02 20:12:36 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp BitcoinExchange.cpp
-OBJS = $(SRCS:.cpp=.o)
-NAME = btc
-CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+# need to change docker-compose.yml !
+DIR = $(HOME)/data
 
-all: $(NAME)
+all: up
 
-$(NAME): $(OBJS)
-	$(CXX) $(CPPFLAGS) -o $(NAME) $(OBJS)
+dir:
+	mkdir -p $(DIR)/wordpress
+	mkdir -p $(DIR)/database
 
-clean:
-	rm -f $(OBJS)
+up: dir
+	docker-compose --project-directory srcs up -d
 
-fclean: clean
-	rm -f $(NAME)
+build: dir
+	docker-compose --project-directory srcs up -d --build
 
-re: fclean all
+down:
+	docker-compose --project-directory srcs down
 
-.PHONY: all clean fclean re test
+fclean:
+	docker system prune -fa --volumes
+	rm -rf $(DIR) 2>/dev/null
+	
+
+re: down build dir
+
+.PHONY: all clean fclean re
