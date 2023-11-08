@@ -13,8 +13,6 @@ RUN apt install php-mysql -y
 RUN apt install php-json -y
 RUN mkdir -p /run/php
 
-# COPY tools/index.php  /var/www/html/
-
 RUN sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
 

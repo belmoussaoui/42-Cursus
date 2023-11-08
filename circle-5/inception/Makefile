@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bel-mous <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: bel-mous <bel-mous@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 18:34:56 by bel-mous          #+#    #+#              #
-#    Updated: 2023/11/02 20:12:36 by bel-mous         ###   ########.fr        #
+#    Updated: 2023/11/06 16:20:25 by bel-mous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,16 @@ dir:
 	mkdir -p $(DIR)/database
 
 up: dir
-	docker-compose --project-directory srcs up -d
+	docker compose --project-directory srcs up -d
 
 build: dir
-	docker-compose --project-directory srcs up -d --build
+	docker compose --project-directory srcs up -d --build
 
 down:
-	docker-compose --project-directory srcs down
+	docker compose --project-directory srcs down
 
 fclean:
 	docker system prune -fa --volumes
-	rm -rf $(DIR) 2>/dev/null
-	
 
 re: down build dir
 
