@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.venv
+node_modules
+*.pyc
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+ssl

@@ -1,0 +1,105 @@
+.user-item {
+    width: 100%;
+    max-width: 100px;
+    min-height: 150px;
+    background: #eee;
+    margin: 10px 12px!important;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    background-position: 50% 50%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0%;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    transition: box-shadow, 0.3s;
+}
+
+
+.user-item-container {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+.user-item-title {
+	font-size: 14px;
+    margin: 5px 0;
+    color: #00babc;
+}
+
+.logs-list {
+    display: flex;
+    box-align: stretch;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.log-item {
+    display: flex;
+    box-align: center;
+    align-items: center;
+    box-orient: horizontal;
+    box-direction: reverse;
+    flex-direction: row-reverse;
+    box-pack: start;
+    justify-content: flex-start;
+}
+
+.log-main {
+    flex-grow: 1;
+    padding: 0px 5px 0px 10px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 1px;
+}
+
+p.content {
+    padding-left: 25px;
+}
+
+.log-middle {
+    align-self: stretch;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 5px;
+    transition: 0.2s all;
+    width: 5px;
+    margin-left: 10px;
+    background-color: #00babc;
+}
+
+.logs-list .log-item .log-left {
+    text-align: right;
+    margin-right: 20px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 10px;
+}
+
+.logs-list .log-item .log-left span {
+    border: 1px solid #67676d;
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 3px 5px;
+    max-width: 180px;
+    height: 25px;
+    right: 0px;
+    position: relative;
+    text-overflow: hidden;
+    transition: 0.3s all;
+}

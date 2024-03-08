@@ -1,0 +1,58 @@
+.home {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+label {
+    font-weight: bold;
+    padding: 10px 0 10px 0;
+    font-size: 14px;
+    color: #2c2c34;
+}
+
+.config-number {
+    width: 48px;
+}
+
+.config-input {
+    width: 48*3px;
+}
+
+.overflow {
+    max-height: 145px;
+    overflow: auto;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.event-item {
+    color: #7e93d4;
+    position: relative;
+    clear: both;
+    margin: 5px;
+    color: #00babc;
+    border-radius: 2px 0px 0px 2px;
+    border: 1px solid currentcolor;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 5px 5px 15px;
+    margin: 0;
+    min-height: 50px;
+    margin: 2px 0px;
+}
+
+.tournament-name {
+    display: inline-block;
+    font-size: 1.2em;
+    color: currentColor;
+    font-weight: bold;
+}
+
+.overflow a {
+    text-decoration: none;
+}
+
+.overflow a * {
+    text-decoration: none;
+}

@@ -1,0 +1,12 @@
+.match-box {
+    width: 200px;
+    height: 100px;
+    background-color: #00babc;
+    color: white;
+    text-align: center;
+    margin: 15px auto;
+}
+
+.round {
+    text-align: center;
+}

@@ -1,0 +1,5 @@
+.page {
+    background-color: #fafafa;
+    min-height: calc(100% - 60px);
+    margin-left: 80px;
+}

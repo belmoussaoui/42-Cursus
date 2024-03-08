@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./frontend:/usr/src/app
+      - ./ssl:/ssl
+    depends_on:
+      - backend
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./.env
+    volumes:
+      - ./backend:/app
+      - ./ssl:/ssl
+    depends_on:
+      - database
+    networks:
+      - ft_transcendence
+  database:
+    image: postgres
+    env_file:
+      - ./.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - ft_transcendence
+
+networks:
+  ft_transcendence:
+    driver: bridge
+
+volumes:
+  postgres_data:

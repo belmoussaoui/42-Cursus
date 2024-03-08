@@ -1,0 +1,40 @@
+.player {
+    background-color: aliceblue;
+    width: 100%;
+    /* min-height: 300px; */
+    min-height: 200px;
+    background: url(/bkgrnd.jpg);
+
+}
+
+.player-box {
+	background-color: rgba(32,32,38,0.85);
+	color: white;
+    padding: 12px 10px;
+    min-height: 104px;
+    margin: auto;
+}
+
+.player-header {
+	height: 60px;
+}
+
+.player-image {
+	height: 140px;
+    width: 140px;
+    margin: 10px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f2f2f2;
+}
+
+.player-height {
+    min-height: 200px;
+}
+
+@media screen and (max-width: 600px) {
+    .player {
+        display:none;
+    }
+}

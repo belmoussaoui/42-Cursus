@@ -1,0 +1,42 @@
+.player {
+    background-color: aliceblue;
+    width: 100%;
+    /* min-height: 300px; */
+    min-height: 200px;
+    background: url(/bkgrnd.jpg);
+}
+
+.player-name {
+    font-weight: 700;
+    font-family: 'futura', 'Noto Sans', 'Arial', 'Helvetica', 'Sans serif';
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.player-box {
+	background-color: rgba(32,32,38,0.85);
+	color: white;
+    padding: 12px 10px;
+    min-height: 104px;
+    margin: auto;
+}
+
+.player-header {
+	height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.player-image {
+	height: 140px;
+    width: 140px;
+    margin: 10px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f2f2f2;
+}
+
+.player-height {
+    min-height: 200px;
+}

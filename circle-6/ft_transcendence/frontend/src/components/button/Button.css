@@ -1,0 +1,20 @@
+.button-main {
+    color: #fff;
+    background-color: #00babc;
+    border-color: #00babc;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.428571429;
+    border-radius: 1px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,30 @@
+.profile {
+    background-color: aliceblue;
+    width: 100%;
+    min-height: 300px;
+    background: url(/bkgrnd.jpg);
+
+}
+
+.user-box {
+	background-color: rgba(32,32,38,0.85);
+	color: white;
+	margin-left: 10px;
+    padding: 12px 10px;
+    min-height: 204px;
+}
+
+.user-header {
+	height: 60px;
+}
+
+.profile-image {
+	height: 140px;
+    width: 140px;
+    padding-right: 15px;
+    margin: 30px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f2f2f2;
+}
